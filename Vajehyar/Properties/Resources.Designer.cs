@@ -61,6 +61,16 @@ namespace Vajehyar.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Vajehyar {
+            get {
+                object obj = ResourceManager.GetObject("Vajehyar", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to آب: 1 ماء 2 مایع 3 شیره، عرق، عصاره، عصیر 4 حل، محلول 5 ذوب 6 خوی 7 بزاق، آب‌دهان 8 منی 9 بحر، دریا، یم 10 زهاب، 11 آبرو، حیثیت، شرف، عزت 21 تری، تازگی، طراوت 
         ///آباء: اجداد، اسلاف، پدران، پیشینیان، نیاکان &amp; اخلاف
         ///آباجی: آبجی، اخت، باجی، خواهر، دده، شاباجی، همشیره &amp; داداش

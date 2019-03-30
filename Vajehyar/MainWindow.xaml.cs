@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -18,11 +19,13 @@ namespace Vajehyar
 
         public MainWindow()
         {
-            InitializeComponent();
-            DataContext = this;
-            Words = CollectionViewSource.GetDefaultView(data());
-            Words.Filter = new Predicate<object>(Filter);
+            InitializeComponent();           
 
+            DataContext = this;
+            var list = data();
+            Words = CollectionViewSource.GetDefaultView(list);
+            Words.Filter = new Predicate<object>(Filter);
+            textboxHint.Text = $"جستجو در بین {list.Count} کلمه";
 
         }
 
@@ -117,6 +120,19 @@ namespace Vajehyar
         {
             FilterString = txtSearch.Text;
 
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            
+                /*e.Cancel = true;
+                this.Visibility = Visibility.Hidden;*/
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

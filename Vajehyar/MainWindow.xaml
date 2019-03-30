@@ -7,12 +7,108 @@
         xmlns:Properties="clr-namespace:Vajehyar.Properties" x:Class="Vajehyar.MainWindow"
         mc:Ignorable="d"
     
-        Title="MainWindow" Height="417" Width="650"
+        Title="MainWindow" Height="417" Width="650" 
         WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown"
+    FontFamily="tahoma"
         >
+    <Window.Effect>
+        <DropShadowEffect Color="#FFB6E6FF" Direction="0" BlurRadius="10" ShadowDepth="0"/>
+    </Window.Effect>
+    <Window.Resources>
+        <!--Scrollbar Thumbs-->
+        <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Grid x:Name="Grid">
+                            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Fill="Transparent" />
+                            <Border x:Name="Rectangle1" CornerRadius="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Background="#FF00B2FF" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Tag" Value="Horizontal">
+                                <Setter TargetName="Rectangle1" Property="Width" Value="Auto" />
+                                <Setter TargetName="Rectangle1" Property="Height" Value="7" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--ScrollBars-->
+        <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+            <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
+            <Setter Property="Foreground" Value="#8C8C8C" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Width" Value="7" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ScrollBar}">
+                        <Grid x:Name="GridRoot" Width="7" Background="{TemplateBinding Background}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.00001*" />
+                            </Grid.RowDefinitions>
+                            <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="false">
+                                <Track.Thumb>
+                                    <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" Style="{DynamicResource ScrollThumbs}" />
+                                </Track.Thumb>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="false" />
+                                </Track.IncreaseRepeatButton>
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="false" />
+                                </Track.DecreaseRepeatButton>
+                            </Track>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
+                                <Setter Value="{DynamicResource ButtonSelectBrush}" TargetName="Thumb" Property="Background" />
+                            </Trigger>
+                            <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
+                                <Setter Value="{DynamicResource DarkBrush}" TargetName="Thumb" Property="Background" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                            <Trigger Property="Orientation" Value="Horizontal">
+                                <Setter TargetName="GridRoot" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="PART_Track" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Width" Value="Auto" />
+                                <Setter Property="Height" Value="8" />
+                                <Setter TargetName="Thumb" Property="Tag" Value="Horizontal" />
+                                <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand" />
+                                <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Storyboard x:Key="Storyboard1">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="AliceBlue"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="textBlock">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="360"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="ellipse">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+        </EventTrigger>
+    </Window.Triggers>
 
     <Border
-            Padding="2"        
+            Padding="2"     
+        Margin="10"
             BorderThickness="2"
             CornerRadius="10"
             Background="White" BorderBrush="#FF1E97DC">
@@ -24,96 +120,90 @@
                 </LinearGradientBrush>
             </StackPanel.Background>
             <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
-                <Button Width="25" Height="25"  Content="X" Margin="5">
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Setter Property="Background" Value="Transparent"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Grid>
-                                            <Ellipse Fill="AliceBlue"/>
-                                            <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Grid>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Trigger.EnterActions>
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation Duration="0:0:0.03" To="28" Storyboard.TargetProperty="Height">
-                                                    <DoubleAnimation.EasingFunction>
-                                                        <CubicEase EasingMode="EaseIn"/>
-                                                    </DoubleAnimation.EasingFunction>
-                                                </DoubleAnimation>
-                                                <DoubleAnimation  Duration="0:0:0.03" To="28" Storyboard.TargetProperty="Width">
-                                                    <DoubleAnimation.EasingFunction>
-                                                        <CubicEase EasingMode="EaseIn"/>
-                                                    </DoubleAnimation.EasingFunction>
-                                                </DoubleAnimation>
+                <Grid Width="30" Height="30">
+                    <Ellipse x:Name="ellipse" Width="25" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="AliceBlue"/>
 
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </Trigger.EnterActions>
-                                    <Trigger.ExitActions>
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation Duration="0:0:0.03" To="25" Storyboard.TargetProperty="Height">
-                                                    <DoubleAnimation.EasingFunction>
-                                                        <CubicEase EasingMode="EaseOut"/>
-                                                    </DoubleAnimation.EasingFunction>
-                                                </DoubleAnimation>
-                                                <DoubleAnimation  Duration="0:0:0.03" To="25" Storyboard.TargetProperty="Width">
-                                                    <DoubleAnimation.EasingFunction>
-                                                        <CubicEase EasingMode="EaseOut"/>
-                                                    </DoubleAnimation.EasingFunction>
-                                                </DoubleAnimation>
+                    <TextBlock x:Name="textBlock" Text="x" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                </Grid>
 
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </Trigger.ExitActions>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
             </StackPanel>
 
 
             <StackPanel Margin="10,0,10,10">
-                <TextBox x:Name="txtSearch" Background="White" Height="25" FlowDirection="RightToLeft" Padding="10,0" VerticalContentAlignment="Center"
-                         TextChanged="TxtSearch_TextChanged">
-                    <TextBox.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="10"/>
-                        </Style>
-                    </TextBox.Resources>
-                </TextBox>
-                <DataGrid x:Name="dgvWords" Height="318" HeadersVisibility="None" FlowDirection="RightToLeft"
-                          Margin="0,5,0,0" BorderBrush="{x:Null}" 
-                          AutoGenerateColumns="False"
-                          CanUserResizeRows="False"
-                          ItemsSource="{Binding Words}">
-                    <DataGrid.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="10"/>
-                        </Style>
-                    </DataGrid.Resources>
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Definition}" Header="Def"/>
-                        <DataGridTextColumn Binding="{Binding Mean}" Header="Mean"/>
-                    </DataGrid.Columns>
-                    <DataGrid.Background>
-                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#FFEDF9FF" Offset="0"/>
-                            <GradientStop Color="White" Offset="1"/>
-                        </LinearGradientBrush>
-                    </DataGrid.Background>
-                </DataGrid>               
+                <Grid FlowDirection="RightToLeft">
+                    <TextBox x:Name="txtSearch" Background="White" Height="30" FlowDirection="RightToLeft" Padding="10,0" VerticalContentAlignment="Center"
+                         TextChanged="TxtSearch_TextChanged"  Foreground="Black" BorderBrush="{x:Null}" BorderThickness="2" FontWeight="Bold">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <TextBlock x:Name="textboxHint" IsHitTestVisible="False" Text="جستجو در بین 3000 کلمه" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Text, ElementName=txtSearch}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>
+
+                <Border CornerRadius="5" Margin="0,10,0,0" Padding="0" BorderBrush="#FFE0F3FB" BorderThickness="2" Height="310">
+                    <DataGrid x:Name="dgvWords" 
+                           HeadersVisibility="None" FlowDirection="RightToLeft"
+                           BorderBrush="{x:Null}"
+                          CanUserResizeRows="False" CanUserAddRows="False" 
+                          ItemsSource="{Binding Words}" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="Cell" VerticalContentAlignment="Center" VerticalAlignment="Center" RowBackground="#FFCAEDFF" AlternatingRowBackground="#FFFBFBFB" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Definition}" CanUserSort="False" CanUserReorder="False" CanUserResize="False"
+                                            MinWidth="100" FontWeight="Bold">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+                                        <Setter Property="TextBlock.HorizontalAlignment" Value="Center"/>
+                                        <Setter Property="TextBlock.Padding" Value="7"/>
+
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Binding="{Binding Mean}" Width="*" CanUserSort="False" CanUserReorder="False" CanUserResize="False">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style>
+                                        <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
+                                        <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+                                        <Setter Property="TextBlock.Padding" Value="7"/>
+
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                        <DataGrid.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFEDF9FF" Offset="0"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </DataGrid.Background>
+                    </DataGrid>
+                </Border>
+
+
             </StackPanel>
-        </StackPanel>       
+        </StackPanel>
     </Border>
 
 </Window>
