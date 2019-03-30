@@ -141,7 +141,7 @@
             <StackPanel Margin="10,0,10,10">
                 <Grid FlowDirection="RightToLeft">
                     <TextBox x:Name="txtSearch" Background="White" Height="30" FlowDirection="RightToLeft" Padding="10,0" VerticalContentAlignment="Center"
-                         TextChanged="TxtSearch_TextChanged"  Foreground="Black" BorderBrush="{x:Null}" BorderThickness="2" FontWeight="Bold">
+                         TextChanged="TxtSearch_TextChanged"  Foreground="Black" BorderBrush="{x:Null}" BorderThickness="2" FontWeight="Bold" InputLanguageManager.InputLanguage="fa-IR" PreviewTextInput="TxtSearch_PreviewTextInput">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">
                                 <Setter Property="CornerRadius" Value="10"/>

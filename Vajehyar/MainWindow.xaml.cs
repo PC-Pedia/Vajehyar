@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -167,6 +168,14 @@ namespace Vajehyar
             {
                 txtSearch.SelectAll();
             }
+        }
+
+        private void TxtSearch_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Regex.IsMatch(e.Text, @"\p{IsArabic}")
+        && !string.IsNullOrWhiteSpace(e.Text))            
+                e.Handled = true;                
+            
         }
     }
 }
