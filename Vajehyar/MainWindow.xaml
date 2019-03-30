@@ -7,9 +7,9 @@
         xmlns:Properties="clr-namespace:Vajehyar.Properties" x:Class="Vajehyar.MainWindow"
         mc:Ignorable="d"
     
-        Title="MainWindow" Height="417" Width="650" 
+        Title="MainWindow" Height="417" Width="650" FocusManager.FocusedElement="{Binding ElementName=txtSearch}"
         WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown"
-    FontFamily="tahoma"
+    FontFamily="tahoma" ShowInTaskbar="False" Closing="Window_Closing" KeyDown="Window_KeyDown" StateChanged="Window_StateChanged" WindowStartupLocation="CenterScreen"
         >
     <Window.Effect>
         <DropShadowEffect Color="#FFB6E6FF" Direction="0" BlurRadius="10" ShadowDepth="0"/>
@@ -120,7 +120,7 @@
                 </LinearGradientBrush>
             </StackPanel.Background>
             <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
-                <Grid Width="30" Height="30">
+                <Grid Width="30" Height="30" MouseDown="Grid_MouseDown">
                     <Ellipse x:Name="ellipse" Width="25" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="AliceBlue"/>
 
                     <TextBlock x:Name="textBlock" Text="x" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
@@ -165,13 +165,13 @@
                 <Border CornerRadius="5" Margin="0,10,0,0" Padding="0" BorderBrush="#FFE0F3FB" BorderThickness="2" Height="310">
                     <DataGrid x:Name="dgvWords" 
                            HeadersVisibility="None" FlowDirection="RightToLeft"
-                           BorderBrush="{x:Null}"
+                           BorderBrush="{x:Null}" 
                           CanUserResizeRows="False" CanUserAddRows="False" 
-                          ItemsSource="{Binding Words}" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="Cell" VerticalContentAlignment="Center" VerticalAlignment="Center" RowBackground="#FFCAEDFF" AlternatingRowBackground="#FFFBFBFB" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White">
+                          ItemsSource="{Binding Words}" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="Cell" VerticalContentAlignment="Center" RowBackground="#FFCAEDFF" AlternatingRowBackground="#FFFBFBFB" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White">
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Definition}" CanUserSort="False" CanUserReorder="False" CanUserResize="False"
-                                            MinWidth="100" FontWeight="Bold">
+                                            MinWidth="100" FontWeight="Bold" IsReadOnly="True">
                                 <DataGridTextColumn.ElementStyle>
                                     <Style>
                                         <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
@@ -185,11 +185,11 @@
                                 <DataGridTextColumn.ElementStyle>
                                     <Style>
                                         <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
-                                        <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
-                                        <Setter Property="TextBlock.Padding" Value="7"/>
-
+                                        <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>                                        
+                                        <Setter Property="TextBlock.Padding" Value="7"/>                                       
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
+
                             </DataGridTextColumn>
                         </DataGrid.Columns>
                         <DataGrid.Background>

@@ -124,15 +124,49 @@ namespace Vajehyar
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            
-                /*e.Cancel = true;
-                this.Visibility = Visibility.Hidden;*/
-            
+            App.nIcon.Dispose();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            //Application.Current.Shutdown();
+        }
+
+        private void Ellipse_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
+
+        private void Grid_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Hide();
+            WindowState = WindowState.Minimized;            
+        }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key==Key.Escape)
+            {
+                Grid_MouseDown(null, null);
+            }
+        }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            if (WindowState==WindowState.Normal)
+            {
+                txtSearch.SelectAll();
+            }
         }
     }
 }
