@@ -9,7 +9,7 @@
     
         Title="MainWindow" Height="417" Width="650" FocusManager.FocusedElement="{Binding ElementName=txtSearch}"
         WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown"
-    FontFamily="tahoma" ShowInTaskbar="False" Closing="Window_Closing" KeyDown="Window_KeyDown" StateChanged="Window_StateChanged" WindowStartupLocation="CenterScreen"
+    FontFamily="tahoma" ShowInTaskbar="False" Closing="Window_Closing" PreviewKeyDown="Window_PreviewKeyDown" StateChanged="Window_StateChanged" WindowStartupLocation="CenterScreen"
         >
     <Window.Effect>
         <DropShadowEffect Color="#FFB6E6FF" Direction="0" BlurRadius="10" ShadowDepth="0"/>
@@ -91,20 +91,35 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Storyboard x:Key="Storyboard1">
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
-                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="AliceBlue"/>
-            </ColorAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="textBlock">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.1" Value="360"/>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
+
+        <Style x:Key="{x:Type ToolTip}" TargetType="ToolTip">
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="HasDropShadow" Value="True"/>
+            <Setter Property="FontFamily" Value="Tahoma"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="White"/>            
+            
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToolTip">
+                        <Border Name="Border" Background="#FF00354D" Padding="5,3,5,3"  BorderThickness="2" CornerRadius="5" BorderBrush="White"         Width="{TemplateBinding Width}"          Height="{TemplateBinding Height}">
+                            <ContentPresenter            Margin="2"             HorizontalAlignment="Left"        VerticalAlignment="Top" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="HasDropShadow" Value="true">
+                                <Setter TargetName="Border" Property="CornerRadius" Value="5"/>
+                                <Setter TargetName="Border" Property="SnapsToDevicePixels" Value="true"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>       
+
     </Window.Resources>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="ellipse">
-            <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
-        </EventTrigger>
-    </Window.Triggers>
+
+
 
     <Border
             Padding="2"     
@@ -119,23 +134,45 @@
                     <GradientStop Color="White" Offset="1"/>
                 </LinearGradientBrush>
             </StackPanel.Background>
-            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
-                <Grid Width="30" Height="30" MouseDown="Grid_MouseDown">
-                    <Ellipse x:Name="ellipse" Width="25" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" Fill="AliceBlue"/>
+            <Grid  FlowDirection="RightToLeft" Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" HorizontalAlignment="Left" Margin="10" Content="🡦" Width="25" Height="25" VerticalAlignment="Center" Click="Button_Click" IsCancel="True">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Ellipse x:Name="ellipse" Fill="White" Stroke="#FF11A7FD" StrokeThickness="2" Opacity="0.1"/>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Opacity" Value="100" TargetName="ellipse"/>
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="true">
+                                        <Setter Property="Height" Value="24" TargetName="ellipse"/>
+                                        <Setter Property="Width" Value="24" TargetName="ellipse"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>                               
+                            </ControlTemplate>                           
+                            
+                        </Button.Template>
+                    <Button.ToolTip>
+                        <ToolTip Style="{StaticResource {x:Type ToolTip}}">
+                            قرار دادن برنامه در System Tray
+                        </ToolTip>
+                    </Button.ToolTip>
+                    
+                    </Button>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                    <Label  Content="واژه یار" FontWeight="Bold" FontSize="13" Foreground="#FF0086C5" HorizontalContentAlignment="Center"/>
+                    <Label Content="فرهنگ جامع واژگان مترادف و متضاد" FontWeight="UltraLight" FontSize="12" Padding="0" Foreground="#FF0086C5" HorizontalContentAlignment="Center"/>
+                </StackPanel>
+                
 
-                    <TextBlock x:Name="textBlock" Text="x" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                </Grid>
-
-            </StackPanel>
+            </Grid>
 
 
             <StackPanel Margin="10,0,10,10">
@@ -148,7 +185,7 @@
                             </Style>
                         </TextBox.Resources>
                     </TextBox>
-                    <TextBlock x:Name="textboxHint" IsHitTestVisible="False" Text="جستجو در بین 3000 کلمه" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+                    <TextBlock x:Name="textboxHint" IsHitTestVisible="False" Text="به فارسی بنویسید..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
                                 <Setter Property="Visibility" Value="Collapsed"/>
@@ -167,7 +204,7 @@
                            HeadersVisibility="None" FlowDirection="RightToLeft"
                            BorderBrush="{x:Null}" 
                           CanUserResizeRows="False" CanUserAddRows="False" 
-                          ItemsSource="{Binding Words}" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="Cell" VerticalContentAlignment="Center" RowBackground="#FFCAEDFF" AlternatingRowBackground="#FFFBFBFB" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White">
+                          ItemsSource="{Binding Words}" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="Cell" VerticalContentAlignment="Center" RowBackground="#FFCAEDFF" AlternatingRowBackground="#FFFBFBFB" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" Margin="0,0,0,26">
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Definition}" CanUserSort="False" CanUserReorder="False" CanUserResize="False"
@@ -185,8 +222,8 @@
                                 <DataGridTextColumn.ElementStyle>
                                     <Style>
                                         <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
-                                        <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>                                        
-                                        <Setter Property="TextBlock.Padding" Value="7"/>                                       
+                                        <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
+                                        <Setter Property="TextBlock.Padding" Value="7"/>
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
 

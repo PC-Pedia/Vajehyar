@@ -28,7 +28,7 @@ namespace Vajehyar
             var list = data();
             Words = CollectionViewSource.GetDefaultView(list);
             Words.Filter = new Predicate<object>(Filter);
-            textboxHint.Text = $"جستجو بین {list.Count} کلمه، لطفاً فارسی بنویسید.";            
+            //textboxHint.Text = $"جستجو بین {list.Count} کلمه. لطفاً فارسی بنویسید.";            
 
         }
 
@@ -133,6 +133,8 @@ namespace Vajehyar
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //Application.Current.Shutdown();
+            Hide();
+            WindowState = WindowState.Minimized;
         }
 
         private void Ellipse_MouseUp(object sender, MouseButtonEventArgs e)
@@ -147,8 +149,7 @@ namespace Vajehyar
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Hide();
-            WindowState = WindowState.Minimized;            
+                       
         }
 
         private void Window_Activated(object sender, EventArgs e)
@@ -158,10 +159,7 @@ namespace Vajehyar
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key==Key.Escape)
-            {
-                Grid_MouseDown(null, null);
-            }
+            
         }
 
         private void Window_StateChanged(object sender, EventArgs e)
@@ -173,7 +171,7 @@ namespace Vajehyar
         }
 
         private void TxtSearch_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
+        {            
             if (!Regex.IsMatch(e.Text, @"\p{IsArabic}")
         && !string.IsNullOrWhiteSpace(e.Text))
             {
@@ -188,7 +186,7 @@ namespace Vajehyar
         {
             DoubleAnimation da = new DoubleAnimation(0, 1, new Duration(new TimeSpan(0, 0, 0,0,200)));
             
-            da.RepeatBehavior = new RepeatBehavior(5);
+            da.RepeatBehavior = new RepeatBehavior(2);
             //da.AutoReverse = true;
             Storyboard sb = new Storyboard();            
             sb.Children.Add(da);
@@ -197,6 +195,13 @@ namespace Vajehyar
             sb.Begin();
             
         }
-        
+
+        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                Grid_MouseDown(null, null);
+            }
+        }
     }
 }
