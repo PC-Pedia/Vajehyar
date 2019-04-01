@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 
 namespace Vajehyar
 {
@@ -26,7 +28,7 @@ namespace Vajehyar
             var list = data();
             Words = CollectionViewSource.GetDefaultView(list);
             Words.Filter = new Predicate<object>(Filter);
-            textboxHint.Text = $"جستجو در بین {list.Count} کلمه";
+            textboxHint.Text = $"جستجو بین {list.Count} کلمه، لطفاً فارسی بنویسید.";            
 
         }
 
@@ -173,9 +175,28 @@ namespace Vajehyar
         private void TxtSearch_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             if (!Regex.IsMatch(e.Text, @"\p{IsArabic}")
-        && !string.IsNullOrWhiteSpace(e.Text))            
-                e.Handled = true;                
+        && !string.IsNullOrWhiteSpace(e.Text))
+            {
+                BlinkText(textboxHint);
+                e.Handled = true;
+            }
+                
             
         }
+
+        private void BlinkText(TextBlock textBlock)
+        {
+            DoubleAnimation da = new DoubleAnimation(0, 1, new Duration(new TimeSpan(0, 0, 0,0,200)));
+            
+            da.RepeatBehavior = new RepeatBehavior(5);
+            //da.AutoReverse = true;
+            Storyboard sb = new Storyboard();            
+            sb.Children.Add(da);
+            Storyboard.SetTargetProperty(da, new PropertyPath("(TextBlock.Opacity)"));
+            Storyboard.SetTarget(da, textBlock);
+            sb.Begin();
+            
+        }
+        
     }
 }
