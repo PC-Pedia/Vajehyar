@@ -5,8 +5,9 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <FontFamily x:Key="Vazir">pack://application:,,,/Resources/#Vazir</FontFamily>
+        <FontFamily x:Key="IranSans">pack://application:,,,/Resources/#IRANSans</FontFamily>        
 
-        <ContextMenu x:Key="NotifierContextMenu"  FontFamily="{StaticResource Vazir}" FontSize="12" FontWeight="Light" FlowDirection="RightToLeft"
+        <ContextMenu x:Key="NotifierContextMenu"  FontFamily="{StaticResource IranSans}" FontSize="12" FontWeight="Light" FlowDirection="RightToLeft"
 
                     Placement="MousePoint">
             <MenuItem Header="تنظیمات" Click="Menu_Settings" Margin="3">

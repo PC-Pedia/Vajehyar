@@ -168,9 +168,9 @@
                     </Button.ToolTip>
                     
                     </Button>
-                <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                    <Label  Content="واژه یار" FontWeight="Bold" FontSize="13" Foreground="#FF0086C5" HorizontalContentAlignment="Center"/>
-                    <Label Content="فرهنگ جامع واژگان مترادف و متضاد" FontWeight="UltraLight" FontSize="12" Padding="0" Foreground="#FF0086C5" HorizontalContentAlignment="Center"/>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center" >
+                    <Label  Content="واژه یار"  FontSize="16" Padding="0" FontWeight="Bold" FontFamily="{StaticResource IranSans}" Foreground="#FF0086C5" HorizontalContentAlignment="Center"/>
+                    <Label Content="فرهنگ جامع واژگان مترادف و متضاد" FontFamily="{StaticResource IranSans}" FontSize="12" Padding="0" Foreground="#FF0086C5" HorizontalContentAlignment="Center"/>
                 </StackPanel>
                 
 
@@ -201,12 +201,12 @@
                     </TextBlock>
                 </Grid>
 
-                <Border CornerRadius="5" Margin="0,10,0,0" Padding="0" BorderBrush="#FFE0F3FB" BorderThickness="2" Height="310">
+                <Border CornerRadius="5" Margin="0,10,0,0" Padding="0" BorderBrush="#FFE0F3FB" BorderThickness="2" Height="284">
                     <DataGrid x:Name="dgvWords" 
                            HeadersVisibility="None" FlowDirection="RightToLeft"
                            BorderBrush="{x:Null}" 
                           CanUserResizeRows="False" CanUserAddRows="False" 
-                          ItemsSource="{Binding Words}" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="Cell" VerticalContentAlignment="Center" RowBackground="#FFCAEDFF" AlternatingRowBackground="#FFFBFBFB" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" Margin="0,0,0,26">
+                          ItemsSource="{Binding Words}" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="Cell" VerticalContentAlignment="Center" RowBackground="#FFCAEDFF" AlternatingRowBackground="#FFFBFBFB" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" Margin="0,0,0,8">
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Definition}" CanUserSort="False" CanUserReorder="False" CanUserResize="False"
