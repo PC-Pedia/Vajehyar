@@ -7,7 +7,7 @@
         xmlns:Properties="clr-namespace:Vajehyar.Properties" x:Class="Vajehyar.MainWindow"
         mc:Ignorable="d"
     
-        Title="MainWindow" Height="417" Width="650" FocusManager.FocusedElement="{Binding ElementName=txtSearch}"
+        Title="MainWindow" Height="417" Width="650" FocusManager.FocusedElement="{Binding ElementName=txtSearch}" Topmost="True"
         WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown"
     FontFamily="tahoma" ShowInTaskbar="False" Closing="Window_Closing" PreviewKeyDown="Window_PreviewKeyDown" StateChanged="Window_StateChanged" WindowStartupLocation="CenterScreen"
         >
