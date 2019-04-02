@@ -115,14 +115,16 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>       
+        </Style>
+
+       
 
     </Window.Resources>
 
 
 
     <Border
-            Padding="2"     
+            Padding="3"     
         Margin="10"
             BorderThickness="2"
             CornerRadius="10"
