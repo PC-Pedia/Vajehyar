@@ -29,6 +29,8 @@ namespace Vajehyar
             Words = CollectionViewSource.GetDefaultView(list);
             Words.Filter = new Predicate<object>(Filter);
             //textboxHint.Text = $"جستجو بین {list.Count} کلمه. لطفاً فارسی بنویسید.";            
+            Width = SystemParameters.PrimaryScreenWidth / 2.584;
+            Height = System.Windows.SystemParameters.PrimaryScreenHeight / 2.517;
 
         }
 
@@ -204,8 +206,9 @@ namespace Vajehyar
             }
         }
 
-        
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
 
-
+        }
     }
 }

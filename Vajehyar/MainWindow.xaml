@@ -136,45 +136,45 @@
                     <GradientStop Color="White" Offset="1"/>
                 </LinearGradientBrush>
             </StackPanel.Background>
-            <Grid  FlowDirection="RightToLeft" Margin="0,0,0,10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" HorizontalAlignment="Left" Margin="10" Content="🡦" Width="25" Height="25" VerticalAlignment="Center" Click="Button_Click" IsCancel="True">
-                        <Button.Template>
-                            <ControlTemplate TargetType="Button">
-                                <Grid>
-                                    <Ellipse x:Name="ellipse" Fill="White" Stroke="#FF11A7FD" StrokeThickness="2" Opacity="0.1"/>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Grid>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="true">
-                                        <Setter Property="Opacity" Value="100" TargetName="ellipse"/>
-                                    </Trigger>
-                                    <Trigger Property="IsPressed" Value="true">
-                                        <Setter Property="Height" Value="24" TargetName="ellipse"/>
-                                        <Setter Property="Width" Value="24" TargetName="ellipse"/>
-                                    </Trigger>
-                                </ControlTemplate.Triggers>                               
-                            </ControlTemplate>                           
-                            
-                        </Button.Template>
+
+            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                <Button   Margin="10" Content="🡦" Width="25" Height="25" VerticalAlignment="Center" Click="Button_Click" IsCancel="True">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Ellipse x:Name="ellipse" Fill="White" Stroke="#FF11A7FD" StrokeThickness="2" Opacity="0.1"/>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Opacity" Value="100" TargetName="ellipse"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="true">
+                                    <Setter Property="Height" Value="24" TargetName="ellipse"/>
+                                    <Setter Property="Width" Value="24" TargetName="ellipse"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+
+                    </Button.Template>
                     <Button.ToolTip>
                         <ToolTip Style="{StaticResource {x:Type ToolTip}}">
                             قرار دادن برنامه در System Tray
                         </ToolTip>
                     </Button.ToolTip>
+
+                </Button>
+
+                <TextBlock Text="واژه یار" FontWeight="Bold" VerticalAlignment="Center" FontSize="15" Padding="0" FontFamily="{StaticResource IranSans}" Foreground="#FF0086C5"/>
+                <TextBlock Text=" (فرهنگ جامع واژگان مترادف و متضاد)" VerticalAlignment="Center" FontWeight="UltraLight" FontFamily="{StaticResource IranSans}" FontSize="12" Padding="0" Foreground="#FF08293A" />
+               
+            </StackPanel>
+                
                     
-                    </Button>
-                <StackPanel Grid.Column="1" HorizontalAlignment="Center" >
-                    <Label  Content="واژه یار"  FontSize="16" Padding="0" FontWeight="Bold" FontFamily="{StaticResource IranSans}" Foreground="#FF0086C5" HorizontalContentAlignment="Center"/>
-                    <Label Content="فرهنگ جامع واژگان مترادف و متضاد" FontFamily="{StaticResource IranSans}" FontSize="12" Padding="0" Foreground="#FF0086C5" HorizontalContentAlignment="Center"/>
-                </StackPanel>
+                
                 
 
-            </Grid>
+          
 
 
             <StackPanel Margin="10,0,10,10">
@@ -207,6 +207,7 @@
                            BorderBrush="{x:Null}" 
                           CanUserResizeRows="False" CanUserAddRows="False" 
                           ItemsSource="{Binding Words}" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="Cell" VerticalContentAlignment="Center" RowBackground="#FFCAEDFF" AlternatingRowBackground="#FFFBFBFB" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" Margin="0,0,0,8">
+                      
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Definition}" CanUserSort="False" CanUserReorder="False" CanUserResize="False"
@@ -225,9 +226,10 @@
                                     <Style>
                                         <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
                                         <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
-                                        <Setter Property="TextBlock.Padding" Value="7"/>
+                                        <Setter Property="TextBlock.Padding" Value="7"/>                                        
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
+                             
 
                             </DataGridTextColumn>
                         </DataGrid.Columns>
