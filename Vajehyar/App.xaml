@@ -32,7 +32,7 @@
                 </MenuItem.Icon>
             </MenuItem>
 
-            <MenuItem Header="دربارۀ" Click="Menu_About" Margin="3">
+            <MenuItem Header="دربارۀ برنامه" Click="Menu_About" Margin="3">
                 <MenuItem.Icon>
                     <Image Source="Resources/Icons/About-24.png"/>
                 </MenuItem.Icon>

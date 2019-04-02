@@ -75,27 +75,27 @@ namespace Vajehyar
 
         private void Menu_Settings(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Open");
+            
         }
 
         private void Menu_Help(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Close");
+            
         }
 
         private void Menu_Contact(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Close");
+            
         }
 
         private void Menu_About(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Close");
+            
         }
 
         private void Menu_Update(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Update");
+            
         }
 
         private void Menu_Exit(object sender, RoutedEventArgs e)
