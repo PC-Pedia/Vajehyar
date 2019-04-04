@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -22,10 +20,10 @@ namespace Vajehyar
 
         public MainWindow()
         {
-            InitializeComponent();           
+            InitializeComponent();
 
             DataContext = this;
-            var list = data();
+            List<Word> list = data();
             Words = CollectionViewSource.GetDefaultView(list);
             Words.Filter = new Predicate<object>(Filter);
             //textboxHint.Text = $"جستجو بین {list.Count} کلمه. لطفاً فارسی بنویسید.";            
@@ -141,61 +139,61 @@ namespace Vajehyar
 
         private void Ellipse_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            
+
         }
 
         private void Grid_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
-            
+
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-                       
+
         }
 
         private void Window_Activated(object sender, EventArgs e)
         {
-           
+
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
         }
 
         private void Window_StateChanged(object sender, EventArgs e)
         {
-            if (WindowState==WindowState.Normal)
+            if (WindowState == WindowState.Normal)
             {
                 txtSearch.SelectAll();
             }
         }
 
         private void TxtSearch_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {            
-            if (!Regex.IsMatch(e.Text, @"\p{IsArabic}")
-        && !string.IsNullOrWhiteSpace(e.Text))
+        {
+            if (!Regex.IsMatch(e.Text, @"^[\u0600-\u06FF\uFB8A\u067E\u0686\u06AF\u200C\u200F ]+$"))
             {
                 BlinkText(textboxHint);
                 e.Handled = true;
             }
-                
-            
+
+
         }
 
         private void BlinkText(TextBlock textBlock)
         {
-            DoubleAnimation da = new DoubleAnimation(0, 1, new Duration(new TimeSpan(0, 0, 0,0,200)));
-            
-            da.RepeatBehavior = new RepeatBehavior(2);
+            DoubleAnimation da = new DoubleAnimation(0, 1, new Duration(new TimeSpan(0, 0, 0, 0, 200)))
+            {
+                RepeatBehavior = new RepeatBehavior(2)
+            };
             //da.AutoReverse = true;
-            Storyboard sb = new Storyboard();            
+            Storyboard sb = new Storyboard();
             sb.Children.Add(da);
             Storyboard.SetTargetProperty(da, new PropertyPath("(TextBlock.Opacity)"));
             Storyboard.SetTarget(da, textBlock);
             sb.Begin();
-            
+
         }
 
         private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
