@@ -90,8 +90,8 @@ namespace Vajehyar
 
         private void Menu_About(object sender, RoutedEventArgs e)
         {
-            Window aboutWindow = new About();            
-            aboutWindow.Show();
+            /*Window aboutWindow = new About();            
+            aboutWindow.Show();*/
         }
 
         private void Menu_Update(object sender, RoutedEventArgs e)
