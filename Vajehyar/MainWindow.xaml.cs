@@ -26,10 +26,15 @@ namespace Vajehyar
             List<Word> list = data();
             Words = CollectionViewSource.GetDefaultView(list);
             Words.Filter = new Predicate<object>(Filter);
-            //textboxHint.Text = $"جستجو بین {list.Count} کلمه. لطفاً فارسی بنویسید.";            
+            textboxHint.Text = $"جستجوی فارسی بین {RoundNumber(list.Count)} کلمۀ";            
             Width = SystemParameters.PrimaryScreenWidth / 2.584;
             Height = System.Windows.SystemParameters.PrimaryScreenHeight / 2.517;
 
+        }
+
+        private int RoundNumber(int num)
+        {
+            return num % 1000 >= 500 ? num + 1000 - num % 1000 : num - num % 1000;
         }
 
         public class Word
@@ -90,21 +95,28 @@ namespace Vajehyar
         public List<Word> data()
         {
 
-            string content = Properties.Resources.words;
+            string content = Properties.Resources.Farhang_Motaradef_Motazad+Environment.NewLine+Properties.Resources.Farhang_Teyfi;            
+
             string[] lines = content.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
             List<Word> words = new List<Word>();
 
             foreach (string line in lines)
             {
-                string[] cols = line.Split(':');
-                Word word = new Word
+                string[] cols = new string[] { };
+                try
                 {
-                    Definition = cols[0],
-                    Mean = cols[1]
-                };
-                words.Add(word);
-
-
+                    cols = line.Split(new[] { '،','؛',' ' }, 2);
+                    Word word = new Word
+                    {
+                        Definition = cols[0],
+                        Mean = cols[1]
+                    };
+                    words.Add(word);
+                }
+                catch (Exception ex)
+                {
+                    
+                }
             }
 
             return words;

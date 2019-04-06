@@ -61,26 +61,36 @@ namespace Vajehyar.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to آب، 1 ماء 2 مایع 3 شیره، عرق، عصاره، عصیر 4 حل، محلول 5 ذوب 6 خوی 7 بزاق، آب‌دهان 8 منی 9 بحر، دریا، یم 10 زهاب، 11 آبرو، حیثیت، شرف، عزت 21 تری، تازگی، طراوت 
+        ///آباء، اجداد، اسلاف، پدران، پیشینیان، نیاکان &amp; اخلاف
+        ///آباجی، آبجی، اخت، باجی، خواهر، دده، شاباجی، همشیره &amp; داداش
+        ///آباد، 1 برپا، دایر، معمور 2 پررونق 3 پیشرفته، توسعه‌یافته، مترقی 4 تندرست، سالم 5 بسامان، منظم 6 غنی، مرفه &amp; 1 خراب، متروک، ویران 2 بی‌رونق 4 عقب‌مانده
+        ///آبادان، 1 آباد، برپا، پررونق، دایر، معمور &amp; خراب
+        ///آبادانی، 1 آبادی، عمارت، عمران 2 تر [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Farhang_Motaradef_Motazad {
+            get {
+                return ResourceManager.GetString("Farhang_Motaradef_Motazad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to وجود، بودن، کون، هستی، بقا، بود؛ ذات مطلق، وجود مطلق، ذات خداوندی؛ ذات؛ معاش، جان، نَفْس، زندگی؛ وجود درزمان، بقا، ابدیت، واقعیت؛ وجود ازپیش، تقدم؛ وجود درمکان، حضور؛ دارایی؛ به‌وجود آمدن، پیدایش، شدن، تکوین، تکامل، تبدیل؛ خلق، ایجاد، تولید؛ بالقوه بودن، امکان، نهفتگی؛ هستی‌شناسی، اُنتولوژی، بودشناسی، ماوراءالطبیعه، مابعدالطبیعه، واقع‌گرایی، ایده‌آلیسم، اگزیستانسیالیسم، فلسفه، ماده‌گرایی، ماتریالیسم، مادیت
+        ///واقعیت، حقیقت داشتن، موجودیت، کیان، هستی؛ وجود واقعی، مادیت؛ آن بودن، خاص بودن، ویژگی؛ پوزیتیویته؛ وا [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Farhang_Teyfi {
+            get {
+                return ResourceManager.GetString("Farhang_Teyfi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon Vajehyar {
             get {
                 object obj = ResourceManager.GetObject("Vajehyar", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to آب: 1 ماء 2 مایع 3 شیره، عرق، عصاره، عصیر 4 حل، محلول 5 ذوب 6 خوی 7 بزاق، آب‌دهان 8 منی 9 بحر، دریا، یم 10 زهاب، 11 آبرو، حیثیت، شرف، عزت 21 تری، تازگی، طراوت 
-        ///آباء: اجداد، اسلاف، پدران، پیشینیان، نیاکان &amp; اخلاف
-        ///آباجی: آبجی، اخت، باجی، خواهر، دده، شاباجی، همشیره &amp; داداش
-        ///آباد: 1 برپا، دایر، معمور 2 پررونق 3 پیشرفته، توسعه‌یافته، مترقی 4 تندرست، سالم 5 بسامان، منظم 6 غنی، مرفه &amp; 1 خراب، متروک، ویران 2 بی‌رونق 4 عقب‌مانده
-        ///آبادان: 1 آباد، برپا، پررونق، دایر، معمور &amp; خراب
-        ///آبادانی: 1 آبادی، عمارت، عمران 2 تر [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string words {
-            get {
-                return ResourceManager.GetString("words", resourceCulture);
             }
         }
     }

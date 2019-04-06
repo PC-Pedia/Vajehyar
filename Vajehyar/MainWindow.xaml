@@ -120,9 +120,8 @@
        
 
     </Window.Resources>
-
-
-
+    
+    
     <Border
             Padding="3"     
         Margin="10"
@@ -167,7 +166,7 @@
 
                 <TextBlock Text="واژه یار" FontWeight="Bold" VerticalAlignment="Center" FontSize="15" Padding="0" FontFamily="{StaticResource IranSans}" Foreground="#FF0086C5"/>
                 <TextBlock Text=" (فرهنگ جامع واژگان مترادف و متضاد)" VerticalAlignment="Center" FontWeight="UltraLight" FontFamily="{StaticResource IranSans}" FontSize="12" Padding="0" Foreground="#FF08293A" />
-               
+                
             </StackPanel>
                 
                     
@@ -211,7 +210,7 @@
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Binding="{Binding Definition}" CanUserSort="False" CanUserReorder="False" CanUserResize="False"
-                                            MinWidth="100" FontWeight="Bold" IsReadOnly="True">
+                                            MinWidth="100" FontWeight="Bold">
                                 <DataGridTextColumn.ElementStyle>
                                     <Style>
                                         <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
@@ -239,10 +238,8 @@
                                 <GradientStop Color="White" Offset="1"/>
                             </LinearGradientBrush>
                         </DataGrid.Background>
-                    </DataGrid>
+                    </DataGrid>                    
                 </Border>
-
-
             </StackPanel>
         </StackPanel>
     </Border>
