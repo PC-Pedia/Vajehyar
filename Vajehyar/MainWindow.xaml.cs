@@ -26,9 +26,7 @@ namespace Vajehyar
             List<Word> list = data();
             Words = CollectionViewSource.GetDefaultView(list);
             Words.Filter = new Predicate<object>(Filter);
-            textboxHint.Text = $"جستجوی فارسی بین {RoundNumber(list.Count)} واژه";            
-            Width = SystemParameters.PrimaryScreenWidth / 2.584;
-            Height = System.Windows.SystemParameters.PrimaryScreenHeight / 2.517;
+            textboxHint.Text = $"جستجوی فارسی بین {RoundNumber(list.Count)} واژه";           
 
         }
 

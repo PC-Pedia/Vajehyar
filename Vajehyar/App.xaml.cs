@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,7 +15,7 @@ namespace Vajehyar
     {
         public static System.Windows.Forms.NotifyIcon nIcon = new System.Windows.Forms.NotifyIcon();
         private KeyboardHook _hook;
-        
+
 
         public App()
         {
@@ -22,7 +25,7 @@ namespace Vajehyar
             System.IO.Stream ico = GetResourceStream(new Uri("pack://application:,,,/Resources/Vajehyar.ico")).Stream;
             nIcon.Icon = new Icon(ico);
             nIcon.Visible = true;
-           
+
             //nIcon.ShowBalloonTip(5000, "Title", "Text", System.Windows.Forms.ToolTipIcon.Info);
 
             nIcon.MouseDown += NIcon_MouseDown;
@@ -61,47 +64,79 @@ namespace Vajehyar
             {
                 return;
             }
-           
+
 
             if (e.Alt && e.Shift && e.Key == System.Windows.Forms.Keys.V)
             {
+                string selectedText = getSelectedText();
+                Thread.Sleep(1000);
                 ((ContextMenu)FindResource("NotifierContextMenu")).IsOpen = false;
                 MainWindow.Show();
                 MainWindow.WindowState = WindowState.Normal;
+                ((MainWindow)Current.MainWindow).txtSearch.Text = selectedText;
                 ((MainWindow)Current.MainWindow).txtSearch.Focus();
-                ((MainWindow)Current.MainWindow).dgvWords.UnselectAllCells();
+                ((MainWindow)Current.MainWindow).dgvWords.UnselectAllCells();               
             }
-        }        
+        }
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr WindowFromPoint(System.Windows.Point lpPoint);
+
+        [DllImport("user32.dll")]
+        public static extern bool GetCursorPos(out System.Windows.Point lpPoint);
+
+        public static IntPtr GetWindowUnderCursor()
+        {
+            System.Windows.Point ptCursor = new System.Windows.Point();
+
+            if (!(GetCursorPos(out ptCursor)))
+                return IntPtr.Zero;
+
+            return WindowFromPoint(ptCursor);
+        }
+
+        [DllImport("User32.dll")]
+        public static extern bool SetForegroundWindow(IntPtr hWnd);
+        private string getSelectedText()
+        {
+            SetForegroundWindow(GetWindowUnderCursor()); 
+            Thread.Sleep(1000);
+            System.Windows.Forms.SendKeys.SendWait("^C"); 
+
+            return Clipboard.GetText(TextDataFormat.UnicodeText);
+        }
+        
 
         private void Menu_Settings(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void Menu_Help(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void Menu_Contact(object sender, RoutedEventArgs e)
         {
-            
+            Window contactWindow = new Contact();
+            contactWindow.Show();
         }
 
         private void Menu_About(object sender, RoutedEventArgs e)
         {
-            /*Window aboutWindow = new About();            
-            aboutWindow.Show();*/
+            Window aboutWindow = new About();            
+            aboutWindow.Show();
         }
 
         private void Menu_Update(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void Menu_Exit(object sender, RoutedEventArgs e)
         {
-            Current.Shutdown();            
+            Current.Shutdown();
         }
     }
 }

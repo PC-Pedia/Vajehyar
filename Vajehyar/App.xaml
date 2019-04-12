@@ -4,6 +4,208 @@
              xmlns:local="clr-namespace:Vajehyar"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
+        <WindowStartupLocation x:Key="WSL">CenterScreen</WindowStartupLocation>
+
+        <Style x:Key="WindowTitleStyle" TargetType="TextBlock">
+            <!--<Setter Property="FontFamily" Value="{DynamicResource IranSans}"/>-->
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="WindowStyle" TargetType="Window">
+            <Setter Property="WindowStyle" Value="None"/>
+            <Setter Property="ResizeMode" Value="NoResize"/>
+            <Setter Property="AllowsTransparency" Value="True"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="ShowInTaskbar" Value="False"/>
+            <Setter Property="Topmost" Value="True"/>          
+            <Setter Property="Effect">
+                <Setter.Value>                    
+                        <DropShadowEffect Color="#FFB6E6FF" Direction="0" BlurRadius="10" ShadowDepth="0"/>                    
+                </Setter.Value>
+            </Setter>
+            <Setter Property="WindowStyle" Value="None"/>
+        </Style>
+
+        <Style x:Key="{x:Type ToolTip}" TargetType="ToolTip">
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="HasDropShadow" Value="True"/>
+            <Setter Property="FontFamily" Value="Tahoma"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="MaxWidth" Value="400"/>
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <ContentPresenter Content="{TemplateBinding Content}"  >
+                            <ContentPresenter.Resources>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="TextWrapping" Value="Wrap" />
+                                </Style>
+                            </ContentPresenter.Resources>
+                        </ContentPresenter>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="Black"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToolTip">
+                        <Border Name="Border" Background="#FFFFFFF5" Padding="5,3,5,3"  BorderThickness="1" CornerRadius="5" BorderBrush="#FF4B4B4B"         Width="{TemplateBinding Width}"          Height="{TemplateBinding Height}">
+                            <ContentPresenter            Margin="2"             HorizontalAlignment="Left"        VerticalAlignment="Top" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="HasDropShadow" Value="true">
+                                <Setter TargetName="Border" Property="CornerRadius" Value="5"/>
+                                <Setter TargetName="Border" Property="SnapsToDevicePixels" Value="true"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Margin" Value="11"/>
+            <Setter Property="IsCancel" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Ellipse x:Name="ellipse" Fill="White" Stroke="#FF11A7FD" StrokeThickness="2" Opacity="0.1"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Opacity" Value="100" TargetName="ellipse"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Height" Value="24" TargetName="ellipse"/>
+                                <Setter Property="Width" Value="24" TargetName="ellipse"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="ButtonStyle2" TargetType="Button">            
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+
+                        <Border x:Name="border" CornerRadius="15" BorderBrush="AliceBlue" Background="#FF52C752">                            
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"/>
+                        </Border>
+                            
+                        
+                        <ControlTemplate.Triggers>                            
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Height" Value="23" TargetName="border"/>
+                                <Setter Property="Width" Value="62" TargetName="border"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="BorderStyle" TargetType="Border">
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.44,1.109" StartPoint="0.432,-0.662">
+                        <GradientStop Color="AliceBlue" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="#FF1E97DC"/>
+            <Setter Property="Padding" Value="3"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
+        <!--Scrollbar Thumbs-->
+        <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Grid x:Name="Grid">
+                            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Fill="Transparent" />
+                            <Border x:Name="Rectangle1" CornerRadius="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto" Background="#FF00B2FF" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Tag" Value="Horizontal">
+                                <Setter TargetName="Rectangle1" Property="Width" Value="Auto" />
+                                <Setter TargetName="Rectangle1" Property="Height" Value="7" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--ScrollBars-->
+        <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
+            <Setter Property="Stylus.IsFlicksEnabled" Value="false" />
+            <Setter Property="Foreground" Value="#8C8C8C" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Width" Value="7" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ScrollBar}">
+                        <Grid x:Name="GridRoot" Width="7" Background="{TemplateBinding Background}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.00001*" />
+                            </Grid.RowDefinitions>
+                            <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="false">
+                                <Track.Thumb>
+                                    <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" Style="{DynamicResource ScrollThumbs}" />
+                                </Track.Thumb>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton x:Name="PageUp" Command="ScrollBar.PageDownCommand" Opacity="0" Focusable="false" />
+                                </Track.IncreaseRepeatButton>
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton x:Name="PageDown" Command="ScrollBar.PageUpCommand" Opacity="0" Focusable="false" />
+                                </Track.DecreaseRepeatButton>
+                            </Track>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
+                                <Setter Value="{DynamicResource ButtonSelectBrush}" TargetName="Thumb" Property="Background" />
+                            </Trigger>
+                            <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
+                                <Setter Value="{DynamicResource DarkBrush}" TargetName="Thumb" Property="Background" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed" />
+                            </Trigger>
+                            <Trigger Property="Orientation" Value="Horizontal">
+                                <Setter TargetName="GridRoot" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="PART_Track" Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Width" Value="Auto" />
+                                <Setter Property="Height" Value="8" />
+                                <Setter TargetName="Thumb" Property="Tag" Value="Horizontal" />
+                                <Setter TargetName="PageDown" Property="Command" Value="ScrollBar.PageLeftCommand" />
+                                <Setter TargetName="PageUp" Property="Command" Value="ScrollBar.PageRightCommand" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <FontFamily x:Key="Vazir">pack://application:,,,/Resources/#Vazir</FontFamily>
         <FontFamily x:Key="IranSans">pack://application:,,,/Resources/#IRANSans</FontFamily>        
 
@@ -20,23 +222,20 @@
                 <MenuItem.Icon>
                     <Image Source="Resources/Icons/Help-24.png"/>
                 </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem Header="بروزرسانی" Click="Menu_Update" Margin="3">
-                <MenuItem.Icon>
-                    <Image Source="Resources/Icons/Update-24.png"/>
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem Header="تماس با ما" Click="Menu_Contact" Margin="3">
-                <MenuItem.Icon>
-                    <Image Source="Resources/Icons/Contact-24.png"/>
-                </MenuItem.Icon>
-            </MenuItem>
+            </MenuItem>         
 
             <MenuItem Header="دربارۀ برنامه" Click="Menu_About" Margin="3">
                 <MenuItem.Icon>
                     <Image Source="Resources/Icons/About-24.png"/>
                 </MenuItem.Icon>
             </MenuItem>
+
+            <MenuItem Header="تماس با من" Click="Menu_Contact" Margin="3">
+                <MenuItem.Icon>
+                    <Image Source="Resources/Icons/Contact-24.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            
             <Separator/>
             <MenuItem Header="خروج" Click="Menu_Exit" Margin="3">
                 <MenuItem.Icon>
