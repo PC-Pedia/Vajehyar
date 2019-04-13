@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using Vajehyar.Properties;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace Vajehyar
 {
@@ -19,28 +22,6 @@ namespace Vajehyar
 
         void App_Startup(object sender, StartupEventArgs e)
         {
-            // Application is running
-            // Process command line args
-            bool startMinimized = false;
-            for (int i = 0; i != e.Args.Length; ++i)
-            {
-                if (e.Args[i].Contains("autostart"))
-                {
-                    startMinimized = true;
-                }
-            }
-
-            // Create main application window, starting minimized if specified
-            MainWindow mainWindow = new MainWindow();
-            if (startMinimized)
-            {
-                mainWindow.WindowState = WindowState.Minimized;
-            }
-            mainWindow.Show();
-        }
-
-        public App()
-        {
             _hook = new KeyboardHook();
             _hook.KeyDown += new KeyboardHook.HookEventHandler(OnHookKeyDown);
 
@@ -52,7 +33,25 @@ namespace Vajehyar
 
             nIcon.MouseDown += NIcon_MouseDown;
 
+            // Application is running
+            // Process command line args
+            bool startMinimized = e.Args.Any(s=>s.Contains(Settings.Default.StartupArgument));
+
+            // Create main application window, starting minimized if specified
+            MainWindow mainWindow = new MainWindow();
+            if (startMinimized)
+            {
+                mainWindow.Hide();
+                mainWindow.WindowState = WindowState.Minimized;
+                
+            }
+            else
+            {
+                mainWindow.Show();
+            }
+            
         }
+       
 
         private void NIcon_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
@@ -72,8 +71,8 @@ namespace Vajehyar
                 }
                 else if (MainWindow.WindowState == WindowState.Minimized)
                 {
-                    MainWindow.Show();
                     MainWindow.WindowState = WindowState.Normal;
+                    MainWindow.Show();
                     ((MainWindow)Current.MainWindow).txtSearch.Focus();
                     ((MainWindow)Current.MainWindow).dgvWords.UnselectAllCells();
                 }
@@ -152,10 +151,6 @@ namespace Vajehyar
             aboutWindow.Show();
         }
 
-        private void Menu_Update(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void Menu_Exit(object sender, RoutedEventArgs e)
         {

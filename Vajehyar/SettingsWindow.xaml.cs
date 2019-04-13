@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.Win32;
+using Vajehyar.Properties;
 using swf = System.Windows.Forms;
 
 namespace Vajehyar
@@ -27,9 +28,9 @@ namespace Vajehyar
         public SettingsWindow()
         {
             InitializeComponent();
-            CheckBox_StartUp.IsChecked = isRegKeyExist();
-        }
+            checkbox.IsChecked = isRegKeyExist();
 
+        }
        
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -80,15 +81,15 @@ namespace Vajehyar
         {
 
             string keyName = Application.Current.MainWindow.GetType().Assembly.GetName().Name; //Application Name: Vajehyar
-            string value = Assembly.GetExecutingAssembly().Location +" --autostart";
-            
-            RegistryKey rk = Registry.CurrentUser.OpenSubKey
+            string value = Assembly.GetExecutingAssembly().Location + " " + Settings.Default.StartupArgument;
+
+            RegistryKey key = Registry.CurrentUser.OpenSubKey
                 ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
 
-            if (CheckBox_StartUp.IsChecked == true)
-                rk.SetValue(keyName, value);
+            if (checkbox.IsChecked == true)
+                key.SetValue(keyName, value);
             else
-                rk.DeleteValue(keyName, false);
+                key.DeleteValue(keyName, false);
         }
 
         private bool isRegKeyExist()

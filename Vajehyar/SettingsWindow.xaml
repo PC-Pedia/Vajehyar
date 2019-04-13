@@ -10,7 +10,7 @@
         <StackPanel>
             <Button Style="{StaticResource ButtonStyle}" HorizontalAlignment="Right" Content="x" Width="25" Height="25" VerticalAlignment="Center" Click="Button_Click"/>
             <TextBlock Text="تنظیمات برنامه" Style="{StaticResource WindowTitleStyle}"/>
-            <CheckBox Name="CheckBox_StartUp" Checked="CheckBox_StartUp_OnChecked"  Style="{StaticResource SliderCheckBox}" Content="شروع برنامه با اجرای ویندوز" FlowDirection="RightToLeft" Margin="0,25,15,0"/>
+            <CheckBox Name="checkbox" Checked="CheckBox_StartUp_OnChecked" Unchecked="CheckBox_StartUp_OnChecked"  Style="{StaticResource SliderCheckBox}" Content="شروع برنامه با اجرای ویندوز" FlowDirection="RightToLeft" Margin="0,25,15,0"/>
             <StackPanel Orientation="Horizontal" Margin="0,20,15,0" HorizontalAlignment="Right" FlowDirection="RightToLeft">
                 <TextBlock Text="کلید ترکیبی" />
                 <TextBox Name="textBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="Alt + Shift + V" Width="200" TextAlignment="Center" Padding="10,0" Foreground="Black" FontSize="12" FontWeight="Regular" FlowDirection="LeftToRight" PreviewKeyDown="TextBox_OnPreviewKeyDown" Margin="10,0,0,0">

@@ -146,42 +146,16 @@ namespace Vajehyar
             Hide();
             WindowState = WindowState.Minimized;
         }
+       
 
-        private void Ellipse_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void Grid_PreviewMouseUp(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-        private void Window_Activated(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
+     
+        
 
         private void Window_StateChanged(object sender, EventArgs e)
         {
             if (WindowState == WindowState.Normal)
             {
                 txtSearch.SelectAll();
-            }
-
-            if (WindowState==WindowState.Minimized)
-            {
-                Hide();
             }
         }
 
@@ -215,13 +189,9 @@ namespace Vajehyar
         {
             if (e.Key == Key.Escape)
             {
-                Grid_MouseDown(null, null);
+                //Grid_MouseDown(null, null);
             }
         }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 }
