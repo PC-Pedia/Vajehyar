@@ -109,7 +109,8 @@ namespace Vajehyar
 
         private void Menu_Settings(object sender, RoutedEventArgs e)
         {
-
+            Window settingsWindow = new SettingsWindow();
+            settingsWindow.Show();
         }
 
         private void Menu_Help(object sender, RoutedEventArgs e)
