@@ -17,6 +17,28 @@ namespace Vajehyar
         private KeyboardHook _hook;
 
 
+        void App_Startup(object sender, StartupEventArgs e)
+        {
+            // Application is running
+            // Process command line args
+            bool startMinimized = false;
+            for (int i = 0; i != e.Args.Length; ++i)
+            {
+                if (e.Args[i].Contains("autostart"))
+                {
+                    startMinimized = true;
+                }
+            }
+
+            // Create main application window, starting minimized if specified
+            MainWindow mainWindow = new MainWindow();
+            if (startMinimized)
+            {
+                mainWindow.WindowState = WindowState.Minimized;
+            }
+            mainWindow.Show();
+        }
+
         public App()
         {
             _hook = new KeyboardHook();

@@ -178,6 +178,11 @@ namespace Vajehyar
             {
                 txtSearch.SelectAll();
             }
+
+            if (WindowState==WindowState.Minimized)
+            {
+                Hide();
+            }
         }
 
         private void TxtSearch_PreviewTextInput(object sender, TextCompositionEventArgs e)

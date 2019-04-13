@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +13,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 using swf = System.Windows.Forms;
 
 namespace Vajehyar
@@ -25,7 +27,7 @@ namespace Vajehyar
         public SettingsWindow()
         {
             InitializeComponent();
-
+            CheckBox_StartUp.IsChecked = isRegKeyExist();
         }
 
        
@@ -35,7 +37,7 @@ namespace Vajehyar
             Close();
         }
 
-
+      
         private void TextBox_OnPreviewKeyDown(object sender, KeyEventArgs e)
         {
             // The text box grabs all input.
@@ -72,6 +74,27 @@ namespace Vajehyar
 
             // Update the text box.
             textBox.Text = shortcutText.ToString();
+        }
+
+        private void CheckBox_StartUp_OnChecked(object sender, RoutedEventArgs e)
+        {
+
+            string keyName = Application.Current.MainWindow.GetType().Assembly.GetName().Name; //Application Name: Vajehyar
+            string value = Assembly.GetExecutingAssembly().Location +" --autostart";
+            
+            RegistryKey rk = Registry.CurrentUser.OpenSubKey
+                ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+
+            if (CheckBox_StartUp.IsChecked == true)
+                rk.SetValue(keyName, value);
+            else
+                rk.DeleteValue(keyName, false);
+        }
+
+        private bool isRegKeyExist()
+        {
+            RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
+            return (key.GetValueNames().Contains("Vajehyar"));
         }
     }
 
