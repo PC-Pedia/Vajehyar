@@ -28,8 +28,6 @@ namespace Vajehyar
         public SettingsWindow()
         {
             InitializeComponent();
-            checkbox.IsChecked = isRegKeyExist();
-
         }
        
 
@@ -61,15 +59,15 @@ namespace Vajehyar
             StringBuilder shortcutText = new StringBuilder();
             if ((Keyboard.Modifiers & ModifierKeys.Control) != 0)
             {
-                shortcutText.Append("Ctrl+");
+                shortcutText.Append("Ctrl + ");
             }
             if ((Keyboard.Modifiers & ModifierKeys.Shift) != 0)
             {
-                shortcutText.Append("Shift+");
+                shortcutText.Append("Shift + ");
             }
             if ((Keyboard.Modifiers & ModifierKeys.Alt) != 0)
             {
-                shortcutText.Append("Alt+");
+                shortcutText.Append("Alt + ");
             }
             shortcutText.Append(key.ToString());
 
@@ -77,31 +75,9 @@ namespace Vajehyar
             textBox.Text = shortcutText.ToString();
         }
 
-        private void CheckBox_StartUp_OnChecked(object sender, RoutedEventArgs e)
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
-
-            string keyName = Application.Current.MainWindow.GetType().Assembly.GetName().Name; //Application Name: Vajehyar
-            string value = Assembly.GetExecutingAssembly().Location + " " + Settings.Default.StartupArgument;
-
-            RegistryKey key = Registry.CurrentUser.OpenSubKey
-                ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-
-            if (checkbox.IsChecked == true)
-                key.SetValue(keyName, value);
-            else
-                key.DeleteValue(keyName, false);
-        }
-
-        private bool isRegKeyExist()
-        {
-            RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run", true);
-            return (key.GetValueNames().Contains("Vajehyar"));
+            textBox.Text = "Shift  + Alt + V";
         }
     }
-
-   
-
-
-
-
 }

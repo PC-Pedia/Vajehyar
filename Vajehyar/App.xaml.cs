@@ -1,13 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Forms;
+using System.Windows.Input;
+using Microsoft.Win32;
 using Vajehyar.Properties;
+using Application = System.Windows.Application;
+using Clipboard = System.Windows.Clipboard;
+using ContextMenu = System.Windows.Controls.ContextMenu;
 using MessageBox = System.Windows.Forms.MessageBox;
+using TextDataFormat = System.Windows.TextDataFormat;
 
 namespace Vajehyar
 {
@@ -35,11 +43,11 @@ namespace Vajehyar
 
             // Application is running
             // Process command line args
-            bool startMinimized = e.Args.Any(s=>s.Contains(Settings.Default.StartupArgument));
+            bool startedByWindows = e.Args.Any(s=>s.Contains(Settings.Default.StartupArgument));
 
             // Create main application window, starting minimized if specified
             MainWindow mainWindow = new MainWindow();
-            if (startMinimized)
+            if (startedByWindows || Settings.Default.StartMinimized)
             {
                 mainWindow.Hide();
                 mainWindow.WindowState = WindowState.Minimized;
@@ -79,24 +87,63 @@ namespace Vajehyar
             }
         }
 
+        private bool allKeyPressed(HookEventArgs e)
+        {
+            string[] sArray = Settings.Default.ShortcutKey.Split('+');
+            List<Keys> keys=new List<Keys>();
+            bool allKeyPressed = false;
+
+            foreach (string key in sArray)
+            {
+                Enum.TryParse<Keys>(key,out var k);
+                keys.Add(k);
+            }
+           
+
+            switch (keys.Count)
+            {
+                case 1:
+                    if (e.Key == keys[0])
+                        allKeyPressed = true;
+                 break;
+                case 2:
+                    if (e.Key == keys[0] | e.Key == keys[1])
+                    {
+                        MessageBox.Show("Test");
+                        allKeyPressed = true;
+                    }
+                        
+                    break;
+
+                case 3:
+                    if (e.Key == keys[0] | e.Key == keys[1] | e.Key == keys[2])
+                        allKeyPressed = true;
+                    break;
+
+                case 4:
+                    if (e.Key == keys[0] | e.Key == keys[1] | e.Key == keys[2] | e.Key==keys[3])
+                        allKeyPressed = true;
+                    break;
+            }
+
+            return allKeyPressed;
+        }
+
         private void OnHookKeyDown(object sender, HookEventArgs e)
         {
-            if (MainWindow.WindowState == WindowState.Normal)
+            if (MainWindow.WindowState == WindowState.Normal || Application.Current.Windows.OfType<SettingsWindow>().Any())
             {
                 return;
             }
 
 
-            if (e.Alt && e.Shift && e.Key == System.Windows.Forms.Keys.V)
+            if (allKeyPressed(e))
             {
-                string selectedText = getSelectedText();
-                Thread.Sleep(1000);
                 ((ContextMenu)FindResource("NotifierContextMenu")).IsOpen = false;
-                MainWindow.Show();
-                MainWindow.WindowState = WindowState.Normal;
-                ((MainWindow)Current.MainWindow).txtSearch.Text = selectedText;
                 ((MainWindow)Current.MainWindow).txtSearch.Focus();
-                ((MainWindow)Current.MainWindow).dgvWords.UnselectAllCells();               
+                ((MainWindow)Current.MainWindow).dgvWords.UnselectAllCells();
+                MainWindow.WindowState = WindowState.Normal;
+                MainWindow.Show();
             }
         }
 
@@ -155,6 +202,22 @@ namespace Vajehyar
         private void Menu_Exit(object sender, RoutedEventArgs e)
         {
             Current.Shutdown();
+        }
+
+        private void App_OnExit(object sender, ExitEventArgs e)
+        {
+            Settings.Default.Save();
+
+            string keyName = Current.MainWindow.GetType().Assembly.GetName().Name; //Application Name: Vajehyar
+            string value = Assembly.GetExecutingAssembly().Location + " " + Settings.Default.StartupArgument;
+
+            RegistryKey key = Registry.CurrentUser.OpenSubKey
+                ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+
+            if (Settings.Default.StartByWindows)
+                key.SetValue(keyName, value);
+            else
+                key.DeleteValue(keyName, false);
         }
     }
 }

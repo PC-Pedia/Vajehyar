@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Vajehyar"
              Startup="App_Startup"
+             Exit="App_OnExit"
              >
     <Application.Resources>
 
@@ -72,6 +73,7 @@
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Setter Property="Margin" Value="11"/>
             <Setter Property="IsCancel" Value="True"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">

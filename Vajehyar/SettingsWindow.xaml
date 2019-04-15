@@ -4,23 +4,25 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vajehyar"
+        xmlns:properties="clr-namespace:Vajehyar.Properties"
         mc:Ignorable="d" 
         Title="SettingsWindow" Height="268" Width="392" Style="{StaticResource WindowStyle}" FontFamily="{StaticResource IranSans}">
     <Border Style="{StaticResource BorderStyle}" >
         <StackPanel>
             <Button Style="{StaticResource ButtonStyle}" HorizontalAlignment="Right" Content="x" Width="25" Height="25" VerticalAlignment="Center" Click="Button_Click"/>
             <TextBlock Text="تنظیمات برنامه" Style="{StaticResource WindowTitleStyle}"/>
-            <CheckBox Name="checkbox" Checked="CheckBox_StartUp_OnChecked" Unchecked="CheckBox_StartUp_OnChecked"  Style="{StaticResource SliderCheckBox}" Content="شروع برنامه با اجرای ویندوز" FlowDirection="RightToLeft" Margin="0,25,15,0"/>
+            <CheckBox Name="StartupCheckBox" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=StartByWindows, Mode=TwoWay}"  Style="{StaticResource SliderCheckBox}" Content="شروع برنامه با اجرای ویندوز" FlowDirection="RightToLeft" Margin="0,25,15,0"/>
+            <CheckBox Name="DisplayCheckBox" IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=StartMinimized, Mode=TwoWay}"  Style="{StaticResource SliderCheckBox}" Content="عدمِ نمایش برنامه موقع اجرا" FlowDirection="RightToLeft" Margin="0,5,15,0"/>
             <StackPanel Orientation="Horizontal" Margin="0,20,15,0" HorizontalAlignment="Right" FlowDirection="RightToLeft">
                 <TextBlock Text="کلید ترکیبی" />
-                <TextBox Name="textBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="Alt + Shift + V" Width="200" TextAlignment="Center" Padding="10,0" Foreground="Black" FontSize="12" FontWeight="Regular" FlowDirection="LeftToRight" PreviewKeyDown="TextBox_OnPreviewKeyDown" Margin="10,0,0,0">
+                <TextBox Name="textBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Text="{Binding Source={x:Static properties:Settings.Default}, Path=ShortcutKey, Mode=TwoWay}" Width="200" TextAlignment="Center" Padding="10,0" Foreground="Black" FontSize="12" FontWeight="Regular" FlowDirection="LeftToRight" PreviewKeyDown="TextBox_OnPreviewKeyDown" Margin="10,0,0,0">
                     <TextBox.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10"/>
                         </Style>
                     </TextBox.Resources>
                 </TextBox>
-                <Button Margin="5,0,0,0" Style="{StaticResource ButtonStyle}" Content="⭯" Height="25" Width="25"></Button>
+                <Button Margin="5,0,0,0" Click="ButtonBase_OnClick" Style="{StaticResource ButtonStyle}" Content="⭯" Height="25" Width="25"></Button>
             </StackPanel>
             
         </StackPanel>
