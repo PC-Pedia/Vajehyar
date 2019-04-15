@@ -59,7 +59,7 @@ namespace Vajehyar
             StringBuilder shortcutText = new StringBuilder();
             if ((Keyboard.Modifiers & ModifierKeys.Control) != 0)
             {
-                shortcutText.Append("Ctrl + ");
+                shortcutText.Append("Ctrl + "); 
             }
             if ((Keyboard.Modifiers & ModifierKeys.Shift) != 0)
             {
