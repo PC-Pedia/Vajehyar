@@ -25,13 +25,17 @@ namespace Vajehyar
     public partial class App : Application
     {
         public static System.Windows.Forms.NotifyIcon nIcon = new System.Windows.Forms.NotifyIcon();
-        private KeyboardHook _hook;
-
+        KeyboardHook kh;
+        List<System.Windows.Forms.Keys> keys = new List<Keys>();
 
         void App_Startup(object sender, StartupEventArgs e)
         {
-            _hook = new KeyboardHook();
-            _hook.KeyDown += new KeyboardHook.HookEventHandler(OnHookKeyDown);
+
+            kh = new KeyboardHook();
+
+            kh.SetHook();
+
+            kh.OnKeyDownEvent += OnHookKeyDown;
 
             System.IO.Stream ico = GetResourceStream(new Uri("pack://application:,,,/Resources/Vajehyar.ico")).Stream;
             nIcon.Icon = new Icon(ico);
@@ -87,7 +91,7 @@ namespace Vajehyar
             }
         }
 
-        private bool allKeyPressed(HookEventArgs e)
+        private bool allKeyPressed(System.Windows.Forms.KeyEventArgs e)
         {
             string[] sArray = Settings.Default.ShortcutKey.Split('+');
             List<Keys> keys=new List<Keys>();
@@ -103,25 +107,24 @@ namespace Vajehyar
             switch (keys.Count)
             {
                 case 1:
-                    if (e.Key == keys[0])
+                    if (e.KeyData == keys[0])
                         allKeyPressed = true;
                  break;
                 case 2:
-                    if (e.Key == keys[0] | e.Key == keys[1])
+                    if (e.KeyData == (keys[0] | keys[1]))
                     {
-                        MessageBox.Show("Test");
                         allKeyPressed = true;
                     }
                         
                     break;
 
                 case 3:
-                    if (e.Key == keys[0] | e.Key == keys[1] | e.Key == keys[2])
+                    if (e.KeyData == (keys[0] | keys[1] | keys[2]))
                         allKeyPressed = true;
                     break;
 
                 case 4:
-                    if (e.Key == keys[0] | e.Key == keys[1] | e.Key == keys[2] | e.Key==keys[3])
+                    if (e.KeyData == (keys[0] | keys[1] | keys[2] | keys[3]))
                         allKeyPressed = true;
                     break;
             }
@@ -129,7 +132,7 @@ namespace Vajehyar
             return allKeyPressed;
         }
 
-        private void OnHookKeyDown(object sender, HookEventArgs e)
+        private void OnHookKeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             if (MainWindow.WindowState == WindowState.Normal || Application.Current.Windows.OfType<SettingsWindow>().Any())
             {
@@ -220,4 +223,6 @@ namespace Vajehyar
                 key.DeleteValue(keyName, false);
         }
     }
+
+
 }
