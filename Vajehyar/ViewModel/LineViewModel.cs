@@ -11,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using Vajehyar.Model;
 using Vajehyar.DataLayer;
+using Vajehyar.View;
 
 namespace Vajehyar.ViewModel
 {
@@ -35,13 +36,13 @@ namespace Vajehyar.ViewModel
             switch (str)
             {
                 case "Setting":
-                    new SettingsWindow().ShowDialog();
+                    new SettingWindow().ShowDialog();
                     break;
-                case "About":
-                    new About().Show();
+                case "AboutWindow":
+                    new AboutWindow().Show();
                     break;
-                case "Contact":
-                    new Contact().Show();
+                case "ContactWindow":
+                    new ContactWindow().Show();
                     break;
             }
         }

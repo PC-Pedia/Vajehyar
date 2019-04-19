@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using Vajehyar.Utility;
 using Vajehyar.ViewModel;
 using MessageBox = System.Windows.Forms.MessageBox;
 
-namespace Vajehyar
+namespace Vajehyar.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

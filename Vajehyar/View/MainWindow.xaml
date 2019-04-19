@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        x:Class="Vajehyar.MainWindow"
+        x:Class="Vajehyar.View.MainWindow"
         mc:Ignorable="d"
         DataContext="{StaticResource LineViewModel}"
         Title="MainWindow" Height="417" Style="{StaticResource WindowStyle}" Width="650" FocusManager.FocusedElement="{Binding ElementName=txtSearch}" Topmost="True"
@@ -32,13 +32,13 @@
 
                 <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
                     <Button Style="{StaticResource StylelessButton}" Command="{Binding ClickCommand}" CommandParameter="Setting"  Width="16" Height="16" Margin="10,0,0,0">
-                        <Image Source="Resources/Icons/Settings-24.png"/>
+                        <Image Source="/Vajehyar;component/Resources/Icons/Settings-24.png" />
                     </Button>
-                    <Button Style="{StaticResource StylelessButton}" Command="{Binding ClickCommand}" CommandParameter="About"   Width="16" Height="16" Margin="10,0,0,0">
-                        <Image Source="Resources/Icons/About-24.png"/>
+                    <Button Style="{StaticResource StylelessButton}" Command="{Binding ClickCommand}" CommandParameter="AboutWindow"   Width="16" Height="16" Margin="10,0,0,0">
+                        <Image Source="/Vajehyar;component/Resources/Icons/About-24.png"/>
                     </Button>
-                    <Button Style="{StaticResource StylelessButton}" Command="{Binding ClickCommand}" CommandParameter="Contact"   Width="16" Height="16" Margin="10,0,0,0">
-                        <Image Source="Resources/Icons/Contact-24.png"/>
+                    <Button Style="{StaticResource StylelessButton}" Command="{Binding ClickCommand}" CommandParameter="ContactWindow"   Width="16" Height="16" Margin="10,0,0,0">
+                        <Image Source="/Vajehyar;component/Resources/Icons/Contact-24.png"/>
                     </Button>
                 </StackPanel>
             </DockPanel>

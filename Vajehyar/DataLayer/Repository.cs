@@ -11,7 +11,7 @@ namespace Vajehyar.DataLayer
     {
         public static string[] Getlines()
         {
-            string content = Properties.Resources.Farhang_Motaradef_Motazad + Environment.NewLine + Properties.Resources.Farhang_Teyfi;
+            string content = Properties.Resources.Motaradef_Motazad + Environment.NewLine + Properties.Resources.Teyfi;
             string[] lines = content.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
             return lines;
         }

@@ -4,11 +4,11 @@ using System.Windows.Input;
 namespace Vajehyar.View
 {
     /// <summary>
-    /// Interaction logic for About.xaml
+    /// Interaction logic for ContactWindow
     /// </summary>
-    public partial class About : Window
+    public partial class ContactWindow : Window
     {
-        public About()
+        public ContactWindow()
         {
             InitializeComponent();
         }
@@ -19,7 +19,6 @@ namespace Vajehyar.View
             {
                 DragMove();
             }
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -298,9 +298,8 @@
             <Setter Property="Padding" Value="0"/>
             <Setter Property="Margin" Value="0"/>
         </Style>
-
-        <FontFamily x:Key="Vazir">pack://application:,,,/Resources/#Vazir</FontFamily>
-        <FontFamily x:Key="IranSans">pack://application:,,,/Resources/#IRANSans</FontFamily>        
+        
+        <FontFamily x:Key="IranSans">pack://application:,,,/Resources/Fonts/#IRANSans</FontFamily>        
 
         <ContextMenu x:Key="NotifierContextMenu"  FontFamily="{StaticResource IranSans}" FontSize="12" FontWeight="Light" FlowDirection="RightToLeft"
 

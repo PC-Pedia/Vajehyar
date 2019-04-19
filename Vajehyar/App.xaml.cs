@@ -12,6 +12,7 @@ using System.Windows.Input;
 using Microsoft.Win32;
 using Vajehyar.Properties;
 using Vajehyar.Utility;
+using Vajehyar.View;
 using Vajehyar.ViewModel;
 using Application = System.Windows.Application;
 using Clipboard = System.Windows.Clipboard;
@@ -51,7 +52,7 @@ namespace Vajehyar
             kh.SetHook();
             kh.OnKeyDownEvent += OnHookKeyDown;
 
-            System.IO.Stream ico = GetResourceStream(new Uri("pack://application:,,,/Resources/Vajehyar.ico")).Stream;
+            System.IO.Stream ico = GetResourceStream(new Uri("pack://application:,,,/Resources/Icons/Vajehyar.ico")).Stream;
             nIcon.Icon = new Icon(ico);
             nIcon.Visible = true;
 
@@ -100,7 +101,7 @@ namespace Vajehyar
                 {
                     mainWindow.WindowState = WindowState.Normal;
                     mainWindow.Show();
-                    mainWindow.txtSearch.Focus();
+                    mainWindow.txtSearch.SelectAll();
                     mainWindow.Datagrid.UnselectAllCells();
                 }
             }
@@ -149,7 +150,7 @@ namespace Vajehyar
 
         private void OnHookKeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            if (mainWindow.WindowState == WindowState.Normal || Application.Current.Windows.OfType<SettingsWindow>().Any())
+            if (mainWindow.WindowState == WindowState.Normal || Application.Current.Windows.OfType<SettingWindow>().Any())
             {
                 return;
             }
@@ -158,7 +159,7 @@ namespace Vajehyar
             if (allKeyPressed(e))
             {
                 ((ContextMenu)FindResource("NotifierContextMenu")).IsOpen = false;
-                mainWindow.txtSearch.Focus();
+                mainWindow.txtSearch.SelectAll();
                 mainWindow.Datagrid.UnselectAllCells();
                 mainWindow.WindowState = WindowState.Normal;
                 mainWindow.Show();
@@ -183,7 +184,7 @@ namespace Vajehyar
 
         private void Menu_Settings(object sender, RoutedEventArgs e)
         {
-            Window settingsWindow = new SettingsWindow();
+            Window settingsWindow = new SettingWindow();
             settingsWindow.Show();
         }
 
@@ -194,13 +195,13 @@ namespace Vajehyar
 
         private void Menu_Contact(object sender, RoutedEventArgs e)
         {
-            Window contactWindow = new Contact();
+            Window contactWindow = new ContactWindow();
             contactWindow.Show();
         }
 
         private void Menu_About(object sender, RoutedEventArgs e)
         {
-            Window aboutWindow = new About();            
+            Window aboutWindow = new AboutWindow();            
             aboutWindow.Show();
         }
 

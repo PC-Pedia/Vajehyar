@@ -68,9 +68,9 @@ namespace Vajehyar.Properties {
         ///آبادان، 1 آباد، برپا، پررونق، دایر، معمور &amp; خراب
         ///آبادانی، 1 آبادی، عمارت، عمران 2 تر [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Farhang_Motaradef_Motazad {
+        internal static string Motaradef_Motazad {
             get {
-                return ResourceManager.GetString("Farhang_Motaradef_Motazad", resourceCulture);
+                return ResourceManager.GetString("Motaradef_Motazad", resourceCulture);
             }
         }
         
@@ -78,9 +78,9 @@ namespace Vajehyar.Properties {
         ///   Looks up a localized string similar to وجود، بودن، کون، هستی، بقا، بود؛ ذات مطلق، وجود مطلق، ذات خداوندی؛ ذات؛ معاش، جان، نَفْس، زندگی؛ وجود درزمان، بقا، ابدیت، واقعیت؛ وجود ازپیش، تقدم؛ وجود درمکان، حضور؛ دارایی؛ به‌وجود آمدن، پیدایش، شدن، تکوین، تکامل، تبدیل؛ خلق، ایجاد، تولید؛ بالقوه بودن، امکان، نهفتگی؛ هستی‌شناسی، اُنتولوژی، بودشناسی، ماوراءالطبیعه، مابعدالطبیعه، واقع‌گرایی، ایده‌آلیسم، اگزیستانسیالیسم، فلسفه، ماده‌گرایی، ماتریالیسم، مادیت
         ///واقعیت، حقیقت داشتن، موجودیت، کیان، هستی؛ وجود واقعی، مادیت؛ آن بودن، خاص بودن، ویژگی؛ پوزیتیویته؛ وا [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string Farhang_Teyfi {
+        internal static string Teyfi {
             get {
-                return ResourceManager.GetString("Farhang_Teyfi", resourceCulture);
+                return ResourceManager.GetString("Teyfi", resourceCulture);
             }
         }
         

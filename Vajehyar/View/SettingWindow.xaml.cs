@@ -6,12 +6,12 @@ using swf = System.Windows.Forms;
 namespace Vajehyar.View
 {
     /// <summary>
-    /// Interaction logic for SettingsWindow.xaml
+    /// Interaction logic for SettingWindow.xaml
     /// </summary>
-    public partial class SettingsWindow : Window
+    public partial class SettingWindow : Window
     {
       
-        public SettingsWindow()
+        public SettingWindow()
         {
             InitializeComponent();
         }

@@ -4,11 +4,11 @@ using System.Windows.Input;
 namespace Vajehyar.View
 {
     /// <summary>
-    /// Interaction logic for About.xaml
+    /// Interaction logic for AboutWindow
     /// </summary>
-    public partial class About : Window
+    public partial class AboutWindow : Window
     {
-        public About()
+        public AboutWindow()
         {
             InitializeComponent();
         }
