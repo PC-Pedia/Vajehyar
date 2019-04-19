@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Vajehyar
+namespace Vajehyar.Utility
 {
     internal class Win32Api
     {

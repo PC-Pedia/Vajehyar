@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using Vajehyar.Utility;
 using Vajehyar.ViewModel;
 using MessageBox = System.Windows.Forms.MessageBox;
 

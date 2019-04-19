@@ -62,25 +62,21 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DataLayer\Repository.cs" />
-    <Compile Include="Extension.cs" />
+    <Compile Include="Utility\Extension.cs" />
     <Compile Include="Model\Entry.cs" />
     <Compile Include="Model\Window.cs" />
-    <Compile Include="SettingBindingExtension.cs" />
+    <Compile Include="Utility\SettingBindingExtension.cs" />
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\CommandHandler.cs" />
     <Compile Include="ViewModel\LineViewModel.cs" />
-    <Compile Include="Win32Api.cs" />
+    <Compile Include="Utility\Win32Api.cs" />
     <Page Include="About.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Contact.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Help.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -98,10 +94,7 @@
     <Compile Include="Contact.xaml.cs">
       <DependentUpon>Contact.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Help.xaml.cs">
-      <DependentUpon>Help.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="KeyboardHook.cs" />
+    <Compile Include="Utility\KeyboardHook.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

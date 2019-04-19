@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using Microsoft.Win32;
 using Vajehyar.Properties;
+using Vajehyar.Utility;
 using Vajehyar.ViewModel;
 using Application = System.Windows.Application;
 using Clipboard = System.Windows.Clipboard;
@@ -29,6 +30,7 @@ namespace Vajehyar
         KeyboardHook kh;
         List<System.Windows.Forms.Keys> keys = new List<Keys>();
         private static Mutex _mutex = null;
+        private MainWindow mainWindow;
 
         void App_Startup(object sender, StartupEventArgs e)
         {
@@ -62,7 +64,7 @@ namespace Vajehyar
             bool startedByWindows = e.Args.Any(s=>s.Contains(Settings.Default.StartupArgument));
 
             // Create main application window, starting minimized if specified
-            MainWindow mainWindow = new MainWindow(vm);
+            mainWindow = new MainWindow(vm);
             
             if (startedByWindows || Settings.Default.StartMinimized)
             {
@@ -89,17 +91,17 @@ namespace Vajehyar
 
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
-                if (MainWindow.WindowState == WindowState.Normal)
+                if (mainWindow.WindowState == WindowState.Normal)
                 {
-                    MainWindow.Hide();
-                    MainWindow.WindowState = WindowState.Minimized;
+                    mainWindow.Hide();
+                    mainWindow.WindowState = WindowState.Minimized;
                 }
-                else if (MainWindow.WindowState == WindowState.Minimized)
+                else if (mainWindow.WindowState == WindowState.Minimized)
                 {
-                    MainWindow.WindowState = WindowState.Normal;
-                    MainWindow.Show();
-                    ((MainWindow)Current.MainWindow).txtSearch.Focus();
-                    ((MainWindow)Current.MainWindow).Datagrid.UnselectAllCells();
+                    mainWindow.WindowState = WindowState.Normal;
+                    mainWindow.Show();
+                    mainWindow.txtSearch.Focus();
+                    mainWindow.Datagrid.UnselectAllCells();
                 }
             }
         }
@@ -147,7 +149,7 @@ namespace Vajehyar
 
         private void OnHookKeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            if (MainWindow.WindowState == WindowState.Normal || Application.Current.Windows.OfType<SettingsWindow>().Any())
+            if (mainWindow.WindowState == WindowState.Normal || Application.Current.Windows.OfType<SettingsWindow>().Any())
             {
                 return;
             }
@@ -155,12 +157,11 @@ namespace Vajehyar
 
             if (allKeyPressed(e))
             {
-                ((MainWindow) Current.MainWindow).txtSearch.Text = Clipboard.GetText();
                 ((ContextMenu)FindResource("NotifierContextMenu")).IsOpen = false;
-                ((MainWindow)Current.MainWindow).txtSearch.Focus();
-                ((MainWindow)Current.MainWindow).Datagrid.UnselectAllCells();
-                MainWindow.WindowState = WindowState.Normal;
-                MainWindow.Show();
+                mainWindow.txtSearch.Focus();
+                mainWindow.Datagrid.UnselectAllCells();
+                mainWindow.WindowState = WindowState.Normal;
+                mainWindow.Show();
             }
         }
 
@@ -179,18 +180,6 @@ namespace Vajehyar
 
             return WindowFromPoint(ptCursor);
         }
-
-        [DllImport("User32.dll")]
-        public static extern bool SetForegroundWindow(IntPtr hWnd);
-        private string getSelectedText()
-        {
-            SetForegroundWindow(GetWindowUnderCursor()); 
-            Thread.Sleep(1000);
-            System.Windows.Forms.SendKeys.SendWait("^C"); 
-
-            return Clipboard.GetText(TextDataFormat.UnicodeText);
-        }
-        
 
         private void Menu_Settings(object sender, RoutedEventArgs e)
         {
@@ -225,7 +214,7 @@ namespace Vajehyar
         {
             Settings.Default.Save();
 
-            string keyName = Current.MainWindow.GetType().Assembly.GetName().Name; //Application Name: Vajehyar
+            string keyName = mainWindow.GetType().Assembly.GetName().Name; //Application Name: Vajehyar
             string value = Assembly.GetExecutingAssembly().Location + " " + Settings.Default.StartupArgument;
 
             RegistryKey key = Registry.CurrentUser.OpenSubKey
