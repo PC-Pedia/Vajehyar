@@ -3,13 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Vajehyar"
              Startup="App_Startup"
-             Exit="App_OnExit"
-             xmlns:vm="clr-namespace:Vajehyar.ViewModel"
-             >
+             Exit="App_OnExit">
     <Application.Resources>
 
         <WindowStartupLocation x:Key="WSL">CenterScreen</WindowStartupLocation>
-        <vm:LineViewModel x:Key="LineViewModel"/>
 
         <Style x:Key="WindowTitleStyle" TargetType="TextBlock">
             <!--<Setter Property="FontFamily" Value="{DynamicResource IranSans}"/>-->
@@ -30,7 +27,6 @@
                         <DropShadowEffect Color="#FFB6E6FF" Direction="0" BlurRadius="10" ShadowDepth="0"/>                    
                 </Setter.Value>
             </Setter>
-            <Setter Property="WindowStyle" Value="None"/>
         </Style>
 
         <Style x:Key="{x:Type ToolTip}" TargetType="ToolTip">

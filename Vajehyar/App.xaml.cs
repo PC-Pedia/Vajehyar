@@ -12,8 +12,7 @@ using System.Windows.Input;
 using Microsoft.Win32;
 using Vajehyar.Properties;
 using Vajehyar.Utility;
-using Vajehyar.View;
-using Vajehyar.ViewModel;
+using Vajehyar.Windows;
 using Application = System.Windows.Application;
 using Clipboard = System.Windows.Clipboard;
 using ContextMenu = System.Windows.Controls.ContextMenu;
@@ -46,8 +45,6 @@ namespace Vajehyar
                 Application.Current.Shutdown();
             }
 
-            LineViewModel vm=new LineViewModel();
-
             kh = new KeyboardHook();
             kh.SetHook();
             kh.OnKeyDownEvent += OnHookKeyDown;
@@ -65,7 +62,7 @@ namespace Vajehyar
             bool startedByWindows = e.Args.Any(s=>s.Contains(Settings.Default.StartupArgument));
 
             // Create main application window, starting minimized if specified
-            mainWindow = new MainWindow(vm);
+            mainWindow = new MainWindow(Repository.GetData());
             
             if (startedByWindows || Settings.Default.StartMinimized)
             {

@@ -1,0 +1,44 @@
+﻿<Window x:Class="Vajehyar.Windows.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vajehyar"
+        mc:Ignorable="d"
+        Title="About" Height="417" Width="464" Style="{StaticResource WindowStyle}"  MouseDown="Window_MouseDown" Topmost="true" WindowStartupLocation="CenterOwner" FontFamily="{StaticResource IranSans}">
+
+    <Border Style="{StaticResource BorderStyle}">
+        <StackPanel>
+            <Button Margin="3" Style="{StaticResource ButtonStyle}" HorizontalAlignment="Right" Content="X" Width="25" Height="25" VerticalAlignment="Center" Click="Button_Click" IsCancel="True"/>
+
+        
+                <StackPanel Grid.Column="0">
+                    <StackPanel Margin="0,15,23,0"  Orientation="Horizontal" HorizontalAlignment="Right" FlowDirection="RightToLeft">
+                        <Image Source="Resources/Vajehyar.png" Height="48" Width="48" Margin="3"/>
+                        <StackPanel Margin="5,0,0,0">
+                            <TextBlock Text="واژه یار" FontFamily="{StaticResource IranSans}" FontSize="16" FontWeight="Bold" VerticalAlignment="Top" />
+                            <TextBlock Text="راهنمای جامع واژه‌گزینی برای نویسندگان و مترجمان" Margin="0,2,0,0" FontFamily="{StaticResource IranSans}" FontSize="13"    />
+
+                        </StackPanel>
+
+                    </StackPanel>
+
+                    <ScrollViewer Height="230" Margin="0,0,18,0" Width="400" FlowDirection="RightToLeft" HorizontalAlignment="Center">
+                        <TextBlock TextWrapping="Wrap" LineHeight="21" Text="لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد." Margin="0,10,5,0"/>
+                    </ScrollViewer>
+
+                <Button Style="{StaticResource ButtonStyle2}" Content="بروزرسانی" Width="80" Height="25"/>
+            </StackPanel>
+
+                
+           
+
+
+
+
+
+        </StackPanel>
+    </Border>
+    
+   
+</Window>

@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Input;
 using swf = System.Windows.Forms;
 
-namespace Vajehyar.View
+namespace Vajehyar.Windows
 {
     /// <summary>
     /// Interaction logic for SettingWindow.xaml

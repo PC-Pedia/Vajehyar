@@ -1,14 +1,14 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-namespace Vajehyar.View
+namespace Vajehyar.Windows
 {
     /// <summary>
-    /// Interaction logic for AboutWindow
+    /// Interaction logic for ContactWindow
     /// </summary>
-    public partial class AboutWindow : Window
+    public partial class ContactWindow : Window
     {
-        public AboutWindow()
+        public ContactWindow()
         {
             InitializeComponent();
         }
@@ -19,7 +19,6 @@ namespace Vajehyar.View
             {
                 DragMove();
             }
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

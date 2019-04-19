@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-namespace Vajehyar.View
+namespace Vajehyar.Windows
 {
     /// <summary>
     /// Interaction logic for ContactWindow
