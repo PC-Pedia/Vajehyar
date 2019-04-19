@@ -4,10 +4,12 @@
              xmlns:local="clr-namespace:Vajehyar"
              Startup="App_Startup"
              Exit="App_OnExit"
+             xmlns:vm="clr-namespace:Vajehyar.ViewModel"
              >
     <Application.Resources>
 
         <WindowStartupLocation x:Key="WSL">CenterScreen</WindowStartupLocation>
+        <vm:LineViewModel x:Key="LineViewModel"/>
 
         <Style x:Key="WindowTitleStyle" TargetType="TextBlock">
             <!--<Setter Property="FontFamily" Value="{DynamicResource IranSans}"/>-->
@@ -288,6 +290,13 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+
+        <Style x:Key="StylelessButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
         </Style>
 
         <FontFamily x:Key="Vazir">pack://application:,,,/Resources/#Vazir</FontFamily>

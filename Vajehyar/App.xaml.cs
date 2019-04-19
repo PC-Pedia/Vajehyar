@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using Microsoft.Win32;
 using Vajehyar.Properties;
+using Vajehyar.ViewModel;
 using Application = System.Windows.Application;
 using Clipboard = System.Windows.Clipboard;
 using ContextMenu = System.Windows.Controls.ContextMenu;
@@ -27,14 +28,25 @@ namespace Vajehyar
         public static System.Windows.Forms.NotifyIcon nIcon = new System.Windows.Forms.NotifyIcon();
         KeyboardHook kh;
         List<System.Windows.Forms.Keys> keys = new List<Keys>();
+        private static Mutex _mutex = null;
 
         void App_Startup(object sender, StartupEventArgs e)
         {
+            const string appName = "Vajehyar";
+            bool createdNew;
+
+            _mutex = new Mutex(true, appName, out createdNew);
+
+            if (!createdNew)
+            {
+                //app is already running! Exiting the application  
+                Application.Current.Shutdown();
+            }
+
+            LineViewModel vm=new LineViewModel();
 
             kh = new KeyboardHook();
-
             kh.SetHook();
-
             kh.OnKeyDownEvent += OnHookKeyDown;
 
             System.IO.Stream ico = GetResourceStream(new Uri("pack://application:,,,/Resources/Vajehyar.ico")).Stream;
@@ -50,7 +62,8 @@ namespace Vajehyar
             bool startedByWindows = e.Args.Any(s=>s.Contains(Settings.Default.StartupArgument));
 
             // Create main application window, starting minimized if specified
-            MainWindow mainWindow = new MainWindow();
+            MainWindow mainWindow = new MainWindow(vm);
+            
             if (startedByWindows || Settings.Default.StartMinimized)
             {
                 mainWindow.Hide();
@@ -86,7 +99,7 @@ namespace Vajehyar
                     MainWindow.WindowState = WindowState.Normal;
                     MainWindow.Show();
                     ((MainWindow)Current.MainWindow).txtSearch.Focus();
-                    ((MainWindow)Current.MainWindow).dgvWords.UnselectAllCells();
+                    ((MainWindow)Current.MainWindow).Datagrid.UnselectAllCells();
                 }
             }
         }
@@ -142,9 +155,10 @@ namespace Vajehyar
 
             if (allKeyPressed(e))
             {
+                ((MainWindow) Current.MainWindow).txtSearch.Text = Clipboard.GetText();
                 ((ContextMenu)FindResource("NotifierContextMenu")).IsOpen = false;
                 ((MainWindow)Current.MainWindow).txtSearch.Focus();
-                ((MainWindow)Current.MainWindow).dgvWords.UnselectAllCells();
+                ((MainWindow)Current.MainWindow).Datagrid.UnselectAllCells();
                 MainWindow.WindowState = WindowState.Normal;
                 MainWindow.Show();
             }

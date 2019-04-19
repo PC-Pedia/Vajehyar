@@ -7,117 +7,32 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using Vajehyar.ViewModel;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace Vajehyar
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window
     {
-        private ICollectionView _words;
-        private string _filterString;
+        
+        public LineViewModel LineViewModel { get; }
 
-        public MainWindow()
+        public MainWindow(LineViewModel vm)
         {
             InitializeComponent();
-
-            DataContext = this;
-            List<Word> list = data();
-            Words = CollectionViewSource.GetDefaultView(list);
-            Words.Filter = new Predicate<object>(Filter);
-            textboxHint.Text = $"جستجوی فارسی بین {RoundNumber(list.Count)} واژه";           
-
+            LineViewModel = vm;
+            DataContext = LineViewModel;
+           
+            LineViewModel.Lines.Filter = LineViewModel.FilterResult;
+            textboxHint.Text = $"جستجوی فارسی بین {RoundNumber(LineViewModel.Lines.Count())} واژه";           
         }
 
         private int RoundNumber(int num)
         {
             return num % 1000 >= 500 ? num + 1000 - num % 1000 : num - num % 1000;
-        }
-
-        public class Word
-        {
-            public string Definition { get; set; }
-            public string Mean { get; set; }
-        }
-
-        public string FilterString
-        {
-            get => _filterString;
-            set
-            {
-                _filterString = value;
-                NotifyPropertyChanged("FilterString");
-                FilterCollection();
-            }
-        }
-
-        private void FilterCollection()
-        {
-            if (_words != null)
-            {
-                _words.Refresh();
-            }
-        }
-
-        public bool Filter(object obj)
-        {
-            Word data = obj as Word;
-            if (data != null)
-            {
-                if (!string.IsNullOrEmpty(_filterString))
-                {
-                    return data.Definition.Trim().Contains(_filterString);
-                }
-                return true;
-            }
-            return false;
-        }
-
-
-        public ICollectionView Words
-        {
-            get => _words;
-            set { _words = value; NotifyPropertyChanged("Words"); }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(string property)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(property));
-            }
-        }
-
-        public List<Word> data()
-        {
-
-            string content = Properties.Resources.Farhang_Motaradef_Motazad+Environment.NewLine+Properties.Resources.Farhang_Teyfi;            
-
-            string[] lines = content.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
-            List<Word> words = new List<Word>();
-
-            foreach (string line in lines)
-            {
-                string[] cols = new string[] { };
-                try
-                {
-                    cols = line.Split(new[] { '،','؛'}, 2);
-                    Word word = new Word
-                    {
-                        Definition = cols[0],
-                        Mean = cols[1]
-                    };
-                    words.Add(word);
-                }
-                catch (Exception ex)
-                {
-                    
-                }
-            }
-
-            return words;
         }
 
 
@@ -131,7 +46,7 @@ namespace Vajehyar
 
         private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            FilterString = txtSearch.Text;
+            LineViewModel.FilterString = txtSearch.Text;
 
         }
 
@@ -146,10 +61,6 @@ namespace Vajehyar
             Hide();
             WindowState = WindowState.Minimized;
         }
-       
-
-     
-        
 
         private void Window_StateChanged(object sender, EventArgs e)
         {
@@ -194,4 +105,5 @@ namespace Vajehyar
         }
         
     }
+
 }

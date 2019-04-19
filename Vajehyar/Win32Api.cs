@@ -16,13 +16,10 @@ namespace Vajehyar
         public const int WH_KEYBOARD_LL = 13;
 
 
-
         [StructLayout(LayoutKind.Sequential)]
-
         public class KeyboardHookStruct
 
         {
-
             public int vkCode;
 
             public int scanCode;
@@ -32,41 +29,31 @@ namespace Vajehyar
             public int time;
 
             public int dwExtraInfo;
-
         }
-
 
 
         public delegate int HookProc(int nCode, int wParam, IntPtr lParam);
 
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
-
         public static extern int SetWindowsHookEx(int idHook, HookProc lpfn, IntPtr hInstance, int threadId);
 
 
-
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
-
         public static extern bool UnhookWindowsHookEx(int idHook);
 
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
-
         public static extern int CallNextHookEx(int idHook, int nCode, int wParam, IntPtr lParam);
 
         [DllImport("user32")]
-
-        public static extern int ToAscii(int uVirtKey, int uScanCode, byte[] lpbKeyState, byte[] lpwTransKey, int fuState);
+        public static extern int ToAscii(int uVirtKey, int uScanCode, byte[] lpbKeyState, byte[] lpwTransKey,
+            int fuState);
 
         [DllImport("user32")]
-
         public static extern int GetKeyboardState(byte[] pbKeyState);
 
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
-
         public static extern IntPtr GetModuleHandle(string lpModuleName);
-
-
     }
 }

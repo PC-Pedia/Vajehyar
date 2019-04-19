@@ -24,7 +24,6 @@
                 </TextBox>
                 <Button Margin="5,0,0,0" Click="ButtonBase_OnClick" Style="{StaticResource ButtonStyle}" Content="⭯" Height="25" Width="25"></Button>
             </StackPanel>
-            
         </StackPanel>
     </Border>
 </Window>

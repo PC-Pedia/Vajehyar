@@ -61,10 +61,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataLayer\Repository.cs" />
+    <Compile Include="Extension.cs" />
+    <Compile Include="Model\Entry.cs" />
+    <Compile Include="Model\Window.cs" />
     <Compile Include="SettingBindingExtension.cs" />
     <Compile Include="SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\CommandHandler.cs" />
+    <Compile Include="ViewModel\LineViewModel.cs" />
     <Compile Include="Win32Api.cs" />
     <Page Include="About.xaml">
       <SubType>Designer</SubType>
@@ -169,6 +175,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Vajehyar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -2,33 +2,47 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"   
-        xmlns:local="clr-namespace:Vajehyar"
-        xmlns:Properties="clr-namespace:Vajehyar.Properties" x:Class="Vajehyar.MainWindow"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Class="Vajehyar.MainWindow"
         mc:Ignorable="d"
-    
+        DataContext="{StaticResource LineViewModel}"
         Title="MainWindow" Height="417" Style="{StaticResource WindowStyle}" Width="650" FocusManager.FocusedElement="{Binding ElementName=txtSearch}" Topmost="True"
-        MouseDown="Window_MouseDown"
+        MouseDown="Window_MouseDown" 
     FontFamily="tahoma" Closing="Window_Closing" PreviewKeyDown="Window_PreviewKeyDown" StateChanged="Window_StateChanged" WindowStartupLocation="CenterScreen"
         >
     
     <Border Style="{StaticResource BorderStyle}">
         <StackPanel>
-            <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
-                <Button   Style="{StaticResource ButtonStyle}" Content="🡦" Width="25" Height="25" VerticalAlignment="Center" Click="Button_Click" IsCancel="True">
-                    
-                    <Button.ToolTip>
-                        <ToolTip Style="{StaticResource {x:Type ToolTip}}">
-                            قرار دادن برنامه در System Tray
-                        </ToolTip>
-                    </Button.ToolTip>
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" FlowDirection="RightToLeft">
+                    <Button   Style="{StaticResource ButtonStyle}" Content="🡦" Width="25" Height="25" VerticalAlignment="Center" Click="Button_Click" IsCancel="True">
 
-                </Button>
+                        <Button.ToolTip>
+                            <ToolTip Style="{StaticResource {x:Type ToolTip}}">
+                                قرار دادن برنامه در System Tray
+                            </ToolTip>
+                        </Button.ToolTip>
 
-                <TextBlock Text="واژه یار" FontWeight="Bold" VerticalAlignment="Center" FontSize="15" Padding="0" FontFamily="{StaticResource IranSans}" Foreground="#FF0086C5"/>
-                <TextBlock Text=" (فرهنگ جامع واژگان مترادف و متضاد)" VerticalAlignment="Center" FontWeight="UltraLight" FontFamily="{StaticResource IranSans}" FontSize="12" Padding="0" Foreground="#FF08293A" />
-                
-            </StackPanel>
+                    </Button>
+
+                    <TextBlock Text="واژه یار" FontWeight="Bold" VerticalAlignment="Center" FontSize="15" Padding="0" FontFamily="{StaticResource IranSans}" Foreground="#FF0086C5"/>
+                    <TextBlock Text=" (راهنمای واژه‌گزینی برای اهالی قلم)" VerticalAlignment="Center" FontWeight="UltraLight" FontFamily="{StaticResource IranSans}" FontSize="12" Padding="0" Foreground="#FF08293A" />
+                   
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+                    <Button Style="{StaticResource StylelessButton}" Command="{Binding ClickCommand}" CommandParameter="Setting"  Width="16" Height="16" Margin="10,0,0,0">
+                        <Image Source="Resources/Icons/Settings-24.png"/>
+                    </Button>
+                    <Button Style="{StaticResource StylelessButton}" Command="{Binding ClickCommand}" CommandParameter="About"   Width="16" Height="16" Margin="10,0,0,0">
+                        <Image Source="Resources/Icons/About-24.png"/>
+                    </Button>
+                    <Button Style="{StaticResource StylelessButton}" Command="{Binding ClickCommand}" CommandParameter="Contact"   Width="16" Height="16" Margin="10,0,0,0">
+                        <Image Source="Resources/Icons/Contact-24.png"/>
+                    </Button>
+                </StackPanel>
+            </DockPanel>
+            
                 
                     
                 
@@ -38,7 +52,8 @@
 
 
             <StackPanel Margin="10,0,10,10">
-                <Grid FlowDirection="RightToLeft">
+                <Grid>
+                 
                     <TextBox x:Name="txtSearch" Background="White" Height="30" FlowDirection="RightToLeft" Padding="10,0" VerticalContentAlignment="Center"
                          TextChanged="TxtSearch_TextChanged"  Foreground="Black" BorderBrush="{x:Null}" BorderThickness="2" FontWeight="Bold" PreviewTextInput="TxtSearch_PreviewTextInput">
                         <TextBox.Resources>
@@ -47,7 +62,7 @@
                             </Style>
                         </TextBox.Resources>
                     </TextBox>
-                    <TextBlock x:Name="textboxHint" IsHitTestVisible="False" Text="به فارسی بنویسید..." VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="DarkGray">
+                    <TextBlock x:Name="textboxHint" IsHitTestVisible="False" Text="به فارسی بنویسید..." FlowDirection="RightToLeft" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,12,0" Foreground="DarkGray">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
                                 <Setter Property="Visibility" Value="Collapsed"/>
@@ -59,50 +74,29 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
+                    <Label Content="{Binding ElementName=Datagrid, Path=Items.Count}" ContentStringFormat="{}{0:N0}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Opacity=".5"/>
                 </Grid>
 
+
                 <Border CornerRadius="5" Margin="0,10,0,0" Padding="0" BorderBrush="#FFE0F3FB" BorderThickness="2" Height="284">
-                    <DataGrid x:Name="dgvWords" 
+                    <DataGrid x:Name="Datagrid"  
                            HeadersVisibility="None" FlowDirection="RightToLeft"
                            BorderBrush="{x:Null}" 
                           CanUserResizeRows="False" CanUserAddRows="False" 
-                          ItemsSource="{Binding Words}" AutoGenerateColumns="False" SelectionMode="Single" SelectionUnit="Cell" VerticalContentAlignment="Center" RowBackground="#FFCAEDFF" AlternatingRowBackground="#FFFBFBFB" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" Margin="0,0,0,8">
+                          ItemsSource="{Binding Lines}" AutoGenerateColumns="False"  SelectionMode="Single" SelectionUnit="Cell" VerticalContentAlignment="Center" RowBackground="#FFCAEDFF" AlternatingRowBackground="#FFFBFBFB" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" Margin="0,0,0,8">
 
-
-                           <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Definition}" CanUserSort="False" CanUserReorder="False" CanUserResize="False"
-                                            MinWidth="100" FontWeight="Bold">
-                                <DataGridTextColumn.ElementStyle>
-                                    <Style>
-                                        <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
-                                        <Setter Property="TextBlock.HorizontalAlignment" Value="Center"/>
-                                        <Setter Property="TextBlock.Padding" Value="7"/>
-                                    </Style>                                   
-                                </DataGridTextColumn.ElementStyle>
-                                <DataGridTextColumn.CellStyle>
-                                    <Style TargetType="DataGridCell">
-                                        <Setter Property="ToolTip" Value="{Binding Definition}"/>
-                                    </Style>
-                                </DataGridTextColumn.CellStyle>
-                                
-                            </DataGridTextColumn>
-                            <DataGridTextColumn Binding="{Binding Mean}" Width="*" CanUserSort="False" CanUserReorder="False" CanUserResize="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding}" Width="*" CanUserSort="False" CanUserReorder="False" CanUserResize="False">
                                 <DataGridTextColumn.ElementStyle>
                                     <Style>
                                         <Setter Property="TextBlock.TextWrapping" Value="Wrap"/>
                                         <Setter Property="TextBlock.VerticalAlignment" Value="Center"/>
-                                        <Setter Property="TextBlock.Padding" Value="7"/>                                        
+                                        <Setter Property="TextBlock.Padding" Value="7"/>
                                     </Style>
                                 </DataGridTextColumn.ElementStyle>
-
-                                <DataGridTextColumn.CellStyle>
-                                    <Style TargetType="DataGridCell">
-                                        <Setter Property="ToolTip" Value="{Binding Mean}"/>
-                                    </Style>
-                                </DataGridTextColumn.CellStyle>
-
                             </DataGridTextColumn>
                         </DataGrid.Columns>
+                           
                         <DataGrid.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FFEDF9FF" Offset="0"/>
