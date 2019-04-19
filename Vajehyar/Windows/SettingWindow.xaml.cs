@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using System.Windows;
 using System.Windows.Input;
-using swf = System.Windows.Forms;
 
 namespace Vajehyar.Windows
 {
@@ -10,19 +9,19 @@ namespace Vajehyar.Windows
     /// </summary>
     public partial class SettingWindow : Window
     {
-      
+
         public SettingWindow()
         {
             InitializeComponent();
         }
-       
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
-      
+
         private void TextBox_OnPreviewKeyDown(object sender, KeyEventArgs e)
         {
             // The text box grabs all input.
@@ -45,7 +44,7 @@ namespace Vajehyar.Windows
             StringBuilder shortcutText = new StringBuilder();
             if ((Keyboard.Modifiers & ModifierKeys.Control) != 0)
             {
-                shortcutText.Append("Ctrl + "); 
+                shortcutText.Append("Ctrl + ");
             }
             if ((Keyboard.Modifiers & ModifierKeys.Shift) != 0)
             {
@@ -64,6 +63,16 @@ namespace Vajehyar.Windows
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             textBox.Text = "Shift  + Alt + V";
+        }
+
+        private void SettingWindow_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                DragMove();
+            }
+
         }
     }
 }

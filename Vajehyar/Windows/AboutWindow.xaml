@@ -5,14 +5,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Vajehyar"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:properties="clr-namespace:Vajehyar.Properties"
     Title="About"
     Width="464"
     Height="417"
     FontFamily="{StaticResource IranSans}"
+    Left="{Binding Source={x:Static properties:Settings.Default}, Path=AboutLeftPos, Mode=TwoWay}"
     MouseDown="Window_MouseDown"
     Style="{StaticResource WindowStyle}"
+    Top="{Binding Source={x:Static properties:Settings.Default}, Path=AboutTopPos, Mode=TwoWay}"
     Topmost="true"
-    WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
 
     <Border Style="{StaticResource BorderStyle}">

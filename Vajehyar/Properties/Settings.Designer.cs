@@ -67,5 +67,77 @@ namespace Vajehyar.Properties {
                 this["StartByWindows"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int SettingLeftPos {
+            get {
+                return ((int)(this["SettingLeftPos"]));
+            }
+            set {
+                this["SettingLeftPos"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int SettingTopPos {
+            get {
+                return ((int)(this["SettingTopPos"]));
+            }
+            set {
+                this["SettingTopPos"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int AboutLeftPos {
+            get {
+                return ((int)(this["AboutLeftPos"]));
+            }
+            set {
+                this["AboutLeftPos"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int AboutTopPos {
+            get {
+                return ((int)(this["AboutTopPos"]));
+            }
+            set {
+                this["AboutTopPos"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ContactLeftPos {
+            get {
+                return ((int)(this["ContactLeftPos"]));
+            }
+            set {
+                this["ContactLeftPos"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ContactTopPos {
+            get {
+                return ((int)(this["ContactTopPos"]));
+            }
+            set {
+                this["ContactTopPos"] = value;
+            }
+        }
     }
 }
