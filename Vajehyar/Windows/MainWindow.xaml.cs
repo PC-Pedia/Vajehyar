@@ -129,26 +129,9 @@ namespace Vajehyar.Windows
             }
         }
 
-        #endregion
-
-        
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(string property)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
-        }
-       
-
-        private void TopLeftImages_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
-            
-        }
-
         private void TopLeftButton_OnClick(object sender, RoutedEventArgs e)
         {
-            string name = (sender as DependencyObject).GetValue(FrameworkElement.NameProperty) as string;
+            string name = ((DependencyObject)sender).GetValue(NameProperty) as string;
 
             switch (name)
             {
@@ -164,6 +147,13 @@ namespace Vajehyar.Windows
             }
 
         }
-    }
 
+        #endregion
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void NotifyPropertyChanged(string property)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+        }
+    }
 }

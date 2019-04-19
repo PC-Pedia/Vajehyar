@@ -62,7 +62,7 @@ namespace Vajehyar
             bool startedByWindows = e.Args.Any(s=>s.Contains(Settings.Default.StartupArgument));
 
             // Create main application window, starting minimized if specified
-            mainWindow = new MainWindow(Repository.GetData());
+            mainWindow = new MainWindow(Database.GetData());
             
             if (startedByWindows || Settings.Default.StartMinimized)
             {
