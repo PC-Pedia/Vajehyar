@@ -26,5 +26,10 @@ namespace Vajehyar.Windows
         {
             Close();
         }
+
+        private void Hyperlink_OnClick(object sender, RoutedEventArgs e)
+        {
+            (new ContactWindow()).Show();
+        }
     }
 }

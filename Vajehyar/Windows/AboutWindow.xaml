@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:properties="clr-namespace:Vajehyar.Properties"
     Title="About"
-    Width="464"
-    Height="417"
+    Width="585.779"
+    Height="446.522"
     FontFamily="{StaticResource IranSans}"
     Left="{Binding Source={x:Static properties:Settings.Default}, Path=AboutLeftPos, Mode=TwoWay}"
     MouseDown="Window_MouseDown"
@@ -28,11 +28,10 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
                 Click="Button_Click"
-                Content="X"
-                IsCancel="True"
+                Content="x"
                 Style="{StaticResource ButtonStyle1}" />
 
-            <StackPanel Grid.Column="0">
+            <StackPanel Height="377">
 
                 <StackPanel
                     Margin="0,15,23,0"
@@ -59,34 +58,59 @@
                             Margin="0,2,0,0"
                             FontFamily="{StaticResource IranSans}"
                             FontSize="13"
-                            Text="راهنمای جامع واژه‌گزینی برای نویسندگان و مترجمان" />
+                            Text="راهنمای واژه‌گزینی برای اهالی قلم" />
 
                     </StackPanel>
 
                 </StackPanel>
 
                 <ScrollViewer
-                    Width="400"
-                    Height="230"
-                    Margin="0,0,18,0"
+                    Width="503"
+                    Height="263"
+                    Margin="25,0,28,0"
                     HorizontalAlignment="Center"
                     FlowDirection="RightToLeft">
 
                     <TextBlock
                         Margin="0,10,5,0"
                         LineHeight="21"
-                        Text="لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد."
-                        TextWrapping="Wrap" />
+                        TextWrapping="Wrap"><Run
+                            FontSize="14"
+                            FontWeight="Bold"
+                            Text="واژه‌یار " /><Run Text="کتابخانه‌ای از واژگان فارسی است که نویسندگان و مترجمان را در یافتن معادل مناسب کلمات یاری می‌دهد. دادگان این برنامه مبتنی بر دو فرهنگ غنیِ فارسی است: اولی فرهنگ جامع واژگان مترادف و متضاد فارسی اثر فرج‌الله خداپرستی با بیش از 135000 واژۀ مترادف و متضاد که علاوه بر مترادف کلمات، متضادشان را هم آورده؛ دیگری فرهنگ طیفی زبان فارسی تألیف جمشید فراروی با بیش از 45000 لغت و عبارت مرکب که در طیف موضوعی وسیعی به معرفی لغات فارسی پرداخته است.   " /><LineBreak /><Run Text="واژه‌یار دو مزیت عمده دارد: نخست جستجوی در لحظه که همزمان با نوشتن هرآنچه بیابد نشان می‌دهد و دیگری جستجوی تمام متن که به خاطر محدود نبودن به مدخل‌ها، تعداد کلمات بیشتری خواهد یافت. امید که این برنامه، اهالی قلم را فایده " /><Run Text="رساند " /><Run Text="و در صیانت و احیای زبان فارسی قدمی کوچک برداشته باشد. پیشنهادات خود را در صفحۀ " /><Hyperlink Click="Hyperlink_OnClick">
+                            <Run Text="تماس با من" />
+                        </Hyperlink><Run Text=" " /><Run Text="ارسال کنید." /><LineBreak /><Run /><LineBreak /><Run FontWeight="Bold" Text="طراحی و توسعه: سید ایوب کوکبی" /></TextBlock>
 
                 </ScrollViewer>
 
-                <Button
-                    Width="80"
-                    Height="25"
-                    Content="بروزرسانی"
-                    Style="{StaticResource ButtonStyle2}" />
-            </StackPanel>
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    FlowDirection="RightToLeft"
+                    Orientation="Horizontal">
+                    <Button
+                        Width="52"
+                        Height="20"
+                        HorizontalAlignment="Right"
+                        Background="#FFF0F0F0"
+                        Content="نسخۀ"
+                        FontSize="10"
+                        FontWeight="Bold"
+                        IsEnabled="False"
+                        Style="{StaticResource RightRoundedButtonStyle}" />
 
+                    <Button
+                        Width="52"
+                        Height="20"
+                        Background="#FFBFDBF0"
+                        Content="1.0"
+                        Cursor="Hand"
+                        FontSize="10"
+                        FontWeight="Bold"
+                        Style="{StaticResource LeftRoundedButtonStyle}"
+                        ToolTip="بررسی بروزرسانی" />
+                </StackPanel>
+
+            </StackPanel>
         </StackPanel>
 
     </Border>
