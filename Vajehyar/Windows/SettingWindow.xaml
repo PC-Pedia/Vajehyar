@@ -41,7 +41,7 @@
             <CheckBox
                 Name="DisplayCheckBox"
                 Margin="0,5,15,0"
-                Content="عدمِ نمایش برنامه موقع اجرا"
+                Content="شروع برنامه به صورت کمینه"
                 FlowDirection="RightToLeft"
                 IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=StartMinimized, Mode=TwoWay}"
                 Style="{StaticResource SliderCheckBox}" />

@@ -386,13 +386,13 @@
                             <Storyboard x:Key="StoryboardIsChecked">
                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckFlag" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
                                     <EasingDoubleKeyFrame KeyTime="0" Value="0" />
-                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="14" />
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="14" />
                                 </DoubleAnimationUsingKeyFrames>
                             </Storyboard>
                             <Storyboard x:Key="StoryboardIsCheckedOff">
                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckFlag" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
                                     <EasingDoubleKeyFrame KeyTime="0" Value="14" />
-                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0" />
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="0" />
                                 </DoubleAnimationUsingKeyFrames>
                             </Storyboard>
                         </ControlTemplate.Resources>
