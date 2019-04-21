@@ -70,7 +70,7 @@
     <Compile Include="Windows\SettingWindow.xaml.cs">
       <DependentUpon>SettingWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Utility\Utils.cs" />
+    <Compile Include="Utility\Extensions.cs" />
     <Page Include="Windows\AboutWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -115,6 +115,7 @@
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Resource Include="Resources\Fonts\IRANSans%28FaNum%29.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

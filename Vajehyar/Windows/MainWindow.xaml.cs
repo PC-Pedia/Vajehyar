@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -24,12 +26,21 @@ namespace Vajehyar.Windows
             set { _lines = value; NotifyPropertyChanged("Lines"); }
         }
 
-        public MainWindow(string[] lines)
+        private string _hint;
+
+        public String Hint
+        {
+            get => _hint;
+            set { _hint = value; NotifyPropertyChanged("Hint"); }
+        }
+
+        public MainWindow(Tuple<string[], int> data)
         {
             InitializeComponent();
-            Lines = CollectionViewSource.GetDefaultView(lines);
+
+            Lines = CollectionViewSource.GetDefaultView(data.Item1);
             Lines.Filter = FilterResult;
-            textboxHint.Text = $"جستجوی فارسی بین {Utils.RoundNumber(Lines.Count())} واژه";
+            Hint = $"جستجوی فارسی بین {data.Item2.Round().Format()} واژه";
         }
 
         public string FilterString

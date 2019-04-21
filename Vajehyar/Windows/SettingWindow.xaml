@@ -81,7 +81,8 @@
                     Margin="5,0,0,0"
                     Click="ButtonBase_OnClick"
                     Content="⭯"
-                    Style="{StaticResource ButtonStyle1}" />
+                    Style="{StaticResource ButtonStyle1}"
+                    ToolTip="بازگشت به حالت پیش‌فرض" />
 
             </StackPanel>
 

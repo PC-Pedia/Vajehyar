@@ -123,7 +123,7 @@
                         FlowDirection="RightToLeft"
                         Foreground="DarkGray"
                         IsHitTestVisible="False"
-                        Text="به فارسی بنویسید...">
+                        Text="{Binding Hint, FallbackValue='جستجوی فارسی بین 183000 واژه'}">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
                                 <Setter Property="Visibility" Value="Collapsed" />
@@ -141,6 +141,7 @@
                         VerticalAlignment="Center"
                         Content="{Binding ElementName=Datagrid, Path=Items.Count}"
                         ContentStringFormat="{}{0:N0}"
+                        FontFamily="{StaticResource IranSansNum}"
                         Opacity=".5" />
                 </Grid>
 
@@ -161,6 +162,8 @@
                         BorderBrush="{x:Null}"
                         CanUserAddRows="False"
                         CanUserResizeRows="False"
+                        EnableColumnVirtualization="True"
+                        EnableRowVirtualization="True"
                         FlowDirection="RightToLeft"
                         HeadersVisibility="None"
                         HorizontalGridLinesBrush="White"
@@ -173,7 +176,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn
                                 Width="*"
-                                Binding="{Binding}"
+                                Binding="{Binding Mode=OneTime}"
                                 CanUserReorder="False"
                                 CanUserResize="False"
                                 CanUserSort="False">

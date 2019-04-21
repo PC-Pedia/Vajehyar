@@ -9,6 +9,7 @@
 
         <WindowStartupLocation x:Key="WSL">CenterScreen</WindowStartupLocation>
         <FontFamily x:Key="IranSans">pack://application:,,,/Resources/Fonts/#IRANSans</FontFamily>
+        <FontFamily x:Key="IranSansNum">pack://application:,,,/Resources/Fonts/#IRANSans(FaNum)</FontFamily>
 
         <!--#region Styles-->
         <Style x:Key="WindowTitleStyle" TargetType="TextBlock">
@@ -24,6 +25,7 @@
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="ShowInTaskbar" Value="False" />
             <Setter Property="Topmost" Value="True" />
+            <Setter Property="Language" Value="fa-IR" />
             <Setter Property="Effect">
                 <Setter.Value>
                     <DropShadowEffect
@@ -463,7 +465,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
         <!--#endregion-->
 
         <ContextMenu

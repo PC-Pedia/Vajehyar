@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -62,7 +63,10 @@ namespace Vajehyar
             bool startedByWindows = e.Args.Any(s=>s.Contains(Settings.Default.StartupArgument));
 
             // Create main application window, starting minimized if specified
-            mainWindow = new MainWindow(Database.GetData());
+            string[] data = Database.GetData();
+            int numberOfWords = Database.GetCount(string.Concat(data));
+            var dataWithCount=new Tuple<string[], int> (data, numberOfWords);
+            mainWindow = new MainWindow(dataWithCount);
             
             if (startedByWindows || Settings.Default.StartMinimized)
             {
@@ -74,9 +78,8 @@ namespace Vajehyar
             {
                 mainWindow.Show();
             }
-            
         }
-       
+
 
         private void NIcon_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
