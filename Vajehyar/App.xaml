@@ -470,8 +470,10 @@
         <ContextMenu
             x:Key="NotifierContextMenu"
             FlowDirection="RightToLeft"
+            StaysOpen="True"
             FontFamily="{StaticResource IranSans}"
             FontSize="12"
+            
             FontWeight="Light"
             Placement="MousePoint">
 

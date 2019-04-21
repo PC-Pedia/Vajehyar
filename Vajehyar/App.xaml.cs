@@ -119,6 +119,13 @@ namespace Vajehyar
 
         private bool allKeyPressed(System.Windows.Forms.KeyEventArgs e)
         {
+            if (e.KeyData==Keys.Escape)
+            {
+                ContextMenu menu = (ContextMenu)FindResource("NotifierContextMenu");
+                menu.IsOpen = false;
+                return false;
+            }
+
             string[] sArray = Settings.Default.ShortcutKey.Split('+');
             List<Keys> keys=new List<Keys>();
             bool allKeyPressed = false;
