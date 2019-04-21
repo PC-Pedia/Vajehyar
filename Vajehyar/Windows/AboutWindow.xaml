@@ -8,7 +8,7 @@
     xmlns:properties="clr-namespace:Vajehyar.Properties"
     Title="About"
     Width="494.445"
-    Height="560.921"
+    Height="507.412"
     FontFamily="{StaticResource IranSans}"
     Left="{Binding Source={x:Static properties:Settings.Default}, Path=AboutLeftPos, Mode=TwoWay}"
     MouseDown="Window_MouseDown"
@@ -67,11 +67,12 @@
 
 
                 <TextBlock
-                    Height="369"
-                    Margin="30,10,32,0"
+                    Width="408"
+                    Height="322"
+                    Margin="24,10,32,0"
                     HorizontalAlignment="Center"
                     FlowDirection="RightToLeft"
-                    LineHeight="21"
+                    LineHeight="19"
                     TextWrapping="Wrap"><Run
                         FontSize="14"
                         FontWeight="Bold"

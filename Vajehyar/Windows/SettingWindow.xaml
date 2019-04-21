@@ -34,7 +34,7 @@
             <CheckBox
                 Name="StartupCheckBox"
                 Margin="0,25,15,0"
-                Content="شروع برنامه با اجرای ویندوز"
+                Content="اجرای خودکار برنامه هنگام بالا آمدن ویندوز"
                 FlowDirection="RightToLeft"
                 IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=StartByWindows, Mode=TwoWay}"
                 Style="{StaticResource SliderCheckBox}" />
