@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:properties="clr-namespace:Vajehyar.Properties"
     Title="About"
-    Width="585.779"
-    Height="446.522"
+    Width="494.445"
+    Height="560.921"
     FontFamily="{StaticResource IranSans}"
     Left="{Binding Source={x:Static properties:Settings.Default}, Path=AboutLeftPos, Mode=TwoWay}"
     MouseDown="Window_MouseDown"
@@ -31,7 +31,7 @@
                 Content="x"
                 Style="{StaticResource ButtonStyle1}" />
 
-            <StackPanel Height="377">
+            <StackPanel Height="499">
 
                 <StackPanel
                     Margin="0,15,23,0"
@@ -64,24 +64,27 @@
 
                 </StackPanel>
 
-                <ScrollViewer
-                    Width="503"
-                    Height="263"
-                    Margin="25,0,28,0"
+
+
+                <TextBlock
+                    Height="369"
+                    Margin="30,10,32,0"
                     HorizontalAlignment="Center"
-                    FlowDirection="RightToLeft">
+                    FlowDirection="RightToLeft"
+                    LineHeight="21"
+                    TextWrapping="Wrap"><Run
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="واژه‌یار " /><Run Text="کتابخانه‌ای از واژگان فارسی است که نویسندگان و مترجمان را در یافتن معادل مناسب کلمات یاری می‌دهد. " /><LineBreak /><Run /><LineBreak /><Run Text="دادگان این برنامه مبتنی بر دو فرهنگ غنیِ فارسی است: اولی فرهنگ جامع واژگان مترادف و متضاد فارسی اثر فرج‌الله خداپرستی با بیش از 135000 واژۀ مترادف و متضاد که علاوه بر مترادف کلمات، متضادشان را هم آورده؛ دیگری فرهنگ طیفی زبان فارسی تألیف جمشید فراروی با بیش از 45000 لغت و عبارت مرکب که در طیف موضوعی وسیعی به معرفی لغات فارسی پرداخته است.  " /><LineBreak /><Run /><LineBreak /><Run FontWeight="Bold" Text="این برنامه " /><Run FontWeight="Bold" Text="دو مزیت عمده دارد: " /><LineBreak /><Run Text="نخست جستجوی در لحظه که همزمان با نوشتن هرآنچه بیابد نشان می‌دهد و دیگری جستجوی تمام متن که به خاطر محدود نبودن به مدخل‌ها، تعداد کلمات بیشتری خواهد یافت. امید که این برنامه، اهالی قلم را فایده " /><Run Text="رساند " /><Run Text="و در صیانت و احیای زبان فارسی قدمی کوچک برداشته باشد." /><LineBreak /><Run /><LineBreak /><Run FontWeight="Bold" Text="طراحی و توسعه: سید ایوب کوکبی" /><LineBreak /><Run FontWeight="Bold" Text="ایمیل: " />
+                    <TextBlock FlowDirection="LeftToRight"><Hyperlink
+                            NavigateUri="mailto:kokabi1365@gmail.com?subject=واژه‌یار"
+                            RequestNavigate="Hyperlink_OnRequestNavigate"
+                            TextDecorations="">
+                            kokabi1365@gmail.com
+                        </Hyperlink></TextBlock>
+                </TextBlock>
 
-                    <TextBlock
-                        Margin="0,10,5,0"
-                        LineHeight="21"
-                        TextWrapping="Wrap"><Run
-                            FontSize="14"
-                            FontWeight="Bold"
-                            Text="واژه‌یار " /><Run Text="کتابخانه‌ای از واژگان فارسی است که نویسندگان و مترجمان را در یافتن معادل مناسب کلمات یاری می‌دهد. دادگان این برنامه مبتنی بر دو فرهنگ غنیِ فارسی است: اولی فرهنگ جامع واژگان مترادف و متضاد فارسی اثر فرج‌الله خداپرستی با بیش از 135000 واژۀ مترادف و متضاد که علاوه بر مترادف کلمات، متضادشان را هم آورده؛ دیگری فرهنگ طیفی زبان فارسی تألیف جمشید فراروی با بیش از 45000 لغت و عبارت مرکب که در طیف موضوعی وسیعی به معرفی لغات فارسی پرداخته است.   " /><LineBreak /><Run Text="واژه‌یار دو مزیت عمده دارد: نخست جستجوی در لحظه که همزمان با نوشتن هرآنچه بیابد نشان می‌دهد و دیگری جستجوی تمام متن که به خاطر محدود نبودن به مدخل‌ها، تعداد کلمات بیشتری خواهد یافت. امید که این برنامه، اهالی قلم را فایده " /><Run Text="رساند " /><Run Text="و در صیانت و احیای زبان فارسی قدمی کوچک برداشته باشد. پیشنهادات خود را در صفحۀ " /><Hyperlink Click="Hyperlink_OnClick">
-                            <Run Text="تماس با من" />
-                        </Hyperlink><Run Text=" " /><Run Text="ارسال کنید." /><LineBreak /><Run /><LineBreak /><Run FontWeight="Bold" Text="طراحی و توسعه: سید ایوب کوکبی" /></TextBlock>
 
-                </ScrollViewer>
 
                 <StackPanel
                     HorizontalAlignment="Center"

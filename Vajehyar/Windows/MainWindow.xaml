@@ -87,9 +87,7 @@
                         Height="16"
                         Margin="10,0,0,0"
                         Click="TopLeftButton_OnClick"
-                        Style="{StaticResource StylelessButtonStyle}">
-                        <Image Source="/Vajehyar;component/Resources/Icons/Contact-24.png" />
-                    </Button>
+                        Style="{StaticResource StylelessButtonStyle}"/>
                 </StackPanel>
             </DockPanel>
 

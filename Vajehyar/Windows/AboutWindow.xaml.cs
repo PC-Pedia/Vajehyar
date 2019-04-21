@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace Vajehyar.Windows
 {
@@ -29,7 +31,17 @@ namespace Vajehyar.Windows
 
         private void Hyperlink_OnClick(object sender, RoutedEventArgs e)
         {
-            (new ContactWindow()).Show();
+            
+        }
+
+        private void Hyperlink_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Close();
+            var app = ((App) Application.Current);
+            app.HideMainWindow();
+            Process.Start(e.Uri.AbsoluteUri);
+            e.Handled = true;
+
         }
     }
 }

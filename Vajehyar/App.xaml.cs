@@ -31,7 +31,7 @@ namespace Vajehyar
         KeyboardHook kh;
         List<System.Windows.Forms.Keys> keys = new List<Keys>();
         private static Mutex _mutex = null;
-        private MainWindow mainWindow;
+        private MainWindow _mainWindow;
 
         void App_Startup(object sender, StartupEventArgs e)
         {
@@ -66,18 +66,31 @@ namespace Vajehyar
             string[] data = Database.GetData();
             int numberOfWords = Database.GetCount(string.Concat(data));
             var dataWithCount=new Tuple<string[], int> (data, numberOfWords);
-            mainWindow = new MainWindow(dataWithCount);
+            _mainWindow = new MainWindow(dataWithCount);
             
             if (startedByWindows || Settings.Default.StartMinimized)
             {
-                mainWindow.Hide();
-                mainWindow.WindowState = WindowState.Minimized;
-                
+                HideMainWindow();
             }
             else
             {
-                mainWindow.Show();
+                ShowMainWindow();
             }
+        }
+
+        public void HideMainWindow()
+        {
+            _mainWindow.Hide();
+            _mainWindow.WindowState = WindowState.Minimized;
+        }
+
+        public void ShowMainWindow()
+        {
+            ((ContextMenu)FindResource("NotifierContextMenu")).IsOpen = false;
+            _mainWindow.txtSearch.SelectAll();
+            _mainWindow.Datagrid.UnselectAllCells();
+            _mainWindow.WindowState = WindowState.Normal;
+            _mainWindow.Show();
         }
 
 
@@ -92,17 +105,13 @@ namespace Vajehyar
 
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
-                if (mainWindow.WindowState == WindowState.Normal)
+                if (_mainWindow.WindowState == WindowState.Normal)
                 {
-                    mainWindow.Hide();
-                    mainWindow.WindowState = WindowState.Minimized;
+                    HideMainWindow();
                 }
-                else if (mainWindow.WindowState == WindowState.Minimized)
+                else if (_mainWindow.WindowState == WindowState.Minimized)
                 {
-                    mainWindow.WindowState = WindowState.Normal;
-                    mainWindow.Show();
-                    mainWindow.txtSearch.SelectAll();
-                    mainWindow.Datagrid.UnselectAllCells();
+                    ShowMainWindow();
                 }
             }
         }
@@ -150,7 +159,7 @@ namespace Vajehyar
 
         private void OnHookKeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            if (mainWindow.WindowState == WindowState.Normal || Application.Current.Windows.OfType<SettingWindow>().Any())
+            if (_mainWindow.WindowState == WindowState.Normal || Application.Current.Windows.OfType<SettingWindow>().Any())
             {
                 return;
             }
@@ -158,11 +167,7 @@ namespace Vajehyar
 
             if (allKeyPressed(e))
             {
-                ((ContextMenu)FindResource("NotifierContextMenu")).IsOpen = false;
-                mainWindow.txtSearch.SelectAll();
-                mainWindow.Datagrid.UnselectAllCells();
-                mainWindow.WindowState = WindowState.Normal;
-                mainWindow.Show();
+                ShowMainWindow();
             }
         }
 
@@ -195,8 +200,7 @@ namespace Vajehyar
 
         private void Menu_Contact(object sender, RoutedEventArgs e)
         {
-            Window contactWindow = new ContactWindow();
-            contactWindow.Show();
+            
         }
 
         private void Menu_About(object sender, RoutedEventArgs e)
@@ -215,7 +219,7 @@ namespace Vajehyar
         {
             Settings.Default.Save();
 
-            string keyName = mainWindow.GetType().Assembly.GetName().Name; //Application Name: Vajehyar
+            string keyName = _mainWindow.GetType().Assembly.GetName().Name; //Application Name: Vajehyar
             string value = Assembly.GetExecutingAssembly().Location + " " + Settings.Default.StartupArgument;
 
             RegistryKey key = Registry.CurrentUser.OpenSubKey

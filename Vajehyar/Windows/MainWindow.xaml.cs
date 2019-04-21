@@ -152,9 +152,6 @@ namespace Vajehyar.Windows
                 case "AboutButton":
                     new AboutWindow().Show();
                     break;
-                case "ContactButton":
-                    new ContactWindow().Show();
-                    break;
             }
 
         }
