@@ -95,7 +95,6 @@ namespace Vajehyar
             
         }
 
-
         private void NIcon_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             ContextMenu menu = (ContextMenu)FindResource("NotifierContextMenu");
@@ -126,10 +125,12 @@ namespace Vajehyar
 
             foreach (string key in sArray)
             {
-                Enum.TryParse<Keys>(key,out var k);
+                string kk=key;
+                if (kk.Contains("Ctrl"))
+                    kk = "Control";
+                Keys k = (Keys) Enum.Parse(typeof(Keys), kk);
                 keys.Add(k);
             }
-           
 
             switch (keys.Count)
             {
@@ -165,7 +166,6 @@ namespace Vajehyar
             {
                 return;
             }
-
 
             if (allKeyPressed(e))
             {
