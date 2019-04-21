@@ -81,13 +81,6 @@
                         Style="{StaticResource StylelessButtonStyle}">
                         <Image Source="/Vajehyar;component/Resources/Icons/About-24.png" />
                     </Button>
-                    <Button
-                        Name="ContactButton"
-                        Width="16"
-                        Height="16"
-                        Margin="10,0,0,0"
-                        Click="TopLeftButton_OnClick"
-                        Style="{StaticResource StylelessButtonStyle}"/>
                 </StackPanel>
             </DockPanel>
 
@@ -121,7 +114,7 @@
                         FlowDirection="RightToLeft"
                         Foreground="DarkGray"
                         IsHitTestVisible="False"
-                        Text="{Binding Hint, FallbackValue='جستجوی فارسی بین 183000 واژه'}">
+                        Text="{Binding Hint, FallbackValue='جستجوی فارسی ...'}">
                         <TextBlock.Style>
                             <Style TargetType="{x:Type TextBlock}">
                                 <Setter Property="Visibility" Value="Collapsed" />

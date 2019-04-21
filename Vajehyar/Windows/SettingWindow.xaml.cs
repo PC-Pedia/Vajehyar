@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using System.Windows;
 using System.Windows.Input;
+using Vajehyar.Properties;
 
 namespace Vajehyar.Windows
 {
@@ -13,11 +14,17 @@ namespace Vajehyar.Windows
         public SettingWindow()
         {
             InitializeComponent();
+
+            if (Settings.Default.SettingLeftPos == 0 && Settings.Default.SettingTopPos == 0)
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            }
         }
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Settings.Default.Save();
             Close();
         }
 
@@ -34,8 +41,7 @@ namespace Vajehyar.Windows
             if (key == Key.LeftShift || key == Key.RightShift
                                      || key == Key.LeftCtrl || key == Key.RightCtrl
                                      || key == Key.LeftAlt || key == Key.RightAlt
-                                     || key == Key.LWin || key == Key.RWin
-                                     || key == Key.Escape)
+                                     || key == Key.LWin || key == Key.RWin)
             {
                 return;
             }
@@ -60,11 +66,6 @@ namespace Vajehyar.Windows
             textBox.Text = shortcutText.ToString();
         }
 
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        {
-            textBox.Text = "Shift  + Alt + V";
-        }
-
         private void SettingWindow_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
 
@@ -73,6 +74,15 @@ namespace Vajehyar.Windows
                 DragMove();
             }
 
+        }
+
+        private void SettingWindow_OnPreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                Close();
+                e.Handled = true;
+            }
         }
     }
 }

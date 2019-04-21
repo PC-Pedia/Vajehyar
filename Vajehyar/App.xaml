@@ -476,15 +476,13 @@
             Placement="MousePoint">
 
             <MenuItem
-                Margin="3"
+                Margin="3,8,0,0"
                 Click="Menu_Settings"
                 Header="تنظیمات">
                 <MenuItem.Icon>
                     <Image Source="Resources/Icons/Settings-24.png" />
                 </MenuItem.Icon>
             </MenuItem>
-
-            <Separator />
 
             <MenuItem
                 Margin="3"
@@ -494,20 +492,9 @@
                     <Image Source="Resources/Icons/About-24.png" />
                 </MenuItem.Icon>
             </MenuItem>
-
+ 
             <MenuItem
-                Margin="3"
-                Click="Menu_Contact"
-                Header="تماس با من">
-                <MenuItem.Icon>
-                    <Image Source="Resources/Icons/Contact-24.png" />
-                </MenuItem.Icon>
-            </MenuItem>
-
-            <Separator />
-
-            <MenuItem
-                Margin="3"
+                Margin="3,0,0,8"
                 Click="Menu_Exit"
                 Header="خروج">
                 <MenuItem.Icon>

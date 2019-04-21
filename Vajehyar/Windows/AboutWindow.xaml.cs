@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
+using Vajehyar.Properties;
 
 namespace Vajehyar.Windows
 {
@@ -13,6 +14,11 @@ namespace Vajehyar.Windows
         public AboutWindow()
         {
             InitializeComponent();
+            
+            if (Settings.Default.AboutLeftPos==0 && Settings.Default.AboutTopPos==0)
+            {
+                WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            }
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

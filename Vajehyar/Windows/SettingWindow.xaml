@@ -11,6 +11,7 @@
     FontFamily="{StaticResource IranSans}"
     Left="{Binding Source={x:Static properties:Settings.Default}, Path=SettingLeftPos, Mode=TwoWay}"
     MouseDown="SettingWindow_OnMouseDown"
+    PreviewKeyDown="SettingWindow_OnPreviewKeyDown"
     Style="{StaticResource WindowStyle}"
     Top="{Binding Source={x:Static properties:Settings.Default}, Path=SettingTopPos, Mode=TwoWay}"
     mc:Ignorable="d">
@@ -74,15 +75,6 @@
                         </Style>
                     </TextBox.Resources>
                 </TextBox>
-
-                <Button
-                    Width="25"
-                    Height="25"
-                    Margin="5,0,0,0"
-                    Click="ButtonBase_OnClick"
-                    Content="⭯"
-                    Style="{StaticResource ButtonStyle1}"
-                    ToolTip="بازگشت به حالت پیش‌فرض" />
 
             </StackPanel>
 
