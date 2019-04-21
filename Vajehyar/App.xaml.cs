@@ -87,10 +87,12 @@ namespace Vajehyar
         public void ShowMainWindow()
         {
             ((ContextMenu)FindResource("NotifierContextMenu")).IsOpen = false;
-            _mainWindow.txtSearch.SelectAll();
-            _mainWindow.Datagrid.UnselectAllCells();
             _mainWindow.WindowState = WindowState.Normal;
             _mainWindow.Show();
+            _mainWindow.txtSearch.Focus();
+            _mainWindow.txtSearch.SelectAll();
+            _mainWindow.Datagrid.UnselectAllCells();
+            
         }
 
 

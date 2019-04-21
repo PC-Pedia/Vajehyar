@@ -15,7 +15,6 @@
     PreviewKeyDown="Window_PreviewKeyDown"
     StateChanged="Window_StateChanged"
     Style="{StaticResource WindowStyle}"
-    Topmost="True"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
 
