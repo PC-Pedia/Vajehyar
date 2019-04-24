@@ -1,81 +1,78 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
-using System.Windows.Input;
 using Microsoft.Win32;
 using Vajehyar.Properties;
 using Vajehyar.Utility;
 using Vajehyar.Windows;
-using Application = System.Windows.Application;
-using Clipboard = System.Windows.Clipboard;
 using ContextMenu = System.Windows.Controls.ContextMenu;
-using MessageBox = System.Windows.Forms.MessageBox;
-using TextDataFormat = System.Windows.TextDataFormat;
+using Point = System.Windows.Point;
 
 namespace Vajehyar
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
+    public partial class App
     {
-        public static System.Windows.Forms.NotifyIcon nIcon = new System.Windows.Forms.NotifyIcon();
-        KeyboardHook kh;
-        List<System.Windows.Forms.Keys> keys = new List<Keys>();
-        private static Mutex _mutex = null;
+        private NotifyIcon _notifyIcon;
+        private Mutex _mutex;
         private MainWindow _mainWindow;
+        private List<Keys> _keys;
+        private KeyboardHook _keyboardHook;
+        private string _appName;
 
-        void App_Startup(object sender, StartupEventArgs e)
+        private void App_Startup(object sender, StartupEventArgs e)
         {
-            const string appName = "Vajehyar";
-            bool createdNew;
+            //Get application name: Vajehyar
+            _appName = Assembly.GetExecutingAssembly().GetName().Name; 
 
-            _mutex = new Mutex(true, appName, out createdNew);
+            //Run only one instance of the app
+            _mutex = new Mutex(true, _appName, out var createdNew);
+            if (!createdNew) Current.Shutdown();
 
-            if (!createdNew)
+            _notifyIcon = new NotifyIcon();
+            _keys = new List<Keys>();
+
+            _keyboardHook = new KeyboardHook();
+            _keyboardHook.SetHook();
+            _keyboardHook.OnKeyDownEvent += OnHookKeyDown;
+
+            
+
+            
+
+            
+
+            var ico = GetResourceStream(new Uri("pack://application:,,,/Resources/Icons/Vajehyar.ico"))?.Stream;
+            _notifyIcon.Icon = new Icon(ico);
+            _notifyIcon.Visible = true;
+
+            if (Settings.Default.FirstRun)
             {
-                //app is already running! Exiting the application  
-                Application.Current.Shutdown();
+                _notifyIcon.ShowBalloonTip(15000, "واژه‌یار", @"با کلیدهای Alt + Shift + V برنامه را باز کنید و با Esc کمینه کنید. این کلیدها را می‌توانید در تنظیمات برنامه تغییر دهید.", ToolTipIcon.Info);
             }
+            
 
-            kh = new KeyboardHook();
-            kh.SetHook();
-            kh.OnKeyDownEvent += OnHookKeyDown;
-
-            System.IO.Stream ico = GetResourceStream(new Uri("pack://application:,,,/Resources/Icons/Vajehyar.ico")).Stream;
-            nIcon.Icon = new Icon(ico);
-            nIcon.Visible = true;
-
-            //nIcon.ShowBalloonTip(5000, "Title", "Text", System.Windows.Forms.ToolTipIcon.Info);
-
-            nIcon.MouseDown += NIcon_MouseDown;
+            _notifyIcon.MouseDown += NotifyIcon_MouseDown;
 
             // Application is running
             // Process command line args
-            bool startedByWindows = e.Args.Any(s=>s.Contains(Settings.Default.StartupArgument));
+            var startedByWindows = e.Args.Any(s => s.Contains(Settings.Default.StartupArgument));
 
             // Create main application window, starting minimized if specified
-            string[] data = Database.GetData();
-            int numberOfWords = Database.GetCount(string.Concat(data));
-            var dataWithCount=new Tuple<string[], int> (data, numberOfWords);
+            var data = Database.GetData();
+            var numberOfWords = Database.GetCount(string.Concat(data));
+            var dataWithCount = new Tuple<string[], int>(data, numberOfWords);
             _mainWindow = new MainWindow(dataWithCount);
-            
+
             if (startedByWindows || Settings.Default.StartMinimized)
-            {
                 HideMainWindow();
-            }
             else
-            {
                 ShowMainWindow();
-            }
         }
 
         public void HideMainWindow()
@@ -86,56 +83,47 @@ namespace Vajehyar
 
         public void ShowMainWindow()
         {
-            ((ContextMenu)FindResource("NotifierContextMenu")).IsOpen = false;
+            ((ContextMenu) FindResource("NotifierContextMenu")).IsOpen = false;
             _mainWindow.WindowState = WindowState.Normal;
             _mainWindow.Show();
             _mainWindow.txtSearch.Focus();
             _mainWindow.txtSearch.SelectAll();
             _mainWindow.Datagrid.UnselectAllCells();
-            
         }
 
-        private void NIcon_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void NotifyIcon_MouseDown(object sender, MouseEventArgs e)
         {
-            ContextMenu menu = (ContextMenu)FindResource("NotifierContextMenu");
+            var menu = (ContextMenu) FindResource("NotifierContextMenu");
 
-            if (e.Button == System.Windows.Forms.MouseButtons.Right)
-            {
-                menu.IsOpen = menu.IsOpen ? false : true;
-            }
+            if (e.Button == MouseButtons.Right) menu.IsOpen = menu.IsOpen ? false : true;
 
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 if (_mainWindow.WindowState == WindowState.Normal)
-                {
                     HideMainWindow();
-                }
-                else if (_mainWindow.WindowState == WindowState.Minimized)
-                {
-                    ShowMainWindow();
-                }
+                else if (_mainWindow.WindowState == WindowState.Minimized) ShowMainWindow();
             }
         }
 
-        private bool allKeyPressed(System.Windows.Forms.KeyEventArgs e)
+        private bool allKeyPressed(KeyEventArgs e)
         {
-            if (e.KeyData==Keys.Escape)
+            if (e.KeyData == Keys.Escape)
             {
-                ContextMenu menu = (ContextMenu)FindResource("NotifierContextMenu");
+                var menu = (ContextMenu) FindResource("NotifierContextMenu");
                 menu.IsOpen = false;
                 return false;
             }
 
-            string[] sArray = Settings.Default.ShortcutKey.Split('+');
-            List<Keys> keys=new List<Keys>();
-            bool allKeyPressed = false;
+            var sArray = Settings.Default.ShortcutKey.Split('+');
+            var keys = new List<Keys>();
+            var allKeyPressed = false;
 
-            foreach (string key in sArray)
+            foreach (var key in sArray)
             {
-                string kk=key;
+                var kk = key;
                 if (kk.Contains("Ctrl"))
                     kk = "Control";
-                Keys k = (Keys) Enum.Parse(typeof(Keys), kk);
+                var k = (Keys) Enum.Parse(typeof(Keys), kk);
                 keys.Add(k);
             }
 
@@ -144,13 +132,10 @@ namespace Vajehyar
                 case 1:
                     if (e.KeyData == keys[0])
                         allKeyPressed = true;
-                 break;
+                    break;
                 case 2:
-                    if (e.KeyData == (keys[0] | keys[1]))
-                    {
-                        allKeyPressed = true;
-                    }
-                        
+                    if (e.KeyData == (keys[0] | keys[1])) allKeyPressed = true;
+
                     break;
 
                 case 3:
@@ -167,30 +152,24 @@ namespace Vajehyar
             return allKeyPressed;
         }
 
-        private void OnHookKeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        private void OnHookKeyDown(object sender, KeyEventArgs e)
         {
-            if (_mainWindow.WindowState == WindowState.Normal || Application.Current.Windows.OfType<SettingWindow>().Any())
-            {
-                return;
-            }
+            if (_mainWindow.WindowState == WindowState.Normal || Current.Windows.OfType<SettingWindow>().Any()) return;
 
-            if (allKeyPressed(e))
-            {
-                ShowMainWindow();
-            }
+            if (allKeyPressed(e)) ShowMainWindow();
         }
 
         [DllImport("user32.dll")]
-        public static extern IntPtr WindowFromPoint(System.Windows.Point lpPoint);
+        public static extern IntPtr WindowFromPoint(Point lpPoint);
 
         [DllImport("user32.dll")]
-        public static extern bool GetCursorPos(out System.Windows.Point lpPoint);
+        public static extern bool GetCursorPos(out Point lpPoint);
 
         public static IntPtr GetWindowUnderCursor()
         {
-            System.Windows.Point ptCursor = new System.Windows.Point();
+            var ptCursor = new Point();
 
-            if (!(GetCursorPos(out ptCursor)))
+            if (!GetCursorPos(out ptCursor))
                 return IntPtr.Zero;
 
             return WindowFromPoint(ptCursor);
@@ -204,17 +183,15 @@ namespace Vajehyar
 
         private void Menu_Help(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void Menu_Contact(object sender, RoutedEventArgs e)
         {
-            
         }
 
         private void Menu_About(object sender, RoutedEventArgs e)
         {
-            Window aboutWindow = new AboutWindow();            
+            Window aboutWindow = new AboutWindow();
             aboutWindow.Show();
         }
 
@@ -228,18 +205,18 @@ namespace Vajehyar
         {
             Settings.Default.Save();
 
-            string keyName = _mainWindow.GetType().Assembly.GetName().Name; //Application Name: Vajehyar
-            string value = Assembly.GetExecutingAssembly().Location + " " + Settings.Default.StartupArgument;
+            var keyName = _appName; //Application Name: Vajehyar
+            var value = Assembly.GetExecutingAssembly().Location + " " + Settings.Default.StartupArgument;
 
-            RegistryKey key = Registry.CurrentUser.OpenSubKey
+            var key = Registry.CurrentUser.OpenSubKey
                 ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
 
             if (Settings.Default.StartByWindows)
                 key.SetValue(keyName, value);
             else
                 key.DeleteValue(keyName, false);
+
+            _notifyIcon.Dispose();
         }
     }
-
-
 }

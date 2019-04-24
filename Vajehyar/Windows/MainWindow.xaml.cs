@@ -103,7 +103,7 @@ namespace Vajehyar.Windows
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-            App.nIcon.Dispose();
+          
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -123,22 +123,14 @@ namespace Vajehyar.Windows
 
         private void TxtSearch_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (!Regex.IsMatch(e.Text, @"^[\u0600-\u06FF\uFB8A\u067E\u0686\u06AF\u200C\u200F ]+$"))
+            if (!Regex.IsMatch(e.Text, @"^[\u0600-\u06FF\uFB8A\u067E\u0686\u06AF\u200C\u200F]+$"))
             {
                 BlinkText(textboxHint);
                 e.Handled = true;
             }
 
-
         }
-
-        private void Window_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-            {
-                //Grid_MouseDown(null, null);
-            }
-        }
+        
 
         private void TopLeftButton_OnClick(object sender, RoutedEventArgs e)
         {

@@ -12,7 +12,6 @@
     FocusManager.FocusedElement="{Binding ElementName=txtSearch}"
     FontFamily="tahoma"
     MouseDown="Window_MouseDown"
-    PreviewKeyDown="Window_PreviewKeyDown"
     StateChanged="Window_StateChanged"
     Style="{StaticResource WindowStyle}"
     WindowStartupLocation="CenterScreen"
