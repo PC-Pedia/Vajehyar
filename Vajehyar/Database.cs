@@ -3,26 +3,25 @@ using System.Text.RegularExpressions;
 
 namespace Vajehyar
 {
-    public class Database
+    public sealed class Database
     {
-        private static string[] _lines;
+        public static Database Instance { get; } = new Database();
 
-        public static string[] GetData()
+        public string[] Lines { get; }
+
+        private Database()
         {
             string dict1 = Properties.Resources.Motaradef_Motazad;
             string dict2 = Properties.Resources.Teyfi;
             string data = dict1 + Environment.NewLine + dict2;
 
-            _lines = data.Split(new[] { Environment.NewLine },
+            Lines = data.Split(new[] { Environment.NewLine },
                 StringSplitOptions.RemoveEmptyEntries);
-
-            return _lines;
-
         }
 
-        public static int GetCount(string str)
+        public int GetCount()
         {
-            string linesWithoutDigit = Regex.Replace(str, @"\d", "");
+            string linesWithoutDigit = Regex.Replace(String.Concat(Lines), @"\d", "");
             int count = linesWithoutDigit.Split('،').Length;
             return count;
         }

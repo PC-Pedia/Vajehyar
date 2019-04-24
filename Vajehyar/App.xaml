@@ -470,16 +470,15 @@
         <ContextMenu
             x:Key="NotifierContextMenu"
             FlowDirection="RightToLeft"
-            StaysOpen="True"
             FontFamily="{StaticResource IranSans}"
             FontSize="12"
-            
             FontWeight="Light"
-            Placement="MousePoint">
+            Placement="MousePoint"
+            StaysOpen="True">
 
             <MenuItem
                 Margin="3,8,0,0"
-                Click="Menu_Settings"
+                Click="Menu_Setting"
                 Header="تنظیمات">
                 <MenuItem.Icon>
                     <Image Source="Resources/Icons/Settings-24.png" />
@@ -494,7 +493,7 @@
                     <Image Source="Resources/Icons/About-24.png" />
                 </MenuItem.Icon>
             </MenuItem>
- 
+
             <MenuItem
                 Margin="3,0,0,8"
                 Click="Menu_Exit"

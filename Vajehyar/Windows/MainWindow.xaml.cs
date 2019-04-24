@@ -34,13 +34,13 @@ namespace Vajehyar.Windows
             set { _hint = value; NotifyPropertyChanged("Hint"); }
         }
 
-        public MainWindow(Tuple<string[], int> data)
+        public MainWindow(Database database)
         {
             InitializeComponent();
 
-            Lines = CollectionViewSource.GetDefaultView(data.Item1);
+            Lines = CollectionViewSource.GetDefaultView(database.Lines);
             Lines.Filter = FilterResult;
-            Hint = $"جستجوی فارسی بین {data.Item2.Round().Format()} واژه";
+            Hint = $"جستجوی فارسی بین {database.GetCount().Round().Format()} واژه";
         }
 
         public string FilterString
