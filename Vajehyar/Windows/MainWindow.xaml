@@ -68,7 +68,7 @@
                         Margin="10,0,0,0"
                         Click="TopLeftButton_OnClick"
                         Style="{StaticResource StylelessButtonStyle}">
-                        <Image Source="/Vajehyar;component/Resources/Icons/Settings-24.png" />
+                        <Image Source="/Vajehyar;component/Resources/Icons/Settings-24.png" FocusVisualStyle="{x:Null}" />
                     </Button>
                     <Button
                         Name="AboutButton"
@@ -77,7 +77,7 @@
                         Margin="10,0,0,0"
                         Click="TopLeftButton_OnClick"
                         Style="{StaticResource StylelessButtonStyle}">
-                        <Image Source="/Vajehyar;component/Resources/Icons/About-24.png" />
+                        <Image Source="/Vajehyar;component/Resources/Icons/About-24.png"  FocusVisualStyle="{x:Null}"/>
                     </Button>
                 </StackPanel>
             </DockPanel>

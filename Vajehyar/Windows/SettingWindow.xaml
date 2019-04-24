@@ -48,25 +48,30 @@
                 Style="{StaticResource SliderCheckBox}" />
 
             <StackPanel
-                Margin="0,20,15,0"
-                HorizontalAlignment="Right"
-                FlowDirection="RightToLeft"
-                Orientation="Horizontal">
+                Margin="0,20,0,0"
+                HorizontalAlignment="Center"
+                Orientation="Vertical">
 
-                <TextBlock Text="کلید ترکیبی" />
+                <TextBlock
+                    Margin="0,0,0,5"
+                    HorizontalAlignment="Center"
+                    FlowDirection="RightToLeft"
+                    Text="کلید میانبر را در کادر پایین وارد کنید:" />
 
                 <TextBox
                     Name="textBox"
                     Width="200"
-                    Margin="10,0,0,0"
                     Padding="10,0"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                     FlowDirection="LeftToRight"
-                    FontSize="12"
-                    FontWeight="Regular"
-                    Foreground="Black"
+                    FontSize="13"
+                    Height="23"
+                    FontFamily="calibri"
+                    FontWeight="Light"
+                    Foreground="DimGray"
                     PreviewKeyDown="TextBox_OnPreviewKeyDown"
+                    PreviewKeyUp="TextBox_OnPreviewKeyUp"
                     Text="{Binding Source={x:Static properties:Settings.Default}, Path=ShortcutKey, Mode=TwoWay}"
                     TextAlignment="Center">
                     <TextBox.Resources>
