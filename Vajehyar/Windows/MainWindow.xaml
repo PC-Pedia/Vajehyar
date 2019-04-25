@@ -68,7 +68,7 @@
                         Margin="10,0,0,0"
                         Click="TopLeftButton_OnClick"
                         Style="{StaticResource StylelessButtonStyle}">
-                        <Image Source="/Vajehyar;component/Resources/Icons/Settings-24.png" FocusVisualStyle="{x:Null}" />
+                        <Image FocusVisualStyle="{x:Null}" Source="/Vajehyar;component/Resources/Icons/Settings-24.png" />
                     </Button>
                     <Button
                         Name="AboutButton"
@@ -77,11 +77,10 @@
                         Margin="10,0,0,0"
                         Click="TopLeftButton_OnClick"
                         Style="{StaticResource StylelessButtonStyle}">
-                        <Image Source="/Vajehyar;component/Resources/Icons/About-24.png"  FocusVisualStyle="{x:Null}"/>
+                        <Image FocusVisualStyle="{x:Null}" Source="/Vajehyar;component/Resources/Icons/About-24.png" />
                     </Button>
                 </StackPanel>
             </DockPanel>
-
             <StackPanel Margin="10,0,10,10">
                 <Grid>
 
@@ -136,7 +135,7 @@
 
 
                 <Border
-                    Height="284"
+                    Height="275"
                     Margin="0,10,0,0"
                     Padding="0"
                     BorderBrush="#FFE0F3FB"
@@ -144,7 +143,6 @@
                     CornerRadius="5">
                     <DataGrid
                         x:Name="Datagrid"
-                        Margin="0,0,0,8"
                         VerticalContentAlignment="Center"
                         AlternatingRowBackground="#FFFBFBFB"
                         AutoGenerateColumns="False"
@@ -187,6 +185,16 @@
                         </DataGrid.Background>
                     </DataGrid>
                 </Border>
+                <TextBlock
+                    x:Name="NewVersionTextBlock"
+                    Margin="0,5,0,5"
+                    Padding="8,3,8,3"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Background="#FFE0F3FB"
+                    FontSize="11"
+                    Text="دریافت نسخۀ جدید برنامه"
+                    Visibility="Visible" />
             </StackPanel>
         </StackPanel>
     </Border>

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vajehyar", "Vajehyar\Vajehy
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VajehyarTests", "VajehyarTests\VajehyarTests.csproj", "{FD29E365-05BC-4BD8-98D9-2A02DBC228CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Updater", "Updater\Updater.csproj", "{ABD2AC65-2C09-4A67-B9BD-E6D586CE217F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FD29E365-05BC-4BD8-98D9-2A02DBC228CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD29E365-05BC-4BD8-98D9-2A02DBC228CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD29E365-05BC-4BD8-98D9-2A02DBC228CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABD2AC65-2C09-4A67-B9BD-E6D586CE217F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABD2AC65-2C09-4A67-B9BD-E6D586CE217F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABD2AC65-2C09-4A67-B9BD-E6D586CE217F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABD2AC65-2C09-4A67-B9BD-E6D586CE217F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
