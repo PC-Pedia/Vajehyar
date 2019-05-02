@@ -41,9 +41,10 @@
                     Orientation="Horizontal">
 
                     <Image
-                        Width="36"
-                        Height="36"
+                        Width="38"
+                        Height="38"
                         Margin="3"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor"
                         Source="/Vajehyar;component/Resources/Icons/Vajehyar.png" />
 
                     <StackPanel Margin="5,0,0,0">
