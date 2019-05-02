@@ -47,7 +47,8 @@ namespace Vajehyar
                 HideMainWindow();
             else
                 ShowMainWindow();
-        } 
+        }
+
         #endregion
 
         #region System tray

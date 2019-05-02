@@ -1,13 +1,16 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using Vajehyar.Properties;
 using Vajehyar.Utility;
 
 namespace Vajehyar.Windows
@@ -19,6 +22,19 @@ namespace Vajehyar.Windows
     {
         private string _filterString;
         private string _str;
+
+        private bool _hasNewRelease;
+
+        public bool HasNewRelease
+        {
+            get => _hasNewRelease;
+            set
+            {
+                _hasNewRelease = value;
+                NotifyPropertyChanged("HasNewRelease");
+            }
+        }
+
         private ICollectionView _lines;
         public ICollectionView Lines
         {
@@ -28,7 +44,7 @@ namespace Vajehyar.Windows
 
         private string _hint;
 
-        public String Hint
+        public string Hint
         {
             get => _hint;
             set { _hint = value; NotifyPropertyChanged("Hint"); }
@@ -41,6 +57,11 @@ namespace Vajehyar.Windows
             Lines = CollectionViewSource.GetDefaultView(database.Lines);
             Lines.Filter = FilterResult;
             Hint = $"جستجوی فارسی بین {database.GetCount().Round().Format()} واژه";
+
+            Task.Run(() =>
+            {
+                HasNewRelease = UpdateHelper.HasNewRelease;
+            });
         }
 
         public string FilterString
@@ -154,6 +175,12 @@ namespace Vajehyar.Windows
         private void NotifyPropertyChanged(string property)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+        }
+
+        private void UpdateButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start(Settings.Default.UpdateUrl);
+            e.Handled = true;
         }
     }
 }

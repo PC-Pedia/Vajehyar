@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:properties="clr-namespace:Vajehyar.Properties"
     Title="MainWindow"
     Width="650"
     Height="417"
@@ -185,16 +186,17 @@
                         </DataGrid.Background>
                     </DataGrid>
                 </Border>
-                <TextBlock
-                    x:Name="NewVersionTextBlock"
+                <Button
+                    Width="150"
                     Margin="0,5,0,5"
-                    Padding="8,3,8,3"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Background="#FFE0F3FB"
+                    Click="UpdateButton_OnClick"
+                    Content="دریافت نسخۀ جدید برنامه"
                     FontSize="11"
-                    Text="دریافت نسخۀ جدید برنامه"
-                    Visibility="Visible" />
+                    Style="{StaticResource ButtonStyle2}"
+                    Visibility="{Binding Path=HasNewRelease, Converter={StaticResource BoolToVis}}" />
             </StackPanel>
         </StackPanel>
     </Border>

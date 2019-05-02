@@ -9,6 +9,7 @@
     Title="About"
     Width="494.445"
     Height="507.412"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}"
     FontFamily="{StaticResource IranSans}"
     Left="{Binding Source={x:Static properties:Settings.Default}, Path=AboutLeftPos, Mode=TwoWay}"
     MouseDown="Window_MouseDown"
@@ -31,7 +32,7 @@
                 Content="x"
                 Style="{StaticResource ButtonStyle1}" />
 
-            <StackPanel Height="499">
+            <StackPanel Height="500">
 
                 <StackPanel
                     Margin="0,15,23,0"
@@ -40,28 +41,43 @@
                     Orientation="Horizontal">
 
                     <Image
-                        Width="48"
-                        Height="48"
+                        Width="36"
+                        Height="36"
                         Margin="3"
                         Source="/Vajehyar;component/Resources/Icons/Vajehyar.png" />
 
                     <StackPanel Margin="5,0,0,0">
 
-                        <TextBlock
-                            VerticalAlignment="Top"
-                            FontFamily="{StaticResource IranSans}"
-                            FontSize="16"
-                            FontWeight="Bold"
-                            Text="واژه یار" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                VerticalAlignment="Top"
+                                FontFamily="{StaticResource IranSans}"
+                                FontSize="14"
+                                FontWeight="Bold"
+                                Text="واژه یار" />
+                            <TextBlock VerticalAlignment="Center">
+                                <Hyperlink
+                                    x:Name="Version"
+                                    NavigateUri="{Binding Source={x:Static properties:Settings.Default}, Path=UpdateUrl}"
+                                    RequestNavigate="Version_OnRequestNavigate">
+                                    <Run Text=" " />
+                                    <Run
+                                        FontSize="11"
+                                        FontWeight="Bold"
+                                        Text="{Binding Path=ReleaseVersion}" />
+                                </Hyperlink>
+                            </TextBlock>
+                        </StackPanel>
+
+
 
                         <TextBlock
                             Margin="0,2,0,0"
                             FontFamily="{StaticResource IranSans}"
-                            FontSize="13"
+                            FontSize="12"
                             Text="راهنمای واژه‌گزینی برای اهالی قلم" />
 
                     </StackPanel>
-
                 </StackPanel>
 
 
@@ -84,36 +100,6 @@
                             kokabi1365@gmail.com
                         </Hyperlink></TextBlock>
                 </TextBlock>
-
-
-
-                <StackPanel
-                    HorizontalAlignment="Center"
-                    FlowDirection="RightToLeft"
-                    Orientation="Horizontal">
-                    <Button
-                        Width="52"
-                        Height="20"
-                        HorizontalAlignment="Right"
-                        Background="#FFF0F0F0"
-                        Content="نسخۀ"
-                        FontSize="10"
-                        FontWeight="Bold"
-                        IsEnabled="False"
-                        Style="{StaticResource RightRoundedButtonStyle}" />
-
-                    <Button
-                        Width="52"
-                        Height="20"
-                        Background="#FFBFDBF0"
-                        Content="1.0"
-                        Cursor="Hand"
-                        FontSize="10"
-                        FontWeight="Bold"
-                        Style="{StaticResource LeftRoundedButtonStyle}"
-                        ToolTip="بررسی بروزرسانی" />
-                </StackPanel>
-
             </StackPanel>
         </StackPanel>
 

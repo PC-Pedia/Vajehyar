@@ -35,5 +35,20 @@
     <Setting Name="FirstRun" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="HasNewRelease" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="LastRelease" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="GithubId" Type="System.String" Scope="User">
+      <Value Profile="(Default)">kokabi1365</Value>
+    </Setting>
+    <Setting Name="GithubRepo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vajehyar</Value>
+    </Setting>
+    <Setting Name="UpdateUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://github.com/kokabi1365/Vejehyar/releases</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
