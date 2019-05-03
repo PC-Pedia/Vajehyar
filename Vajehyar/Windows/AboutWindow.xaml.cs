@@ -38,7 +38,6 @@ namespace Vajehyar.Windows
                 WindowStartupLocation = WindowStartupLocation.CenterScreen;
             }
 
-
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

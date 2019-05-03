@@ -97,6 +97,7 @@
                         FontWeight="Bold"
                         Foreground="Black"
                         PreviewTextInput="TxtSearch_PreviewTextInput"
+                        PreviewKeyDown="TxtSearch_OnPreviewKeyDown"
                         TextChanged="TxtSearch_TextChanged">
                         <TextBox.Resources>
                             <Style TargetType="{x:Type Border}">

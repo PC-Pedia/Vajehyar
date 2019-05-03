@@ -1,17 +1,17 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Globalization;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using Vajehyar.Properties;
 using Vajehyar.Utility;
+using KeyEventArgs = System.Windows.Input.KeyEventArgs;
 
 namespace Vajehyar.Windows
 {
@@ -80,7 +80,7 @@ namespace Vajehyar.Windows
             _lines?.Refresh();
         }
 
-        public bool FilterResult(Object obj)
+        public bool FilterResult(object obj)
         {
             _str = obj as string;
 
@@ -124,7 +124,7 @@ namespace Vajehyar.Windows
 
         private void Window_Closing(object sender, CancelEventArgs e)
         {
-          
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -151,7 +151,7 @@ namespace Vajehyar.Windows
             }
 
         }
-        
+
 
         private void TopLeftButton_OnClick(object sender, RoutedEventArgs e)
         {
@@ -181,6 +181,27 @@ namespace Vajehyar.Windows
         {
             Process.Start(Settings.Default.UpdateUrl);
             e.Handled = true;
+        }
+
+        private void TxtSearch_OnPreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (InputLanguage.CurrentInputLanguage.LayoutName != null && !InputLanguage.CurrentInputLanguage.LayoutName.ToLower().Contains("persian"))
+            {
+                return;
+            }
+
+            bool shift = (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
+            bool ctrl = (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
+            bool space = Keyboard.IsKeyDown(Key.Space);
+            bool two = Keyboard.IsKeyDown(Key.D2);
+
+            if (shift && space || ctrl && shift && two)
+            {
+                e.Handled = true;
+                txtSearch.Text += "\u200c";
+                txtSearch.SelectionStart = txtSearch.Text.Length;
+                txtSearch.SelectionLength = 0;
+            }
         }
     }
 }
