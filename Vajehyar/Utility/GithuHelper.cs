@@ -7,7 +7,7 @@ using Vajehyar.Properties;
 
 namespace Vajehyar.Utility
 {
-    public class UpdateHelper
+    public class GithuHelper
     {
         private static string githubUserName = Settings.Default.GithubId;
         private static string githubRepoName = Settings.Default.GithubRepo;

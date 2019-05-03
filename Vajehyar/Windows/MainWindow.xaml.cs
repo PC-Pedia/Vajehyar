@@ -60,7 +60,7 @@ namespace Vajehyar.Windows
 
             Task.Run(() =>
             {
-                HasNewRelease = UpdateHelper.HasNewRelease;
+                HasNewRelease = GithuHelper.HasNewRelease;
             });
         }
 

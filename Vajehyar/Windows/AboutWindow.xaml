@@ -60,12 +60,13 @@
                                 <Hyperlink
                                     x:Name="Version"
                                     NavigateUri="{Binding Source={x:Static properties:Settings.Default}, Path=UpdateUrl}"
-                                    RequestNavigate="Version_OnRequestNavigate">
+                                    RequestNavigate="Version_OnRequestNavigate"
+                                    TextDecorations="{x:Null}">
                                     <Run Text=" " />
                                     <Run
                                         FontSize="11"
                                         FontWeight="Bold"
-                                        Text="{Binding Path=ReleaseVersion}" />
+                                        Text="{Binding Path=CurrentVersion}" />
                                 </Hyperlink>
                             </TextBlock>
                         </StackPanel>

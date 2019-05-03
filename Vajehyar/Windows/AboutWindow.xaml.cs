@@ -1,11 +1,11 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using Vajehyar.Properties;
-using Vajehyar.Utility;
 
 namespace Vajehyar.Windows
 {
@@ -14,29 +14,31 @@ namespace Vajehyar.Windows
     /// </summary>
     public partial class AboutWindow : INotifyPropertyChanged
     {
-        private string _releaseVersion;
+        private string _currentVersion;
 
-        public string ReleaseVersion
+        public string CurrentVersion
         {
-            get => _releaseVersion;
+            get => _currentVersion;
             set
             {
-                _releaseVersion = value;
-                NotifyPropertyChanged("ReleaseVersion");
+                _currentVersion = value;
+                NotifyPropertyChanged("CurrentVersion");
             }
         }
 
         public AboutWindow()
         {
             InitializeComponent();
-            ReleaseVersion = Assembly.GetEntryAssembly()?.GetName().Version.ToString();
 
-            if (Settings.Default.AboutLeftPos==0 && Settings.Default.AboutTopPos==0)
+            Version version = Assembly.GetEntryAssembly()?.GetName().Version;
+            CurrentVersion = version < new Version("1.0.0.0") ? "نسخۀ آزمایشی" : version?.ToString();
+
+            if (Settings.Default.AboutLeftPos == 0 && Settings.Default.AboutTopPos == 0)
             {
                 WindowStartupLocation = WindowStartupLocation.CenterScreen;
             }
 
-            
+
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -56,7 +58,7 @@ namespace Vajehyar.Windows
         private void Hyperlink_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             Close();
-            var app = ((App) Application.Current);
+            App app = ((App)Application.Current);
             app.HideMainWindow();
             Process.Start(e.Uri.AbsoluteUri);
             e.Handled = true;
