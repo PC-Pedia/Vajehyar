@@ -61,7 +61,7 @@ namespace Vajehyar
 
             if (Settings.Default.FirstRun)
             {
-                _notifyIcon.ShowBalloonTip(15000, "واژه‌یار", @"با کلیدهای Alt + Shift + V برنامه را باز کنید و با Esc کمینه کنید. این کلیدها را می‌توانید در تنظیمات برنامه تغییر دهید.", ToolTipIcon.Info);
+                _notifyIcon.ShowBalloonTip(30000, "واژه‌یار", "باز کردن برنامه: Alt + Shift + V\nبستن برنامه: Esc\nتنظیمات را می‌توانید تغییر دهید.", ToolTipIcon.Info);
                 Settings.Default.FirstRun = false;
             }
 
