@@ -1,5 +1,4 @@
-﻿using System;
-using Vajehyar.Utility;
+﻿using Vajehyar.Utility;
 using Xunit;
 
 namespace VajehyarTests

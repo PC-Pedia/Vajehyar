@@ -18,7 +18,6 @@ namespace Vajehyar
     {
         #region Fields
         private NotifyIcon _notifyIcon;
-        private Mutex _mutex;
         private MainWindow _mainWindow;
         private KeyboardHook _keyboardHook;
         private string _appName;
@@ -33,7 +32,7 @@ namespace Vajehyar
             _contextMenu = FindResource("NotifierContextMenu") as ContextMenu;
 
             //Run only one instance of the app
-            _mutex = new Mutex(true, _appName, out var createdNew);
+            var mutex = new Mutex(true, _appName, out var createdNew);
             if (!createdNew) Current.Shutdown();
 
             SetKeyboardHook();

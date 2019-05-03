@@ -1,7 +1,6 @@
 ﻿using Octokit;
 using System;
 using System.Reflection;
-using System.Security.Policy;
 using Vajehyar.Properties;
 
 
@@ -9,8 +8,8 @@ namespace Vajehyar.Utility
 {
     public class GithuHelper
     {
-        private static string githubUserName = Settings.Default.GithubId;
-        private static string githubRepoName = Settings.Default.GithubRepo;
+        private static readonly string GithubUserName = Settings.Default.GithubId;
+        private static readonly string GithubRepoName = Settings.Default.GithubRepo;
 
         public static bool HasNewRelease
         {
@@ -19,7 +18,7 @@ namespace Vajehyar.Utility
                 try
                 {
                     GitHubClient client = new GitHubClient(new ProductHeaderValue("App"));
-                    Release latestRelease = client.Repository.Release.GetLatest(githubUserName, githubRepoName).Result;
+                    Release latestRelease = client.Repository.Release.GetLatest(GithubUserName, GithubRepoName).Result;
                     Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
                     Version latestVersion = new Version(latestRelease.TagName);
 
@@ -30,7 +29,7 @@ namespace Vajehyar.Utility
 
                     return true;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     return false;
                 }

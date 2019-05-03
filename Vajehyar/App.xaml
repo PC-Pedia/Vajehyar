@@ -7,7 +7,7 @@
 
     <Application.Resources>
 
-        <WindowStartupLocation x:Key="WSL">CenterScreen</WindowStartupLocation>
+        <WindowStartupLocation x:Key="Wsl">CenterScreen</WindowStartupLocation>
         <BooleanToVisibilityConverter x:Key="BoolToVis" />
         <FontFamily x:Key="IranSans">pack://application:,,,/Resources/Fonts/#IRANSans</FontFamily>
         <FontFamily x:Key="IranSansNum">pack://application:,,,/Resources/Fonts/#IRANSans(FaNum)</FontFamily>

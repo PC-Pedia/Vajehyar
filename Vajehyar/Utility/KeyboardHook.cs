@@ -11,9 +11,9 @@ namespace Vajehyar.Utility
         private int hHook;
         private Win32Api.HookProc KeyboardHookDelegate;
 
-        public event System.Windows.Forms.KeyEventHandler OnKeyDownEvent;
+        public event KeyEventHandler OnKeyDownEvent;
 
-        public event System.Windows.Forms.KeyEventHandler OnKeyUpEvent;
+        public event KeyEventHandler OnKeyUpEvent;
 
         public event KeyPressEventHandler OnKeyPressEvent;
 
@@ -24,13 +24,13 @@ namespace Vajehyar.Utility
         public void SetHook()
 
         {
-            KeyboardHookDelegate = new Win32Api.HookProc(KeyboardHookProc);
+            KeyboardHookDelegate = KeyboardHookProc;
 
             Process cProcess = Process.GetCurrentProcess();
 
             ProcessModule cModule = cProcess.MainModule;
 
-            IntPtr mh = Win32Api.GetModuleHandle(cModule.ModuleName);
+            IntPtr mh = Win32Api.GetModuleHandle(cModule?.ModuleName);
 
             hHook = Win32Api.SetWindowsHookEx(Win32Api.WH_KEYBOARD_LL, KeyboardHookDelegate, mh, 0);
         }
@@ -41,7 +41,7 @@ namespace Vajehyar.Utility
             Win32Api.UnhookWindowsHookEx(hHook);
         }
 
-        private List<Keys> preKeysList = new List<Keys>();
+        private readonly List<Keys> _preKeysList = new List<Keys>();
 
         private int KeyboardHookProc(int nCode, int wParam, IntPtr lParam)
 
@@ -59,10 +59,10 @@ namespace Vajehyar.Utility
                     (wParam == Win32Api.WM_KEYDOWN || wParam == Win32Api.WM_SYSKEYDOWN))
 
                 {
-                    if (IsCtrlAltShiftKeys(keyData) && preKeysList.IndexOf(keyData) == -1)
+                    if (IsCtrlAltShiftKeys(keyData) && _preKeysList.IndexOf(keyData) == -1)
 
                     {
-                        preKeysList.Add(keyData);
+                        _preKeysList.Add(keyData);
                     }
                 }
 
@@ -70,10 +70,10 @@ namespace Vajehyar.Utility
                 if (OnKeyDownEvent != null && (wParam == Win32Api.WM_KEYDOWN || wParam == Win32Api.WM_SYSKEYDOWN))
 
                 {
-                    System.Windows.Forms.KeyEventArgs e = new System.Windows.Forms.KeyEventArgs(GetDownKeys(keyData));
+                    KeyEventArgs e = new KeyEventArgs(GetDownKeys(keyData));
 
 
-                    OnKeyDownEvent(this, e);
+                    OnKeyDownEvent?.Invoke(this, e);
                 }
 
 
@@ -104,12 +104,12 @@ namespace Vajehyar.Utility
                     if (IsCtrlAltShiftKeys(keyData))
 
                     {
-                        for (int i = preKeysList.Count - 1; i >= 0; i--)
+                        for (int i = _preKeysList.Count - 1; i >= 0; i--)
 
                         {
-                            if (preKeysList[i] == keyData)
+                            if (_preKeysList[i] == keyData)
                             {
-                                preKeysList.RemoveAt(i);
+                                _preKeysList.RemoveAt(i);
                             }
                         }
                     }
@@ -119,9 +119,9 @@ namespace Vajehyar.Utility
                 if (OnKeyUpEvent != null && (wParam == Win32Api.WM_KEYUP || wParam == Win32Api.WM_SYSKEYUP))
 
                 {
-                    System.Windows.Forms.KeyEventArgs e = new System.Windows.Forms.KeyEventArgs(GetDownKeys(keyData));
+                    KeyEventArgs e = new KeyEventArgs(GetDownKeys(keyData));
 
-                    OnKeyUpEvent(this, e);
+                    OnKeyUpEvent?.Invoke(this, e);
                 }
             }
 
@@ -134,7 +134,7 @@ namespace Vajehyar.Utility
         {
             Keys rtnKey = Keys.None;
 
-            foreach (Keys i in preKeysList)
+            foreach (Keys i in _preKeysList)
 
             {
                 if (i == Keys.LControlKey || i == Keys.RControlKey)
