@@ -99,7 +99,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Grid>
+                        <Grid x:Name="root" RenderTransformOrigin="0.5,0.5">
                             <Ellipse
                                 x:Name="ellipse"
                                 Fill="White"
@@ -113,8 +113,11 @@
                                 <Setter TargetName="ellipse" Property="Opacity" Value="100" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="ellipse" Property="Height" Value="24" />
-                                <Setter TargetName="ellipse" Property="Width" Value="24" />
+                                <Setter TargetName="root" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.9" ScaleY="0.9" />
+                                    </Setter.Value>
+                                </Setter>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -132,16 +135,22 @@
                             x:Name="border"
                             Background="#FF52C752"
                             BorderBrush="AliceBlue"
-                            CornerRadius="15">
+                            CornerRadius="15"
+                            RenderTransformOrigin="0.5,0.5">
                             <ContentPresenter
                                 Margin="3"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center" />
                         </Border>
+
+
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="border" Property="Height" Value="23" />
-                                <Setter TargetName="border" Property="Width" Value="62" />
+                                <Setter TargetName="border" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.9" ScaleY="0.9" />
+                                    </Setter.Value>
+                                </Setter>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
