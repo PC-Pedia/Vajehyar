@@ -101,8 +101,10 @@
                             RequestNavigate="Hyperlink_OnRequestNavigate"
                             TextDecorations="">
                             kokabi1365@gmail.com
-                        </Hyperlink></TextBlock>
+                        </Hyperlink>
+                    </TextBlock>
                 </TextBlock>
+                <Button Style="{StaticResource ButtonStyle2}" Width="200" Height="25" FontSize="11.5" Content="در صورت تمایل از من حمایت کنید" Click="ButtonBase_OnClick"/>
             </StackPanel>
         </StackPanel>
 

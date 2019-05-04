@@ -56,9 +56,7 @@ namespace Vajehyar.Windows
 
         private void Hyperlink_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
         {
-            Close();
-            App app = ((App)Application.Current);
-            app.HideMainWindow();
+            MinimizeWindow();
             Process.Start(e.Uri.AbsoluteUri);
             e.Handled = true;
 
@@ -74,6 +72,20 @@ namespace Vajehyar.Windows
         private void NotifyPropertyChanged(string property)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
+        }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            MinimizeWindow();
+            Process.Start(Settings.Default.IDPay);
+            e.Handled = true;
+        }
+
+        private void MinimizeWindow()
+        {
+            Close();
+            App app = ((App)Application.Current);
+            app.HideMainWindow();
         }
     }
 }

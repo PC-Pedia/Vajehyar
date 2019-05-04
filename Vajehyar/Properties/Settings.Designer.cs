@@ -211,5 +211,17 @@ namespace Vajehyar.Properties {
                 this["UpdateUrl"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://idpay.ir/kokabi")]
+        public string IDPay {
+            get {
+                return ((string)(this["IDPay"]));
+            }
+            set {
+                this["IDPay"] = value;
+            }
+        }
     }
 }

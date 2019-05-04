@@ -50,5 +50,8 @@
     <Setting Name="UpdateUrl" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://github.com/kokabi1365/Vejehyar/releases</Value>
     </Setting>
+    <Setting Name="IDPay" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://idpay.ir/kokabi</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
