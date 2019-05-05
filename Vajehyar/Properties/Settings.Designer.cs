@@ -118,30 +118,6 @@ namespace Vajehyar.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int ContactLeftPos {
-            get {
-                return ((int)(this["ContactLeftPos"]));
-            }
-            set {
-                this["ContactLeftPos"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int ContactTopPos {
-            get {
-                return ((int)(this["ContactTopPos"]));
-            }
-            set {
-                this["ContactTopPos"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool FirstRun {
             get {
@@ -152,99 +128,57 @@ namespace Vajehyar.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool HasNewRelease {
-            get {
-                return ((bool)(this["HasNewRelease"]));
-            }
-            set {
-                this["HasNewRelease"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int LastRelease {
-            get {
-                return ((int)(this["LastRelease"]));
-            }
-            set {
-                this["LastRelease"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("kokabi1365")]
         public string GithubId {
             get {
                 return ((string)(this["GithubId"]));
             }
-            set {
-                this["GithubId"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Vajehyar")]
         public string GithubRepo {
             get {
                 return ((string)(this["GithubRepo"]));
             }
-            set {
-                this["GithubRepo"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/kokabi1365/Vejehyar/releases")]
         public string UpdateUrl {
             get {
                 return ((string)(this["UpdateUrl"]));
             }
-            set {
-                this["UpdateUrl"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("https://idpay.ir/kokabi")]
         public string IDPay {
             get {
                 return ((string)(this["IDPay"]));
             }
-            set {
-                this["IDPay"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/kokabi1365/Vejehyar")]
         public string GithubUrl {
             get {
                 return ((string)(this["GithubUrl"]));
             }
-            set {
-                this["GithubUrl"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("https://virgool.io/@kokabi")]
         public string VirgoolUrl {
             get {
                 return ((string)(this["VirgoolUrl"]));
-            }
-            set {
-                this["VirgoolUrl"] = value;
             }
         }
     }

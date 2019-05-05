@@ -31,13 +31,23 @@ namespace Vajehyar.Windows
             InitializeComponent();
 
             Version version = Assembly.GetEntryAssembly()?.GetName().Version;
-            CurrentVersion = version < new Version("1.0.0.0") ? "نسخۀ آزمایشی" : version?.ToString();
+            version=new Version(5,2,3,0);
+            CurrentVersion = version < new Version(1,0,0) ? "نسخۀ آزمایشی" : GetSemVer(version);
 
             if (Settings.Default.AboutLeftPos == 0 && Settings.Default.AboutTopPos == 0)
             {
                 WindowStartupLocation = WindowStartupLocation.CenterScreen;
             }
 
+        }
+
+        private string GetSemVer(Version ver)
+        {
+            int major = ver.Major;
+            int minor = ver.Minor;
+            int patch = ver.Build;
+
+            return $"{major}.{minor}.{patch}";
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

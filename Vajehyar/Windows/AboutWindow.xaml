@@ -62,7 +62,7 @@
                                     TextDecorations="{x:Null}">
                                     <Run Text=" " />
                                     <Run
-                                        FontSize="11"
+                                        FontSize="13"
                                         FontWeight="Bold"
                                         Text="{Binding Path=CurrentVersion}" />
                                 </Hyperlink>
@@ -100,7 +100,7 @@
                 FontSize="11.5"
                 Style="{StaticResource ButtonStyle2}" />
             <StackPanel
-                Margin="0,5,0,0"
+                Margin="0,10,0,0"
                 HorizontalAlignment="Center"
                 Orientation="Horizontal">
                 <Image
@@ -112,7 +112,7 @@
                     Style="{StaticResource ImageStyle}" />
                 <Image
                     x:Name="GithubIcon"
-                    Margin="10,0,12,0"
+                    Margin="10,0,10,0"
                     VerticalAlignment="Center"
                     MouseLeftButtonDown="GithubIcon_OnMouseLeftButtonDown"
                     Source="../Resources/Icons/Github-16.png"

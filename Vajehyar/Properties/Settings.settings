@@ -26,37 +26,25 @@
     <Setting Name="AboutTopPos" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="ContactLeftPos" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="ContactTopPos" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
     <Setting Name="FirstRun" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="HasNewRelease" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="LastRelease" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="GithubId" Type="System.String" Scope="User">
+    <Setting Name="GithubId" Type="System.String" Scope="Application">
       <Value Profile="(Default)">kokabi1365</Value>
     </Setting>
-    <Setting Name="GithubRepo" Type="System.String" Scope="User">
+    <Setting Name="GithubRepo" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Vajehyar</Value>
     </Setting>
-    <Setting Name="UpdateUrl" Type="System.String" Scope="User">
+    <Setting Name="UpdateUrl" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://github.com/kokabi1365/Vejehyar/releases</Value>
     </Setting>
-    <Setting Name="IDPay" Type="System.String" Scope="User">
+    <Setting Name="IDPay" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://idpay.ir/kokabi</Value>
     </Setting>
-    <Setting Name="GithubUrl" Type="System.String" Scope="User">
+    <Setting Name="GithubUrl" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://github.com/kokabi1365/Vejehyar</Value>
     </Setting>
-    <Setting Name="VirgoolUrl" Type="System.String" Scope="User">
+    <Setting Name="VirgoolUrl" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://virgool.io/@kokabi</Value>
     </Setting>
   </Settings>
