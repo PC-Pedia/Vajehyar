@@ -27,7 +27,7 @@
             <Setter Property="AllowsTransparency" Value="True" />
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="ShowInTaskbar" Value="False" />
-            <Setter Property="Topmost" Value="True" />
+           
             <Setter Property="Language" Value="fa-IR" />
             <Setter Property="Effect">
                 <Setter.Value>
@@ -156,6 +156,18 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+
+        <Style x:Key="ImageStyle" TargetType="Image">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect ShadowDepth="0" Color="DeepSkyBlue" Opacity="1" BlurRadius="5" Direction="360" RenderingBias="Quality"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
         <Style x:Key="RightRoundedButtonStyle" TargetType="Button">

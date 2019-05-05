@@ -54,14 +54,6 @@ namespace Vajehyar.Windows
             Close();
         }
 
-        private void Hyperlink_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
-        {
-            MinimizeWindow();
-            Process.Start(e.Uri.AbsoluteUri);
-            e.Handled = true;
-
-        }
-
         private void Version_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             Process.Start(Settings.Default.UpdateUrl);
@@ -86,6 +78,24 @@ namespace Vajehyar.Windows
             Close();
             App app = ((App)Application.Current);
             app.HideMainWindow();
+        }
+
+        private void EmailIcon_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("mailto:kokabi1365@gmail.com?subject=واژه‌یار");
+            e.Handled = true;
+        }
+
+        private void GithubIcon_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start(Settings.Default.GithubUrl);
+            e.Handled = true; 
+        }
+
+        private void VirgoolIcon_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start(Settings.Default.VirgoolUrl);
+            e.Handled = true;
         }
     }
 }

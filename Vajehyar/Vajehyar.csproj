@@ -208,5 +208,10 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Email-16.png" />
+    <Resource Include="Resources\Icons\Github-16.png" />
+    <Resource Include="Resources\Icons\Virgool-16.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

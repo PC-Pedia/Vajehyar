@@ -53,5 +53,11 @@
     <Setting Name="IDPay" Type="System.String" Scope="User">
       <Value Profile="(Default)">https://idpay.ir/kokabi</Value>
     </Setting>
+    <Setting Name="GithubUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://github.com/kokabi1365/Vejehyar</Value>
+    </Setting>
+    <Setting Name="VirgoolUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://virgool.io/@kokabi</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

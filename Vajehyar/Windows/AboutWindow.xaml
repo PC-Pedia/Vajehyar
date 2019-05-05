@@ -6,15 +6,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:properties="clr-namespace:Vajehyar.Properties"
     Title="About"
-    Width="494.445"
-    Height="507.412"
+    Width="446.445"
+    Height="523.412"
     DataContext="{Binding RelativeSource={RelativeSource Self}}"
     FontFamily="{StaticResource IranSans}"
     Left="{Binding Source={x:Static properties:Settings.Default}, Path=AboutLeftPos, Mode=TwoWay}"
     MouseDown="Window_MouseDown"
     Style="{StaticResource WindowStyle}"
     Top="{Binding Source={x:Static properties:Settings.Default}, Path=AboutTopPos, Mode=TwoWay}"
-    Topmost="true"
     mc:Ignorable="d">
 
     <Border Style="{StaticResource BorderStyle}">
@@ -31,7 +30,7 @@
                 Content="x"
                 Style="{StaticResource ButtonStyle1}" />
 
-            <StackPanel Height="500">
+            <StackPanel>
 
                 <StackPanel
                     Margin="0,15,23,0"
@@ -81,30 +80,49 @@
                     </StackPanel>
                 </StackPanel>
 
-
-
                 <TextBlock
-                    Width="408"
-                    Height="322"
-                    Margin="24,10,32,0"
+                    Width="374"
+                    Margin="16,10,26,0"
                     HorizontalAlignment="Center"
                     FlowDirection="RightToLeft"
                     LineHeight="19"
                     TextWrapping="Wrap"><Run
                         FontSize="14"
                         FontWeight="Bold"
-                        Text="واژه‌یار " /><Run Text="کتابخانه‌ای از واژگان فارسی است که نویسندگان و مترجمان را در یافتن معادل مناسب کلمات یاری می‌دهد. " /><LineBreak /><Run /><LineBreak /><Run Text="دادگان این برنامه مبتنی بر دو فرهنگ غنیِ فارسی است: اولی فرهنگ جامع واژگان مترادف و متضاد فارسی اثر فرج‌الله خداپرستی با بیش از 135000 واژه و دیگری فرهنگ طیفی زبان فارسی تألیف جمشید فراروی با بیش از 45000 لغت و عبارت مرکب که در طیف موضوعی وسیعی به معرفی لغات فارسی پرداخته است." /><LineBreak /><Run /><LineBreak /><Run FontWeight="Bold" Text="این برنامه " /><Run FontWeight="Bold" Text="دو مزیت عمده دارد: " /><LineBreak /><Run Text="نخست جستجوی در لحظه که همزمان با نوشتن هرآنچه بیابد نشان می‌دهد و دیگری جستجوی تمام متن که به خاطر محدود نبودن به مدخل‌ها، تعداد کلمات بیشتری خواهد یافت. امید که این برنامه، اهالی قلم را فایده " /><Run Text="رساند " /><Run Text="و در صیانت و احیای زبان فارسی قدمی کوچک بردارد." /><LineBreak /><Run /><LineBreak /><Run FontWeight="Bold" Text="طراحی و توسعه: سید ایوب کوکبی" /><LineBreak /><Run FontWeight="Bold" Text="ایمیل: " />
-                    <TextBlock VerticalAlignment="Center" FlowDirection="LeftToRight"><Hyperlink
-                            FontFamily="calibri"
-                            FontSize="15"
-                            NavigateUri="mailto:kokabi1365@gmail.com?subject=واژه‌یار"
-                            RequestNavigate="Hyperlink_OnRequestNavigate"
-                            TextDecorations="">
-                            kokabi1365@gmail.com
-                        </Hyperlink>
-                    </TextBlock>
-                </TextBlock>
-                <Button Style="{StaticResource ButtonStyle2}" Width="200" Height="25" FontSize="11.5" Content="در صورت تمایل از من حمایت کنید" Click="ButtonBase_OnClick"/>
+                        Text="واژه‌یار " /><Run Text="کتابخانه‌ای از " /><Run Text="واژگان" /><Run Text=" فارسی است که به راحتی می‌توانید مترادف هر کلمه را در آن بیابید" /><Run Text=". استفاده از این برنامه به مرور باعث " /><Run Text="آراستگیِ " /><Run Text="نگارش و افزایش دایرۀ لغات خواهد شد." /><LineBreak /><Run /><LineBreak /><Run Text="دادگان برنامه از " /><Run Text="دو فرهنگ غنیِ فارسی " /><Run Text="گرفته شده" /><Run Text=": اولی فرهنگ جامع واژگان مترادف و متضاد فارسی" /><Run Text=" نوشتۀ آقای" /><Run Text=" فرج‌الله خداپرستی" /><Run Text=" با" /><Run Text=" بیش از " /><Run Text="135000 " /><Run Text="لغت " /><Run Text="و دیگری فرهنگ طیفی زبان فارسی تألیف جمشید فراروی " /><Run Text="که چیزی حدودِ" /><Run Text=" 45000 " /><Run Text="واژه" /><Run Text=" در آن وجود دارد." /><Run Text=" " /><LineBreak /><Run /><LineBreak /><Run FontWeight="Bold" Text="این برنامه " /><Run FontWeight="Bold" Text="دو مزیت عمده دارد: " /><LineBreak /><Run Text="نخست جستجوی " /><Run Text="آنیِ کلمات" /><Run Text=" است" /><Run Text=" که همزمان " /><Run Text="با نوشتن هرآنچه بیابد نشان می‌دهد و دیگری جستجوی تمام متن که به خاطر محدود نبودن به مدخل‌ها، تعداد کلمات بیشتری خواهد یافت. امید که این برنامه اهالی قلم را فایده " /><Run Text="رساند " /><Run Text="و در صیانتِ " /><Run Text="از " /><Run Text="زبان فارسی " /><Run Text="قدم " /><Run Text="کوچکی" /><Run Text=" بردارد" /><Run Text="." /><LineBreak /><Run /><LineBreak /><Run FontWeight="Bold" Text="طراحی و توسعه: سید ایوب کوکبی" /></TextBlock>
+            </StackPanel>
+            <Button
+                Width="200"
+                Height="25"
+                Margin="0,25,0,0"
+                Click="ButtonBase_OnClick"
+                Content="در صورت تمایل از من حمایت کنید"
+                FontSize="11.5"
+                Style="{StaticResource ButtonStyle2}" />
+            <StackPanel
+                Margin="0,5,0,0"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <Image
+                    x:Name="VirgoolIcon"
+                    Margin="0,-2,0,0"
+                    VerticalAlignment="Center"
+                    MouseLeftButtonDown="VirgoolIcon_OnMouseLeftButtonDown"
+                    Source="../Resources/Icons/Virgool-16.png"
+                    Style="{StaticResource ImageStyle}" />
+                <Image
+                    x:Name="GithubIcon"
+                    Margin="10,0,12,0"
+                    VerticalAlignment="Center"
+                    MouseLeftButtonDown="GithubIcon_OnMouseLeftButtonDown"
+                    Source="../Resources/Icons/Github-16.png"
+                    Style="{StaticResource ImageStyle}" />
+                <Image
+                    x:Name="EmailIcon"
+                    VerticalAlignment="Center"
+                    MouseLeftButtonDown="EmailIcon_OnMouseLeftButtonDown"
+                    Source="../Resources/Icons/Email-16.png"
+                    Style="{StaticResource ImageStyle}" />
             </StackPanel>
         </StackPanel>
 

@@ -223,5 +223,29 @@ namespace Vajehyar.Properties {
                 this["IDPay"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/kokabi1365/Vejehyar")]
+        public string GithubUrl {
+            get {
+                return ((string)(this["GithubUrl"]));
+            }
+            set {
+                this["GithubUrl"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://virgool.io/@kokabi")]
+        public string VirgoolUrl {
+            get {
+                return ((string)(this["VirgoolUrl"]));
+            }
+            set {
+                this["VirgoolUrl"] = value;
+            }
+        }
     }
 }
