@@ -2,7 +2,7 @@
 
 
 
-![](C:\Users\Ayub\source\repos\Vajehyar\Usage.gif)
+![](Usage.gif)
 
 
 
