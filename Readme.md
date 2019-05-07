@@ -6,12 +6,12 @@
 
 
 
-Using paper dictionaries for day-to-day looking up words is like a nightmare. You need a fast way to find words. Vajehyar is an intuitive, minimal and efficient dictionary to find synonyms of Persian words in realtime. Just you need to download [last release](https://github.com/kokabi1365/Vajehyar/releases) and find whatever you want among **183000** words.
+Using paper dictionaries for day-to-day looking up words is like a nightmare. You need a fast way to find words. Vajehyar is an intuitive, minimal and efficient dictionary to find synonyms of Persian words in real time. Just you need to download [last release](https://github.com/kokabi1365/Vajehyar/releases) and find whatever you want among **183,000** words.
 
-Vajehyar designed to be fast and lightweight and uses two popular dictionaries as it's core database:
+Vajehyar designed to be fast and lightweight and uses two popular dictionaries as its core database:
 
 1. **A Comprehensive Dictionary of Persian Synonyms & Antonyms****, written by farajollah khodaparasti with more than 135000 thousand words;
-2. [**The Thesaurus of Persian Words**](https://fa.wikipedia.org/wiki/%D9%81%D8%B1%D9%87%D9%86%DA%AF_%D8%B7%DB%8C%D9%81%DB%8C)**, written by Jamshyd Fararooy with around 45000 words.
+2. [**The Thesaurus of Persian Words**](https://fa.wikipedia.org/wiki/%D9%81%D8%B1%D9%87%D9%86%DA%AF_%D8%B7%DB%8C%D9%81%DB%8C)**, written by Jamshyd Fararooy with around 45,000 words.
 
 
 
@@ -27,11 +27,13 @@ This application is portable and tries to remain so. The installer is just for c
 
 
 
-## Please, avoid selling this app!
+## Contributing
 
-I welcome anyone to contribute to this project, but I hope you be kind enough to avoid simply changing donation link and republish or worse than that sell it as a commercial app. That's not why I'm sharing the source code, at all.
+I welcome anyone to contribute to this project for fixing bugs or add new features, but I hope you be kind enough to avoid simply changing donation link and republish for yourself or worse than that sell it as a commercial app. That's not why I'm sharing the source code, at all.
 
-Further explanation on virgool
+<div dir="rtl">
+توضیحات به زبان فارسی
+</div>
 
 
 
