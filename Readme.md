@@ -23,7 +23,7 @@ For windows 10 you don't need any prerequisites; but for older versions you shou
 
 ## Installation & Usage
 
-This application is portable and tries to remain so. The installer is just for convenience and ease of things (Copy application to program files, making shortcuts and that sort of thing). As a default you can open the app by **Alt+Shift+V** anywhere in windows and It's possible to change this shortcut from settings.
+This application is portable and tries to remain so. The installer is just for convenience and ease of things (copy application to program files, making shortcuts and these sort of thing). By pressing **Alt+Shift+V** from anywhere in windows you can launch the app. This shortcut is changable in settings.
 
 
 
