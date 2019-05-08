@@ -6,7 +6,7 @@
 
 
 
-Using paper dictionaries for day-to-day looking up words is like a nightmare. You need a fast way to find words. Vajehyar is an intuitive, minimal and efficient dictionary to find synonyms of Persian words in real time. All you need is downloading [last release](https://github.com/kokabi1365/Vajehyar/releases) and find whatever you want among **183,000** words.
+Using paper dictionaries for day-to-day looking up of words is like a nightmare. Vajehyar is an intuitive, minimal and efficient dictionary to find synonyms of Persian words in real time. All you need is downloading [last release](https://github.com/kokabi1365/Vajehyar/releases) of this app and find whatever you want among **183,000** words.
 
 Vajehyar designed to be fast and lightweight and uses two popular dictionaries as its core database:
 
@@ -14,17 +14,14 @@ Vajehyar designed to be fast and lightweight and uses two popular dictionaries a
 2. [**The Thesaurus of Persian Words**](https://fa.wikipedia.org/wiki/%D9%81%D8%B1%D9%87%D9%86%DA%AF_%D8%B7%DB%8C%D9%81%DB%8C)**, written by Jamshyd Fararooy with around 45,000 words.
 
 
-
 ## Requirements
 
 For windows 10 you don't need any prerequisites; but for older versions you should install [.net 4.6 or above](https://soft98.ir/software/209-Microsoft-NET-Framework.html).
 
 
-
 ## Installation & Usage
 
-This application is portable and tries to remain so. The installer is just for convenience and ease of things (copy application to program files, making shortcuts and these sort of thing). By pressing **Alt+Shift+V** from anywhere in windows you can launch the app. This shortcut is changable in settings.
-
+This application is portable and tries to remain so. The supplied installer is just for convenience and ease of things (copy application to program files, making shortcuts and these sort of thing). By pressing **Alt+Shift+V** from anywhere in windows you can launch the app and by **Esc** window will be closed. This shortcut is changable in settings.
 
 
 ## Contributing
