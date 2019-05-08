@@ -6,7 +6,7 @@
 
 
 
-Using paper dictionaries for day-to-day looking up of words is like a nightmare. Vajehyar is an intuitive, minimal and efficient dictionary to find synonyms of Persian words in real time. **It's the first and largest Persian-language thesaurus dictionary.** All you need is downloading [last release](https://github.com/kokabi1365/Vajehyar/releases) of this app and find whatever you want among **183,000** words.
+Using paper dictionaries for day-to-day looking up of words is like a nightmare. Vajehyar is an intuitive, minimal and efficient dictionary to find synonyms of Persian words in real time. **It's the first and largest Persian-language thesaurus dictionary.** All you need to do is downloading [last release](https://github.com/kokabi1365/Vajehyar/releases) of this app and find whatever you want among **183,000** words.
 
 Vajehyar designed to be fast and lightweight and uses two popular dictionaries as its core database:
 
