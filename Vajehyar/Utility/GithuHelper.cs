@@ -19,10 +19,10 @@ namespace Vajehyar.Utility
                 {
                     GitHubClient client = new GitHubClient(new ProductHeaderValue("App"));
                     Release latestRelease = client.Repository.Release.GetLatest(GithubUserName, GithubRepoName).Result;
-                    Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
                     Version latestVersion = new Version(latestRelease.TagName);
+                    Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
 
-                    if (currentVersion > latestVersion)
+                    if (currentVersion >= latestVersion)
                     {
                         return false;
                     }
