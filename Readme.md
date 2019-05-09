@@ -28,6 +28,10 @@ This application is portable and tries to remain so. The supplied installer is j
 
 I welcome anyone to contribute to this project for fixing bugs or add new features, but I hope you be kind enough to avoid simply changing donation link and republish for yourself or worse than that sell it as a commercial app. That's not why I'm sharing the source code, at all.
 
+## Donation
+
+You can support me by donating via [**ID**Pay](https://idpay.ir/kokabi)
+
 <div dir="rtl">
 توضیحات به زبان فارسی
 </div>
