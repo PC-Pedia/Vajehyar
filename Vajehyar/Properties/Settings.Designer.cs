@@ -148,7 +148,7 @@ namespace Vajehyar.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/kokabi1365/Vejehyar/releases")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/kokabi1365/Vajehyar/releases")]
         public string UpdateUrl {
             get {
                 return ((string)(this["UpdateUrl"]));
@@ -166,7 +166,7 @@ namespace Vajehyar.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/kokabi1365/Vejehyar")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://github.com/kokabi1365/Vajehyar")]
         public string GithubUrl {
             get {
                 return ((string)(this["GithubUrl"]));

@@ -31,7 +31,6 @@ namespace Vajehyar.Windows
             InitializeComponent();
 
             Version version = Assembly.GetEntryAssembly()?.GetName().Version;
-            version=new Version(5,2,3,0);
             CurrentVersion = version < new Version(1,0,0) ? "نسخۀ آزمایشی" : GetSemVer(version);
 
             if (Settings.Default.AboutLeftPos == 0 && Settings.Default.AboutTopPos == 0)

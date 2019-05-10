@@ -36,13 +36,13 @@
       <Value Profile="(Default)">Vajehyar</Value>
     </Setting>
     <Setting Name="UpdateUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://github.com/kokabi1365/Vejehyar/releases</Value>
+      <Value Profile="(Default)">https://github.com/kokabi1365/Vajehyar/releases</Value>
     </Setting>
     <Setting Name="IDPay" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://idpay.ir/kokabi</Value>
     </Setting>
     <Setting Name="GithubUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://github.com/kokabi1365/Vejehyar</Value>
+      <Value Profile="(Default)">https://github.com/kokabi1365/Vajehyar</Value>
     </Setting>
     <Setting Name="VirgoolUrl" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://virgool.io/@kokabi</Value>
