@@ -22,12 +22,7 @@ namespace Vajehyar.Utility
                     Version latestVersion = new Version(latestRelease.TagName);
                     Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
 
-                    if (currentVersion >= latestVersion)
-                    {
-                        return false;
-                    }
-
-                    return true;
+                    return latestVersion > currentVersion;
                 }
                 catch (Exception)
                 {
