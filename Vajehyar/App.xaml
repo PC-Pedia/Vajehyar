@@ -23,11 +23,12 @@
 
         <Style x:Key="WindowStyle" TargetType="Window">
             <Setter Property="WindowStyle" Value="None" />
+            <Setter Property="Topmost" Value="True" />
             <Setter Property="ResizeMode" Value="NoResize" />
             <Setter Property="AllowsTransparency" Value="True" />
             <Setter Property="Background" Value="Transparent" />
             <Setter Property="ShowInTaskbar" Value="False" />
-           
+
             <Setter Property="Language" Value="fa-IR" />
             <Setter Property="Effect">
                 <Setter.Value>
@@ -163,7 +164,13 @@
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Effect">
                         <Setter.Value>
-                            <DropShadowEffect ShadowDepth="0" Color="DeepSkyBlue" Opacity="1" BlurRadius="5" Direction="360" RenderingBias="Quality"/>
+                            <DropShadowEffect
+                                BlurRadius="5"
+                                Direction="360"
+                                Opacity="1"
+                                RenderingBias="Quality"
+                                ShadowDepth="0"
+                                Color="DeepSkyBlue" />
                         </Setter.Value>
                     </Setter>
                 </Trigger>
