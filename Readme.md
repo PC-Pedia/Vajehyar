@@ -19,7 +19,7 @@ For windows 10 you don't need any prerequisites; but for older versions you shou
 
 ## Installation & Usage
 
-This application is portable and tries to remain so. The supplied installer is just for convenience and ease of things (copy the application to program files, making shortcuts and these sort of thing). For launching app just press **Alt+Shift+V** from anywhere in windows and press **Esc** to close window. You can change this shortcut from settings.
+This application is portable and tries to remain so. For launching app just press **Alt+Shift+V** from anywhere in windows and press **Esc** to minimize app to tray. You can change this shortcut from settings.
 
 
 ## Contributing
