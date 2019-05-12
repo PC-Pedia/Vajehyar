@@ -12,6 +12,7 @@ using System.Windows.Media.Animation;
 using Vajehyar.Properties;
 using Vajehyar.Utility;
 using KeyEventArgs = System.Windows.Input.KeyEventArgs;
+using MessageBox = System.Windows.MessageBox;
 
 namespace Vajehyar.Windows
 {
@@ -53,7 +54,6 @@ namespace Vajehyar.Windows
         public MainWindow(Database database)
         {
             InitializeComponent();
-
             Lines = CollectionViewSource.GetDefaultView(database.Lines);
             Lines.Filter = FilterResult;
             Hint = $"جستجوی فارسی بین {database.GetCount().Round().Format()} واژه";
@@ -120,6 +120,16 @@ namespace Vajehyar.Windows
         {
             FilterString = txtSearch.Text;
 
+        }
+
+        private bool isShown;
+        protected override void OnContentRendered(EventArgs e)
+        {
+            base.OnContentRendered(e);
+
+            if (isShown)
+                return;
+            Keyboard.Focus(txtSearch);
         }
 
         private void Window_Closing(object sender, CancelEventArgs e)
@@ -203,5 +213,12 @@ namespace Vajehyar.Windows
                 txtSearch.SelectionLength = 0;
             }
         }
+
+        private void MainWindow_OnDeactivated(object sender, EventArgs e)
+        {
+            Hide();
+            WindowState = WindowState.Minimized;
+        }
+        
     }
 }

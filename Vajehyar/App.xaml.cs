@@ -6,11 +6,14 @@ using System.Reflection;
 using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
+using System.Windows.Input;
 using Microsoft.Win32;
 using Vajehyar.Properties;
 using Vajehyar.Utility;
 using Vajehyar.Windows;
 using ContextMenu = System.Windows.Controls.ContextMenu;
+using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
+using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 
 namespace Vajehyar
 {
@@ -172,14 +175,12 @@ namespace Vajehyar
             _contextMenu.IsOpen = false;
             _mainWindow.WindowState = WindowState.Normal;
             _mainWindow.Datagrid.UnselectAllCells();
-            _mainWindow.Show();
-            _mainWindow.Focus();
             _mainWindow.txtSearch.SelectAll();
-            _mainWindow.txtSearch.Focus();
-
+            _mainWindow.Show();
+            _mainWindow.Activate();
         }
         #endregion
-
+        
         #region Exit tasks
         private void App_OnExit(object sender, ExitEventArgs e)
         {
