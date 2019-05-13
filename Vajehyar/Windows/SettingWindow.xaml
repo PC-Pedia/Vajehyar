@@ -7,7 +7,7 @@
     xmlns:properties="clr-namespace:Vajehyar.Properties"
     Title="SettingsWindow"
     Width="392"
-    Height="268"
+    Height="285"
     FontFamily="{StaticResource IranSans}"
     Left="{Binding Source={x:Static properties:Settings.Default}, Path=SettingLeftPos, Mode=TwoWay}"
     MouseDown="SettingWindow_OnMouseDown"
@@ -40,6 +40,14 @@
                 Style="{StaticResource SliderCheckBox}" />
 
             <CheckBox
+                Name="CheckUpdate"
+                Margin="0,5,15,0"
+                Content="چک کردن بروزرسانی هنگام شروع برنامه"
+                FlowDirection="RightToLeft"
+                IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=CheckUpdate, Mode=TwoWay}"
+                Style="{StaticResource SliderCheckBox}" />
+
+            <CheckBox
                 Name="DisplayCheckBox"
                 Margin="0,5,15,0"
                 Content="شروع برنامه به صورت کمینه"
@@ -61,13 +69,13 @@
                 <TextBox
                     Name="textBox"
                     Width="200"
+                    Height="23"
                     Padding="10,0"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                     FlowDirection="LeftToRight"
-                    FontSize="13"
-                    Height="23"
                     FontFamily="calibri"
+                    FontSize="13"
                     FontWeight="Light"
                     Foreground="DimGray"
                     PreviewKeyDown="TextBox_OnPreviewKeyDown"

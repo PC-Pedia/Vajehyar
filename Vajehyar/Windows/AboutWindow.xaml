@@ -95,6 +95,7 @@
                 Width="200"
                 Height="25"
                 Margin="0,25,0,0"
+                Background="LightGreen"
                 Click="ButtonBase_OnClick"
                 Content="در صورت تمایل از من حمایت کنید"
                 FontSize="11.5"

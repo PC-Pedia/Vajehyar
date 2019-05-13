@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using Vajehyar.Properties;
+using Vajehyar.Utility;
 
 namespace Vajehyar.Windows
 {
@@ -31,7 +32,7 @@ namespace Vajehyar.Windows
             InitializeComponent();
 
             Version version = Assembly.GetEntryAssembly()?.GetName().Version;
-            CurrentVersion = version < new Version(1,0,0) ? "نسخۀ آزمایشی" : GetSemVer(version);
+            CurrentVersion = version.IsBeta() ? "نسخۀ آزمایشی" : GetSemVer(version);
 
             if (Settings.Default.AboutLeftPos == 0 && Settings.Default.AboutTopPos == 0)
             {

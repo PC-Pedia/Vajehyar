@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media.Animation;
 using Vajehyar.Properties;
 using Vajehyar.Utility;
+using Application = System.Windows.Forms.Application;
 using KeyEventArgs = System.Windows.Input.KeyEventArgs;
 using MessageBox = System.Windows.MessageBox;
 
@@ -23,18 +24,6 @@ namespace Vajehyar.Windows
     {
         private string _filterString;
         private string _str;
-
-        private bool _hasNewRelease;
-
-        public bool HasNewRelease
-        {
-            get => _hasNewRelease;
-            set
-            {
-                _hasNewRelease = value;
-                NotifyPropertyChanged("HasNewRelease");
-            }
-        }
 
         private ICollectionView _lines;
         public ICollectionView Lines
@@ -57,11 +46,13 @@ namespace Vajehyar.Windows
             Lines = CollectionViewSource.GetDefaultView(database.Lines);
             Lines.Filter = FilterResult;
             Hint = $"جستجوی فارسی بین {database.GetCount().Round().Format()} واژه";
+            CheckUpdate();
+        }
 
-            Task.Run(() =>
-            {
-                HasNewRelease = GithuHelper.HasNewRelease;
-            });
+        private async void CheckUpdate()
+        {
+            if (Settings.Default.CheckUpdate)
+                await GithubHelper.CheckUpdate();
         }
 
         public string FilterString

@@ -47,5 +47,8 @@
     <Setting Name="VirgoolUrl" Type="System.String" Scope="Application">
       <Value Profile="(Default)">https://virgool.io/@kokabi</Value>
     </Setting>
+    <Setting Name="CheckUpdate" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

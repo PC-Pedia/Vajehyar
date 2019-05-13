@@ -6,10 +6,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="MainWindow"
     Width="650"
-    Height="417"
-    Deactivated="MainWindow_OnDeactivated"
+    Height="410"
     Closing="Window_Closing"
     DataContext="{Binding RelativeSource={RelativeSource Self}}"
+    Deactivated="MainWindow_OnDeactivated"
     FocusManager.FocusedElement="{Binding ElementName=txtSearch}"
     FontFamily="tahoma"
     MouseDown="Window_MouseDown"
@@ -154,8 +154,8 @@
                         EnableRowVirtualization="True"
                         FlowDirection="RightToLeft"
                         HeadersVisibility="None"
-                        HorizontalScrollBarVisibility="Hidden"
                         HorizontalGridLinesBrush="White"
+                        HorizontalScrollBarVisibility="Hidden"
                         ItemsSource="{Binding Lines}"
                         RowBackground="#FFCAEDFF"
                         SelectionMode="Single"
@@ -187,17 +187,6 @@
                         </DataGrid.Background>
                     </DataGrid>
                 </Border>
-                <Button
-                    Width="150"
-                    Margin="0,5,0,5"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Background="#FFE0F3FB"
-                    Click="UpdateButton_OnClick"
-                    Content="دریافت نسخۀ جدید برنامه"
-                    FontSize="11"
-                    Style="{StaticResource ButtonStyle2}"
-                    Visibility="{Binding Path=HasNewRelease, Converter={StaticResource BoolToVis}}" />
             </StackPanel>
         </StackPanel>
     </Border>
