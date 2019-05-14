@@ -19,5 +19,18 @@ namespace Vajehyar.Utility
         {
             return version<new Version(1,0,0);
         }
+
+        /// <summary>
+        /// Return Sem Version: x.y.z
+        /// </summary>
+        /// <param name="ver"></param>
+        /// <returns></returns>
+        public static string ToSemVersion(this Version ver)
+        {
+            int major = ver.Major;
+            int minor = ver.Minor;
+            int patch = ver.Build;
+            return $"{major}.{minor}.{patch}";
+        }
     }
 }

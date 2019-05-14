@@ -32,7 +32,8 @@ namespace Vajehyar.Windows
             InitializeComponent();
 
             Version version = Assembly.GetEntryAssembly()?.GetName().Version;
-            CurrentVersion = version.IsBeta() ? "نسخۀ آزمایشی" : GetSemVer(version);
+            
+            CurrentVersion = version.IsBeta() ? $"{version.ToSemVersion()} (آزمایشی)" : version?.ToSemVersion();
 
             if (Settings.Default.AboutLeftPos == 0 && Settings.Default.AboutTopPos == 0)
             {
@@ -41,14 +42,7 @@ namespace Vajehyar.Windows
 
         }
 
-        private string GetSemVer(Version ver)
-        {
-            int major = ver.Major;
-            int minor = ver.Minor;
-            int patch = ver.Build;
-
-            return $"{major}.{minor}.{patch}";
-        }
+       
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
