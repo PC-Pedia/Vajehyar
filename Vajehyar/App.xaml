@@ -3,7 +3,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Exit="App_OnExit"
-    Startup="App_Startup">
+    Startup="App_Startup"
+    DispatcherUnhandledException="App_OnDispatcherUnhandledException">
 
     <Application.Resources>
 

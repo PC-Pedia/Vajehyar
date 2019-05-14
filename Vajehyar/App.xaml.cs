@@ -7,12 +7,14 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Windows.Threading;
 using Microsoft.Win32;
 using Vajehyar.Properties;
 using Vajehyar.Utility;
 using Vajehyar.Windows;
 using ContextMenu = System.Windows.Controls.ContextMenu;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
+using MessageBox = System.Windows.MessageBox;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 
 namespace Vajehyar
@@ -174,10 +176,11 @@ namespace Vajehyar
         {
             _contextMenu.IsOpen = false;
             _mainWindow.WindowState = WindowState.Normal;
+            _mainWindow.Activate();
+            _mainWindow.Show();
             _mainWindow.Datagrid.UnselectAllCells();
             _mainWindow.txtSearch.SelectAll();
-            _mainWindow.Show();
-            _mainWindow.Activate();
+            _mainWindow.txtSearch.Focus();
         }
         #endregion
         
@@ -202,7 +205,14 @@ namespace Vajehyar
 
             var value = Assembly.GetExecutingAssembly().Location + " " + Settings.Default.StartupArgument;
             key?.SetValue(_appName, value);
-        } 
+        }
         #endregion
+       
+        private void App_OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            string errorMessage = string.Format("An unhandled exception occurred: {0}", e.Exception.Message);
+            MessageBox.Show(errorMessage, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            Environment.Exit(-1);
+        }
     }
 }
