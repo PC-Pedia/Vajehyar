@@ -32,9 +32,7 @@ I welcome anyone to contribute to this project for fixing bugs or add new featur
 ---
 **You can support me by [donating via IDPay](https://idpay.ir/kokabi)**
 
-<div dir="rtl">
 [توضیحات فارسی در ویرگول](https://virgool.io/@kokabi/vajehyar-bgyys49ibopb)
-</div>
 
 
 
