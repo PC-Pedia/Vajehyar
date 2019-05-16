@@ -1,6 +1,6 @@
 # Vajehyar
 
-
+![GitHub All Releases](https://img.shields.io/github/downloads/kokabi1365/Vajehyar/total.svg)
 
 ![](Usage.gif)
 
