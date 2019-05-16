@@ -2,6 +2,7 @@
 
 ![GitHub All Releases](https://img.shields.io/github/downloads/kokabi1365/Vajehyar/total.svg)
 ![GitHub release](https://img.shields.io/github/release/kokabi1365/Vajehyar.svg)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/c2c5d01e88244f4db8900f976dc80fff)](https://www.codacy.com/app/kokabi1365/Vajehyar?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kokabi1365/Vajehyar&amp;utm_campaign=Badge_Grade)
 
 
 ![](Usage.gif)
