@@ -18,7 +18,7 @@ Vajehyar designed to be fast and lightweight and It uses two popular dictionarie
 
 ## Requirements
 
-For windows 10 you don't need any prerequisites; but for older versions you should install [.net 4.6 or above](https://soft98.ir/software/209-Microsoft-NET-Framework.html).
+For windows 10 you don't need any prerequisites; but for older versions you should install [.net 4.6 or above](https://www.microsoft.com/en-us/download/details.aspx?id=53344).
 
 ## Installation & Usage
 
