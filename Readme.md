@@ -22,7 +22,7 @@ Vajehyar designed to be fast and lightweight and It uses two popular dictionarie
 
 This application is portable and tries to remain so. For launching app just press **Alt+Shift+V** from anywhere in windows and press **Esc** to minimize app to tray. You can change this shortcut from settings.
 
-**Please note that on windows lower than windows 10 you have to install [.net 4.6 or above](https://www.microsoft.com/en-us/download/details.aspx?id=53344).**
+**Please note that on Windows lower than Windows 10 you have to install [.net 4.6 or above](https://www.microsoft.com/en-us/download/details.aspx?id=53344).**
 
 
 ## Contributing
