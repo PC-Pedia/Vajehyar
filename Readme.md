@@ -1,5 +1,7 @@
 # Vajehyar
 
+[**برنامه را از اینجا دانلود کنید**] (https://github.com/kokabi1365/Vajehyar/releases/latest)
+
 ![GitHub All Releases](https://img.shields.io/github/downloads/kokabi1365/Vajehyar/total.svg)
 ![GitHub release](https://img.shields.io/github/release/kokabi1365/Vajehyar.svg)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c2c5d01e88244f4db8900f976dc80fff)](https://www.codacy.com/app/kokabi1365/Vajehyar?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kokabi1365/Vajehyar&amp;utm_campaign=Badge_Grade)
@@ -16,13 +18,11 @@ Vajehyar designed to be fast and lightweight and It uses two popular dictionarie
 1. **A Comprehensive Dictionary of Persian Synonyms & Antonyms****, written by farajollah khodaparasti with more than 135000 thousand words;
 2. [**The Thesaurus of Persian Words**](https://fa.wikipedia.org/wiki/%D9%81%D8%B1%D9%87%D9%86%DA%AF_%D8%B7%DB%8C%D9%81%DB%8C)**, written by Jamshyd Fararooy with around 45,000 words.
 
-## Requirements
-
-For windows 10 you don't need any prerequisites; but for older versions you should install [.net 4.6 or above](https://www.microsoft.com/en-us/download/details.aspx?id=53344).
-
 ## Installation & Usage
 
 This application is portable and tries to remain so. For launching app just press **Alt+Shift+V** from anywhere in windows and press **Esc** to minimize app to tray. You can change this shortcut from settings.
+
+Please note that For windows 10 you don't need any prerequisites; but for older versions you have to install [.net 4.6 or above](https://www.microsoft.com/en-us/download/details.aspx?id=53344).
 
 
 ## Contributing
