@@ -121,12 +121,7 @@ namespace Vajehyar.Windows
             if (isShown)
                 return;
             Keyboard.Focus(txtSearch);
-        }
-
-        private void Window_Closing(object sender, CancelEventArgs e)
-        {
-
-        }
+        }       
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -203,13 +198,7 @@ namespace Vajehyar.Windows
                 txtSearch.SelectionStart = txtSearch.Text.Length;
                 txtSearch.SelectionLength = 0;
             }
-        }
-
-        private void MainWindow_OnDeactivated(object sender, EventArgs e)
-        {
-            Hide();
-            WindowState = WindowState.Minimized;
-        }
+        }      
         
     }
 }
