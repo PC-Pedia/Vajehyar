@@ -4,14 +4,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
     xmlns:properties="clr-namespace:Vajehyar.Properties"
     Title="SettingsWindow"
-    Width="392"
-    Height="335"
+    Width="491"
+    Height="440"
     FontFamily="{StaticResource IranSans}"
     Left="{Binding Source={x:Static properties:Settings.Default}, Path=SettingLeftPos, Mode=TwoWay}"
     MouseDown="SettingWindow_OnMouseDown"
-    PreviewKeyDown="SettingWindow_OnPreviewKeyDown"
     Style="{StaticResource WindowStyle}"
     Top="{Binding Source={x:Static properties:Settings.Default}, Path=SettingTopPos, Mode=TwoWay}"
     mc:Ignorable="d">
@@ -40,14 +40,6 @@
                 Style="{StaticResource SliderCheckBox}" />
 
             <CheckBox
-                Name="CheckUpdate"
-                Margin="0,5,15,0"
-                Content="چک کردن بروزرسانی هنگام شروع برنامه"
-                FlowDirection="RightToLeft"
-                IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=CheckUpdate, Mode=TwoWay}"
-                Style="{StaticResource SliderCheckBox}" />
-
-            <CheckBox
                 Name="DisplayCheckBox"
                 Margin="0,5,15,0"
                 Content="شروع برنامه به صورت کمینه"
@@ -55,116 +47,99 @@
                 IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=StartMinimized, Mode=TwoWay}"
                 Style="{StaticResource SliderCheckBox}" />
 
+            <CheckBox
+                Name="CheckUpdate"
+                Margin="0,5,15,0"
+                Content="چک کردن بروزرسانی هنگام شروع برنامه"
+                FlowDirection="RightToLeft"
+                IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=CheckUpdate, Mode=TwoWay}"
+                Style="{StaticResource SliderCheckBox}" />
+
+            <GroupBox Margin="0,20,0,0" Width="350" Padding="10" FlowDirection="RightToLeft">
+                <GroupBox.Header>
+                    <TextBlock Text="تنظیم کلید میانبر " FontWeight="Bold"/> 
+                </GroupBox.Header>
+                <GroupItem>
+                    <StackPanel>
+                        <TextBlock
+                            Margin="0,0,0,5"
+                            TextWrapping="Wrap"
+                            HorizontalAlignment="Center"
+                            FlowDirection="RightToLeft"
+                            Text="در کادر پایین کلید میانبر دلخواهتان را فشار دهید:" />
+
+                        <TextBox
+                            Name="textBox"
+                            Width="205"
+                            Height="23"
+                            Padding="10,0"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            FlowDirection="LeftToRight"
+                            FontFamily="calibri"
+                            FontSize="13"
+                            FontWeight="Light"
+                            Foreground="DimGray"
+                            KeyDown="TextBox_OnKeyDown"
+                            Text="{Binding Source={x:Static properties:Settings.Default}, Path=ShortcutKey, Mode=TwoWay}">
+                        </TextBox>
+                    </StackPanel>
+                </GroupItem>
+            </GroupBox>
+
             <StackPanel
                 Margin="0,20,0,0"
                 HorizontalAlignment="Center"
-                Orientation="Vertical">
+                >
 
-                <TextBlock
-                    Margin="0,0,0,5"
-                    HorizontalAlignment="Center"
-                    FlowDirection="RightToLeft"
-                    Text="کلید میانبر را در کادر پایین وارد کنید:" />
+                <GroupBox Width="350" Padding="10" FlowDirection="RightToLeft">
+                    <GroupBox.Header>
+                        <TextBlock Text="انتخاب فونت " FontWeight="Bold"/>
+                    </GroupBox.Header>
+                    <GroupItem>
+                        <StackPanel Orientation="Horizontal">
+                            <ComboBox
+                                Width="150"
+                                Margin="0,12,0,0"
+                                Height="23"
+                                IsTextSearchEnabled="True"
+                                IsTextSearchCaseSensitive="False"
+                                Padding="10,0"
+                                FlowDirection="LeftToRight"
+                                FontFamily="calibri thin"
+                                FontSize="12"
+                                Foreground="DimGray"
+                                FontWeight="Thin"
+                                Style="{StaticResource ComboBoxFlatStyle}"
+                                ItemsSource="{Binding Source={x:Static Fonts.SystemFontFamilies}}"
+                                Text="{Binding Source={x:Static properties:Settings.Default}, Path=Font, Mode=OneWay}"
+                                SelectedItem="{Binding Source={x:Static properties:Settings.Default}, Path=Font, Mode=TwoWay}"/>
+                            <StackPanel>
+                                <TextBlock Text="{Binding ElementName=FontSize, Path=Value}" Margin="15,0,0,-8" TextAlignment="Center" FontFamily="{StaticResource IranSansNum}"/>
+                                <Slider
+                                    x:Name="FontSize"
+                                    FlowDirection="LeftToRight"
+                                    Width="165"
+                                    Height="23"
+                                    Margin="10,0,0,0"
+                                    Minimum="10"
+                                    Maximum="24" 
+                                    Style="{StaticResource Horizontal_Slider}"
+                                    Value="{Binding Source={x:Static properties:Settings.Default}, Path=FontSize, Mode=TwoWay}"
+                                    FontFamily="{StaticResource IranSansNum}"
+                                    FontSize="12"
+                                    Foreground="DimGray">
+                                </Slider>
+                                
+                            </StackPanel>
+                            
+                        </StackPanel>
+                    </GroupItem>
+                </GroupBox>
+                
+                
+              
 
-                <TextBox
-                    Name="textBox"
-                    Width="200"
-                    Height="23"
-                    Padding="10,0"
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    FlowDirection="LeftToRight"
-                    FontFamily="calibri"
-                    FontSize="13"
-                    FontWeight="Light"
-                    Foreground="DimGray"
-                    PreviewKeyDown="TextBox_OnPreviewKeyDown"
-                    PreviewKeyUp="TextBox_OnPreviewKeyUp"
-                    Text="{Binding Source={x:Static properties:Settings.Default}, Path=ShortcutKey, Mode=TwoWay}"
-                    TextAlignment="Center">
-                    <TextBox.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="10" />
-                        </Style>
-                    </TextBox.Resources>
-                </TextBox>
-
-            </StackPanel>
-
-            <StackPanel
-                Margin="0,20,0,0"
-                HorizontalAlignment="Center"
-                Orientation="Vertical">
-
-                <ComboBox
-                    Width="200"
-                    Height="23"
-                    Padding="10,0"
-                    FlowDirection="RightToLeft"
-                    FontFamily="{StaticResource IranSans}"
-                    FontSize="12"
-                    Foreground="DarkSlateBlue"
-                    FontWeight="Light"
-                    PreviewKeyDown="TextBox_OnPreviewKeyDown"
-                    PreviewKeyUp="TextBox_OnPreviewKeyUp"
-                    Style="{StaticResource ComboBoxFlatStyle}"
-                    Text="{Binding Source={x:Static properties:Settings.Default}, Path=ShortcutKey, Mode=TwoWay}">
-                    <ComboBoxItem Content="تاهوما (Tahoma)" FontWeight="Bold"/>
-
-                    <ComboBoxItem IsEnabled="False">
-                        <TextBlock Text="------------------------------------------" Margin="-5,0,0,0" Foreground="DarkGray"/>
-                    </ComboBoxItem>
-
-                    <ComboBoxItem FontSize="11">
-
-                        <TextBlock>
-                            <Hyperlink Foreground="#FF818181" RequestNavigate="Hyperlink_OnRequestNavigate" NavigateUri="http://www.moslemebrahimi.com/" TextDecorations="">فونت‌های مسلم ابراهیمی</Hyperlink>
-                        </TextBlock>
-
-
-                    </ComboBoxItem>
-                    <ComboBoxItem Content="ایران‌سنس"/>
-
-                    <ComboBoxItem IsEnabled="False">
-                        <TextBlock Text="------------------------------------------"  Margin="-5,0,0,0" Foreground="DarkGray"/>
-                    </ComboBoxItem>
-
-                    <ComboBoxItem FontSize="11">
-                            <TextBlock>
-                                <Hyperlink Foreground="#FF818181" RequestNavigate="Hyperlink_OnRequestNavigate" NavigateUri="https://github.com/rastikerdar" TextDecorations="">فونت‌های صابر راستی‌کردار</Hyperlink>
-                            </TextBlock>
-                    </ComboBoxItem>
-                    <ComboBoxItem Content="وزیر"/>
-                    <ComboBoxItem Content="صمیم"/>
-                    <ComboBoxItem Content="شبنم"/>
-                    <ComboBoxItem Content="ساحل"/>
-                    <ComboBoxItem Content="پرستو"/>
-                    <ComboBoxItem Content="گندم"/>
-                    <ComboBoxItem Content="تنها"/>
-
-                    <ComboBoxItem IsEnabled="False">
-                        <TextBlock Text="------------------------------------------"  Margin="-5,0,0,0" Foreground="DarkGray"/>
-                    </ComboBoxItem>
-
-                    <ComboBoxItem FontSize="11">
-                        <TextBlock>
-                            <Hyperlink Foreground="#FF818181" RequestNavigate="Hyperlink_OnRequestNavigate" NavigateUri="https://saleh.soozanchi.ir/" TextDecorations="">فونت‌های صالح سوزنچی</Hyperlink>
-                        </TextBlock>
-                    </ComboBoxItem>
-                    <ComboBoxItem Content="بهداد"/>
-                    <ComboBoxItem Content="نیکا"/>
-                    <ComboBoxItem Content="گنجنامه"/>
-                    <ComboBoxItem Content="شهاب"/>
-
-                    <ComboBoxItem FontSize="11">
-                        <TextBlock>
-                            <Hyperlink Foreground="Black" RequestNavigate="Hyperlink_OnRequestNavigate" NavigateUri="https://www.opentypeshop.com/?ref=fontara" TextDecorations="">فونت‌های امین عابدی</Hyperlink>
-                        </TextBlock>
-                    </ComboBoxItem>
-                    <ComboBoxItem Content="آذرمهر"/>
-                    <ComboBoxItem Content="میخک"/>
-                    <ComboBoxItem Content="استعداد"/>
-                </ComboBox>
 
             </StackPanel>
 

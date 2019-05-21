@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using Vajehyar.Properties;
@@ -31,8 +32,9 @@ namespace Vajehyar.Windows
         }
 
 
-        private void TextBox_OnPreviewKeyDown(object sender, KeyEventArgs e)
+        private void TextBox_OnKeyDown(object sender, KeyEventArgs e)
         {
+
             // The text box grabs all input.
             e.Handled = true;
 
@@ -69,7 +71,7 @@ namespace Vajehyar.Windows
 
         private void SettingWindow_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            Keyboard.ClearFocus();
             if (e.ChangedButton == MouseButton.Left)
             {
                 DragMove();
@@ -77,25 +79,6 @@ namespace Vajehyar.Windows
 
         }
 
-        private void SettingWindow_OnPreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Escape)
-            {
-                Close();
-                e.Handled = true;
-            }
-        }
-
-        private void TextBox_OnPreviewKeyUp(object sender, KeyEventArgs e)
-        {
-
-        }
-
-
-        private void Hyperlink_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
-            e.Handled = true;
-        }
+       
     }
 }
