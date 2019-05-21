@@ -1,6 +1,8 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Text;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Navigation;
 using Vajehyar.Properties;
 
 namespace Vajehyar.Windows
@@ -86,7 +88,14 @@ namespace Vajehyar.Windows
 
         private void TextBox_OnPreviewKeyUp(object sender, KeyEventArgs e)
         {
-            
+
+        }
+
+
+        private void Hyperlink_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
         }
     }
 }

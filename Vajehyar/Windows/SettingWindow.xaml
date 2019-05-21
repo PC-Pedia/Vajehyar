@@ -7,7 +7,7 @@
     xmlns:properties="clr-namespace:Vajehyar.Properties"
     Title="SettingsWindow"
     Width="392"
-    Height="285"
+    Height="335"
     FontFamily="{StaticResource IranSans}"
     Left="{Binding Source={x:Static properties:Settings.Default}, Path=SettingLeftPos, Mode=TwoWay}"
     MouseDown="SettingWindow_OnMouseDown"
@@ -88,6 +88,83 @@
                         </Style>
                     </TextBox.Resources>
                 </TextBox>
+
+            </StackPanel>
+
+            <StackPanel
+                Margin="0,20,0,0"
+                HorizontalAlignment="Center"
+                Orientation="Vertical">
+
+                <ComboBox
+                    Width="200"
+                    Height="23"
+                    Padding="10,0"
+                    FlowDirection="RightToLeft"
+                    FontFamily="{StaticResource IranSans}"
+                    FontSize="12"
+                    Foreground="DarkSlateBlue"
+                    FontWeight="Light"
+                    PreviewKeyDown="TextBox_OnPreviewKeyDown"
+                    PreviewKeyUp="TextBox_OnPreviewKeyUp"
+                    Style="{StaticResource ComboBoxFlatStyle}"
+                    Text="{Binding Source={x:Static properties:Settings.Default}, Path=ShortcutKey, Mode=TwoWay}">
+                    <ComboBoxItem Content="تاهوما (Tahoma)" FontWeight="Bold"/>
+
+                    <ComboBoxItem IsEnabled="False">
+                        <TextBlock Text="------------------------------------------" Margin="-5,0,0,0" Foreground="DarkGray"/>
+                    </ComboBoxItem>
+
+                    <ComboBoxItem FontSize="11">
+
+                        <TextBlock>
+                            <Hyperlink Foreground="#FF818181" RequestNavigate="Hyperlink_OnRequestNavigate" NavigateUri="http://www.moslemebrahimi.com/" TextDecorations="">فونت‌های مسلم ابراهیمی</Hyperlink>
+                        </TextBlock>
+
+
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="ایران‌سنس"/>
+
+                    <ComboBoxItem IsEnabled="False">
+                        <TextBlock Text="------------------------------------------"  Margin="-5,0,0,0" Foreground="DarkGray"/>
+                    </ComboBoxItem>
+
+                    <ComboBoxItem FontSize="11">
+                            <TextBlock>
+                                <Hyperlink Foreground="#FF818181" RequestNavigate="Hyperlink_OnRequestNavigate" NavigateUri="https://github.com/rastikerdar" TextDecorations="">فونت‌های صابر راستی‌کردار</Hyperlink>
+                            </TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="وزیر"/>
+                    <ComboBoxItem Content="صمیم"/>
+                    <ComboBoxItem Content="شبنم"/>
+                    <ComboBoxItem Content="ساحل"/>
+                    <ComboBoxItem Content="پرستو"/>
+                    <ComboBoxItem Content="گندم"/>
+                    <ComboBoxItem Content="تنها"/>
+
+                    <ComboBoxItem IsEnabled="False">
+                        <TextBlock Text="------------------------------------------"  Margin="-5,0,0,0" Foreground="DarkGray"/>
+                    </ComboBoxItem>
+
+                    <ComboBoxItem FontSize="11">
+                        <TextBlock>
+                            <Hyperlink Foreground="#FF818181" RequestNavigate="Hyperlink_OnRequestNavigate" NavigateUri="https://saleh.soozanchi.ir/" TextDecorations="">فونت‌های صالح سوزنچی</Hyperlink>
+                        </TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="بهداد"/>
+                    <ComboBoxItem Content="نیکا"/>
+                    <ComboBoxItem Content="گنجنامه"/>
+                    <ComboBoxItem Content="شهاب"/>
+
+                    <ComboBoxItem FontSize="11">
+                        <TextBlock>
+                            <Hyperlink Foreground="Black" RequestNavigate="Hyperlink_OnRequestNavigate" NavigateUri="https://www.opentypeshop.com/?ref=fontara" TextDecorations="">فونت‌های امین عابدی</Hyperlink>
+                        </TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem Content="آذرمهر"/>
+                    <ComboBoxItem Content="میخک"/>
+                    <ComboBoxItem Content="استعداد"/>
+                </ComboBox>
 
             </StackPanel>
 
