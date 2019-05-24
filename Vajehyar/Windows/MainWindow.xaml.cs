@@ -46,7 +46,9 @@ namespace Vajehyar.Windows
             Lines = CollectionViewSource.GetDefaultView(database.Lines);
             Lines.Filter = FilterResult;
             Hint = $"جستجوی فارسی بین {database.GetCount().Round().Format()} واژه";
+#if (!DEBUG)
             CheckUpdate();
+#endif
         }
 
         private async void CheckUpdate()
@@ -97,7 +99,7 @@ namespace Vajehyar.Windows
 
         }
 
-        #region Events
+#region Events
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -165,7 +167,7 @@ namespace Vajehyar.Windows
 
         }
 
-        #endregion
+#endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string property)
