@@ -691,6 +691,9 @@
         <!-- End of Horizontal_Slider -->
 
         <!--#endregion-->
+      
+
+        
 
         <ContextMenu
             x:Key="NotifierContextMenu"

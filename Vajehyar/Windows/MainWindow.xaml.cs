@@ -1,13 +1,16 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Forms;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 using Vajehyar.Properties;
 using Vajehyar.Utility;
@@ -22,8 +25,6 @@ namespace Vajehyar.Windows
     /// </summary>
     public partial class MainWindow : INotifyPropertyChanged
     {
-        private string _filterString;
-        private string _str;
 
         private ICollectionView _lines;
         public ICollectionView Lines
@@ -57,6 +58,7 @@ namespace Vajehyar.Windows
                 await GithubHelper.CheckUpdate();
         }
 
+        private string _filterString;
         public string FilterString
         {
             get => _filterString;
@@ -73,33 +75,19 @@ namespace Vajehyar.Windows
             _lines?.Refresh();
         }
 
+       
         public bool FilterResult(object obj)
         {
-            _str = obj as string;
+            string str = obj as string;
 
             if (!string.IsNullOrEmpty(_filterString))
             {
-                return Regex.IsMatch(_str, @"\b" + _filterString + @"\b");
+                return Regex.IsMatch(str, @"\b" + _filterString + @"\b");
             }
-            return true;
+            return false;
         }
 
-        private void BlinkText(TextBlock textBlock)
-        {
-            DoubleAnimation da = new DoubleAnimation(0, 1, new Duration(new TimeSpan(0, 0, 0, 0, 200)))
-            {
-                RepeatBehavior = new RepeatBehavior(2)
-            };
-            //da.AutoReverse = true;
-            Storyboard sb = new Storyboard();
-            sb.Children.Add(da);
-            Storyboard.SetTargetProperty(da, new PropertyPath("(TextBlock.Opacity)"));
-            Storyboard.SetTarget(da, textBlock);
-            sb.Begin();
-
-        }
-
-#region Events
+        #region Events
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -112,24 +100,6 @@ namespace Vajehyar.Windows
         private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
             FilterString = txtSearch.Text;
-
-        }
-
-        private bool isShown;
-        protected override void OnContentRendered(EventArgs e)
-        {
-            base.OnContentRendered(e);
-
-            if (isShown)
-                return;
-            Keyboard.Focus(txtSearch);
-        }       
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //Application.Current.Shutdown();
-            Hide();
-            WindowState = WindowState.Minimized;
         }
 
         private void Window_StateChanged(object sender, EventArgs e)
@@ -140,34 +110,7 @@ namespace Vajehyar.Windows
             }
         }
 
-        private void TxtSearch_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (!Regex.IsMatch(e.Text, @"^[\u0600-\u06FF\uFB8A\u067E\u0686\u06AF\u200C\u200F]+$"))
-            {
-                BlinkText(textboxHint);
-                e.Handled = true;
-            }
-
-        }
-
-
-        private void TopLeftButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            string name = ((DependencyObject)sender).GetValue(NameProperty) as string;
-
-            switch (name)
-            {
-                case "SettingButton":
-                    new SettingWindow().ShowDialog();
-                    break;
-                case "AboutButton":
-                    new AboutWindow().Show();
-                    break;
-            }
-
-        }
-
-#endregion
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string property)
@@ -175,19 +118,8 @@ namespace Vajehyar.Windows
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
 
-        private void UpdateButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            Process.Start(Settings.Default.UpdateUrl);
-            e.Handled = true;
-        }
-
         private void TxtSearch_OnPreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if (InputLanguage.CurrentInputLanguage.LayoutName != null && !InputLanguage.CurrentInputLanguage.LayoutName.ToLower().Contains("persian"))
-            {
-                return;
-            }
-
             bool shift = (Keyboard.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift;
             bool ctrl = (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control;
             bool space = Keyboard.IsKeyDown(Key.Space);
@@ -200,7 +132,18 @@ namespace Vajehyar.Windows
                 txtSearch.SelectionStart = txtSearch.Text.Length;
                 txtSearch.SelectionLength = 0;
             }
-        }      
+        }
+
+        private void MainWindow_OnPreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key==Key.Escape)
+            {
+                Hide();
+                WindowState = WindowState.Minimized;
+            }
+        }
         
     }
+
+    
 }
