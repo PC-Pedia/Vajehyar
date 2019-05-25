@@ -54,9 +54,9 @@
             <Grid Grid.Row="0">
                 <Border x:Name="SearchBorder" CornerRadius="20" Background="White" BorderBrush="#FF0088FF" BorderThickness="1" Padding="15,2,15,2">
                     <wpfTool:WatermarkTextBox
-                        x:Name="txtSearch"                         
-                        Height="30"                    
-                        Watermark="{Binding Hint}"                        
+                        x:Name="txtSearch"   
+                        Height="30"
+                        Watermark="{Binding Hint}"
                         VerticalContentAlignment="Center"
                         Background="White"
                         KeepWatermarkOnGotFocus="True"
@@ -67,6 +67,12 @@
                         Foreground="Black"
                         PreviewKeyDown="TxtSearch_OnPreviewKeyDown"
                         TextChanged="TxtSearch_TextChanged">
+                        <wpfTool:WatermarkTextBox.WatermarkTemplate>
+                            <DataTemplate>
+                                <ContentControl Content="{Binding}" FontFamily="{StaticResource IranSans}" FontWeight="Light" Foreground="DimGray"/>
+                            </DataTemplate>
+                            
+                        </wpfTool:WatermarkTextBox.WatermarkTemplate>
                     </wpfTool:WatermarkTextBox>
                 </Border>
 
