@@ -133,15 +133,6 @@ namespace Vajehyar.Windows
                 txtSearch.SelectionLength = 0;
             }
         }
-
-        private void MainWindow_OnPreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key==Key.Escape)
-            {
-                Hide();
-                WindowState = WindowState.Minimized;
-            }
-        }
         
     }
 

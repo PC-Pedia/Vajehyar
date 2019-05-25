@@ -113,13 +113,14 @@ namespace Vajehyar
 
         private void OnHookKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData==Keys.Escape)
+            if (Current.Windows.OfType<SettingWindow>().Any()) return;
+
+            if (e.KeyData == Keys.Escape)
             {
                 _contextMenu.IsOpen = false;
                 HideMainWindow();
                 return;
             }
-            if (_mainWindow.WindowState == WindowState.Normal || Current.Windows.OfType<SettingWindow>().Any()) return;
 
             if (IsShortcutKeysPressed(e)) ShowMainWindow();
         }

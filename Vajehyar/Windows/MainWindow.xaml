@@ -15,7 +15,6 @@
     MouseDown="Window_MouseDown"
     StateChanged="Window_StateChanged"
     Style="{StaticResource WindowStyle}"     
-    PreviewKeyDown="MainWindow_OnPreviewKeyDown"
     SizeToContent="Height"          
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
