@@ -113,6 +113,12 @@ namespace Vajehyar
 
         private void OnHookKeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyData==Keys.Escape)
+            {
+                _contextMenu.IsOpen = false;
+                HideMainWindow();
+                return;
+            }
             if (_mainWindow.WindowState == WindowState.Normal || Current.Windows.OfType<SettingWindow>().Any()) return;
 
             if (IsShortcutKeysPressed(e)) ShowMainWindow();
@@ -120,12 +126,6 @@ namespace Vajehyar
 
         private bool IsShortcutKeysPressed(KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Escape)
-            {
-                _contextMenu.IsOpen = false;
-                return false;
-            }
-
             var splittedKeys = Settings.Default.ShortcutKey.Split('+');
             var keys = new List<Keys>();
             var allKeyPressed = false;

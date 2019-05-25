@@ -10,9 +10,6 @@
     DataContext="{Binding RelativeSource={RelativeSource Self}}"    
     FocusManager.FocusedElement="{Binding ElementName=txtSearch}"    
     FontFamily="tahoma"
-        AllowsTransparency="True"
-        WindowStyle="None"
-        Background="Transparent"
     xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
     xmlns:properties="clr-namespace:Vajehyar.Properties"
     MouseDown="Window_MouseDown"
@@ -43,7 +40,7 @@
         </EventTrigger>        
     </Window.Triggers>
 
-    <Border CornerRadius="25" BorderThickness="2" Background="AliceBlue" Padding="9" Margin="25">
+    <Border CornerRadius="10" BorderThickness="2" Background="AliceBlue" Padding="9" Margin="25">
         <Border.Effect>
             <DropShadowEffect RenderingBias="Quality" BlurRadius="20" Color="#FF9DD6FD" Opacity="0.9"/>
         </Border.Effect>
