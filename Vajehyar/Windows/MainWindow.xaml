@@ -8,7 +8,6 @@
     Title="MainWindow"
     Width="650"
     DataContext="{Binding RelativeSource={RelativeSource Self}}"    
-    FocusManager.FocusedElement="{Binding ElementName=txtSearch}"    
     FontFamily="tahoma"
     xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
     xmlns:properties="clr-namespace:Vajehyar.Properties"
@@ -39,7 +38,7 @@
         </EventTrigger>        
     </Window.Triggers>
 
-    <Border CornerRadius="10" BorderThickness="2" Background="AliceBlue" Padding="9" Margin="25">
+    <Border CornerRadius="10" BorderThickness="2" Background="AliceBlue" Padding="10" Margin="25">
         <Border.Effect>
             <DropShadowEffect RenderingBias="Quality" BlurRadius="20" Color="#FF9DD6FD" Opacity="0.9"/>
         </Border.Effect>
@@ -54,10 +53,11 @@
 
 
             <Grid Grid.Row="0">
-                <Border x:Name="SearchBorder" CornerRadius="20" Background="White" BorderBrush="#FF0088FF" BorderThickness="1" Padding="15,2,15,2">
+                <Border x:Name="SearchBorder" CornerRadius="20" Margin="0,5,0,0" Background="White" BorderBrush="#FF0088FF" BorderThickness="1" Padding="15,2,15,2">
                     <wpfTool:WatermarkTextBox
                         x:Name="txtSearch"   
                         Height="30"
+                        FocusManager.FocusedElement="{Binding ElementName=txtSearch}"
                         KeyUp="TxtSearch_OnKeyUp"
                         Watermark="{Binding Hint}"
                         VerticalContentAlignment="Center"
@@ -88,22 +88,17 @@
                         Opacity=".5" />
             </Grid>
 
-            <TextBlock Grid.Row="1" Text="..." HorizontalAlignment="Center"  Margin="0,-3,0,0" FontWeight="Bold" FontSize="17"/>
-            
-            <Border Grid.Row="2" Background="#FFE1F1FF" Padding="4" HorizontalAlignment="Center" CornerRadius="15">
-                <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" HorizontalAlignment="Center">
-                    <RadioButton x:Name="FullText" IsChecked="True" Content="جستجوی تمام متن" Margin="15,2,0,0" Checked="RadioButton_OnChecked" Unchecked="RadioButton_OnChecked"/>
-                    <RadioButton x:Name="WholeWord" Content="جستجوی کامل کلمه" Margin="15,2,0,0" Checked="RadioButton_OnChecked" Unchecked="RadioButton_OnChecked"/>
-                    <RadioButton x:Name="UseWildcards" Content="استفاده از ستاره" Margin="15,2,0,0" Checked="RadioButton_OnChecked" Unchecked="RadioButton_OnChecked"/>
-                </StackPanel>
-            </Border>
-            <Separator x:Name="Seperator" Grid.Row="3" Height="15" Visibility="{Binding ElementName=Datagrid, Path=Visibility}"/>
+            <CheckBox Grid.Row="1" HorizontalAlignment="Right" VerticalContentAlignment="Center" FlowDirection="RightToLeft" Style="{StaticResource SliderCheckBox}" x:Name="WholeWord" Content="جستجوی کامل کلمه" VerticalAlignment="Center" Margin="0,5,15,0" Checked="RadioButton_OnChecked" Unchecked="RadioButton_OnChecked"/>
+
+
+
+<Separator x:Name="Seperator" Grid.Row="2" Height="15" Visibility="{Binding ElementName=Datagrid, Path=Visibility}"/>
 
             <DataGrid
                         x:Name="Datagrid"
                         MaxHeight="200"
                         MaxColumnWidth="{Binding ElementName=window, Path=Width}"
-                        Grid.Row="4"                 
+                        Grid.Row="3"                 
                         VerticalContentAlignment="Center"
                         AlternatingRowBackground="#FFFBFBFB"
                         AutoGenerateColumns="False"

@@ -36,10 +36,10 @@ namespace Vajehyar.Utility
             return $"{major}.{minor}.{patch}";
         }
 
-        public static async Task<bool> GetIdle(this TextBox txb)
+        public static async Task<bool> GetIdle(this TextBox txb, int whatMillisecond)
         {
             string txt = txb.Text;
-            await Task.Delay(500);
+            await Task.Delay(whatMillisecond);
             return txt == txb.Text;
         }
 

@@ -421,12 +421,12 @@
                             <Storyboard x:Key="StoryboardIsChecked">
                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckFlag" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
                                     <EasingDoubleKeyFrame KeyTime="0" Value="0" />
-                                    <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="14" />
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="18" />
                                 </DoubleAnimationUsingKeyFrames>
                             </Storyboard>
                             <Storyboard x:Key="StoryboardIsCheckedOff">
                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="CheckFlag" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
-                                    <EasingDoubleKeyFrame KeyTime="0" Value="14" />
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="18" />
                                     <EasingDoubleKeyFrame KeyTime="0:0:0.0" Value="0" />
                                 </DoubleAnimationUsingKeyFrames>
                             </Storyboard>
@@ -436,17 +436,18 @@
                                 <Border
                                     x:Name="ForegroundPanel"
                                     Width="35"
-                                    Height="20"
+                                    Height="15"
                                     BorderThickness="1"
                                     CornerRadius="10">
                                     <Canvas>
                                         <Border
                                             x:Name="CheckFlag"
-                                            Width="19"
-                                            Height="18"
+                                            Width="15"
+                                            Height="15"
                                             VerticalAlignment="Center"
                                             Background="White"
                                             BorderThickness="1"
+                                            Margin="0,-1,0,0"
                                             CornerRadius="10"
                                             RenderTransformOrigin="0.5,0.5">
                                             <Border.RenderTransform>

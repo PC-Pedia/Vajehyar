@@ -83,23 +83,10 @@ namespace Vajehyar.Windows
             string str = obj as string;
             string pattern = _filterString;
 
-            if (FullText.IsChecked==true)
-            {
-                txtSearch.Text.Replace("*", "");
-                return str.Contains(_filterString);
-            }
-
             if (WholeWord.IsChecked==true)
             {
-                txtSearch.Text.Replace("*", "");
-                pattern = @"\b" + _filterString.Replace("*", "") + @"\b";
+                pattern = @"\b" + _filterString + @"\b";
             }
-
-            if (UseWildcards.IsChecked==true)
-            {
-                pattern = _filterString.WildCardToRegular();
-            }
-
             
             return Regex.IsMatch(str, pattern);
         }
@@ -116,7 +103,7 @@ namespace Vajehyar.Windows
 
         private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            FilterString = txtSearch.Text;
+            //FilterString = txtSearch.Text;
         }
 
         private void Window_StateChanged(object sender, EventArgs e)
@@ -153,7 +140,7 @@ namespace Vajehyar.Windows
 
         private async void TxtSearch_OnKeyUp(object sender, KeyEventArgs e)
         {
-            if (await txtSearch.GetIdle())
+            if (await txtSearch.GetIdle(Settings.Default.SearchDelay))
             {
                 FilterString = txtSearch.Text;
             }
