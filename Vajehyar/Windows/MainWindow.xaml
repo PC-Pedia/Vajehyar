@@ -53,7 +53,7 @@
 
 
             <Grid Grid.Row="0">
-                <Border x:Name="SearchBorder" VerticalAlignment="Center" CornerRadius="20" Margin="0,5,0,0" Background="White" BorderBrush="#FF0088FF" BorderThickness="1" Padding="15,2,15,2">
+                <Border x:Name="SearchBorder" VerticalAlignment="Center" CornerRadius="20" Background="White" BorderBrush="#FF0088FF" BorderThickness="1" Padding="15,2,15,2">
                     <wpfTool:WatermarkTextBox
                         x:Name="txtSearch"   
                         Height="30"

@@ -220,7 +220,7 @@ namespace Vajehyar.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        [global::System.Configuration.DefaultSettingValueAttribute("120")]
         public int SearchDelay {
             get {
                 return ((int)(this["SearchDelay"]));

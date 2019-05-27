@@ -8,7 +8,7 @@
     xmlns:properties="clr-namespace:Vajehyar.Properties"
     Title="SettingsWindow"
     Width="491"
-    Height="440"
+    Height="460"
     FontFamily="{StaticResource IranSans}"
     Left="{Binding Source={x:Static properties:Settings.Default}, Path=SettingLeftPos, Mode=TwoWay}"
     MouseDown="SettingWindow_OnMouseDown"
