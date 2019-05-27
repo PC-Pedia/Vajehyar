@@ -92,7 +92,7 @@
                         Opacity=".5" />
             </Grid>
 
-            <CheckBox Grid.Row="1" IsTabStop="False" HorizontalAlignment="Right" VerticalContentAlignment="Center" FlowDirection="RightToLeft" Style="{StaticResource SliderCheckBox}" x:Name="WholeWord" Content="جستجوی کامل کلمه" VerticalAlignment="Center" Margin="0,5,15,0" Checked="RadioButton_OnChecked" Unchecked="RadioButton_OnChecked"/>
+            <CheckBox Grid.Row="1" IsTabStop="False" FontFamily="{StaticResource IranSans}" HorizontalAlignment="Right" VerticalContentAlignment="Center" FlowDirection="RightToLeft" Style="{StaticResource SliderCheckBox}" x:Name="WholeWord" Content="جستجوی کامل کلمه" VerticalAlignment="Center" Margin="0,5,15,0" Checked="RadioButton_OnChecked" Unchecked="RadioButton_OnChecked"/>
 
 
 
