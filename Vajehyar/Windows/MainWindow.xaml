@@ -9,6 +9,7 @@
     Width="650"
     DataContext="{Binding RelativeSource={RelativeSource Self}}"    
     FontFamily="tahoma"
+    IsTabStop="False"
     xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
     xmlns:properties="clr-namespace:Vajehyar.Properties"
     MouseDown="Window_MouseDown"
@@ -55,7 +56,9 @@
             <Grid Grid.Row="0">
                 <Border x:Name="SearchBorder" VerticalAlignment="Center" CornerRadius="20" Background="White" BorderBrush="#FF0088FF" BorderThickness="1" Padding="15,2,15,2">
                     <wpfTool:WatermarkTextBox
-                        x:Name="txtSearch"   
+                        x:Name="txtSearch" 
+                        IsTabStop="True"
+                        TabIndex="0"
                         Height="30"
                         FocusManager.FocusedElement="{Binding ElementName=txtSearch}"
                         KeyUp="TxtSearch_OnKeyUp"
@@ -69,8 +72,8 @@
                         FontWeight="Bold"                        
                         Foreground="Black"
                         PreviewKeyDown="TxtSearch_OnPreviewKeyDown"
-                        PreviewTextInput="TxtSearch_OnPreviewTextInput"
-                        TextChanged="TxtSearch_TextChanged">
+                        TextChanged="TxtSearch_TextChanged"
+                        PreviewTextInput="TxtSearch_OnPreviewTextInput">
                         <wpfTool:WatermarkTextBox.WatermarkTemplate>
                             <DataTemplate>
                                 <ContentControl Content="{Binding}" FontFamily="{StaticResource IranSans}" FontWeight="Light" Foreground="DimGray"/>
@@ -81,6 +84,7 @@
                 </Border>
                 <Label
                         Margin="10,0,0,0"
+                        IsTabStop="False"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         Content="{Binding ElementName=Datagrid, Path=Items.Count}"
@@ -89,14 +93,15 @@
                         Opacity=".5" />
             </Grid>
 
-            <CheckBox Grid.Row="1" HorizontalAlignment="Right" VerticalContentAlignment="Center" FlowDirection="RightToLeft" Style="{StaticResource SliderCheckBox}" x:Name="WholeWord" Content="جستجوی کامل کلمه" VerticalAlignment="Center" Margin="0,5,15,0" Checked="RadioButton_OnChecked" Unchecked="RadioButton_OnChecked"/>
+            <CheckBox Grid.Row="1" IsTabStop="False" HorizontalAlignment="Right" VerticalContentAlignment="Center" FlowDirection="RightToLeft" Style="{StaticResource SliderCheckBox}" x:Name="WholeWord" Content="جستجوی کامل کلمه" VerticalAlignment="Center" Margin="0,5,15,0" Checked="RadioButton_OnChecked" Unchecked="RadioButton_OnChecked"/>
 
 
 
-<Separator x:Name="Seperator" Grid.Row="2" Height="15" Visibility="{Binding ElementName=Datagrid, Path=Visibility}"/>
+<Separator x:Name="Seperator" IsTabStop="False" Grid.Row="2" Height="15" Visibility="{Binding ElementName=Datagrid, Path=Visibility}"/>
 
             <DataGrid
                         x:Name="Datagrid"
+                        IsTabStop="False"
                         MaxHeight="200"
                         MaxColumnWidth="{Binding ElementName=window, Path=Width}"
                         Grid.Row="3"                 

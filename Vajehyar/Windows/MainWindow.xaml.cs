@@ -97,7 +97,7 @@ namespace Vajehyar.Windows
 
         private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //FilterString = txtSearch.Text;
+            
         }
 
         private void Window_StateChanged(object sender, EventArgs e)
@@ -149,11 +149,11 @@ namespace Vajehyar.Windows
         {
             if (!Regex.IsMatch(e.Text, @"^[\u0600-\u06FF\uFB8A\u067E\u0686\u06AF\u200C\u200F]+$"))
             {
-                MessageBox.Show("لطفاً فارسی تایپ کنید", "", MessageBoxButton.OK, MessageBoxImage.Warning,
-                    MessageBoxResult.OK, MessageBoxOptions.RightAlign);
                 e.Handled = true;
             }
         }
+
+        
     }
 
     
