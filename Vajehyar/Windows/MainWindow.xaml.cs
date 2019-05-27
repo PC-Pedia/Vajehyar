@@ -1,22 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Globalization;
 using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
 using Vajehyar.Properties;
 using Vajehyar.Utility;
-using Application = System.Windows.Forms.Application;
 using KeyEventArgs = System.Windows.Input.KeyEventArgs;
-using MessageBox = System.Windows.MessageBox;
 
 namespace Vajehyar.Windows
 {
@@ -25,6 +16,8 @@ namespace Vajehyar.Windows
     /// </summary>
     public partial class MainWindow : INotifyPropertyChanged
     {
+        private Database database;
+
         private ICollectionView _lines;
         public ICollectionView Lines
         {
@@ -58,6 +51,7 @@ namespace Vajehyar.Windows
         }
 
         private string _filterString;
+
         public string FilterString
         {
             get => _filterString;
@@ -149,6 +143,16 @@ namespace Vajehyar.Windows
         private void RadioButton_OnChecked(object sender, RoutedEventArgs e)
         {
             FilterString = txtSearch.Text;
+        }
+
+        private void TxtSearch_OnPreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!Regex.IsMatch(e.Text, @"^[\u0600-\u06FF\uFB8A\u067E\u0686\u06AF\u200C\u200F]+$"))
+            {
+                MessageBox.Show("لطفاً فارسی تایپ کنید", "", MessageBoxButton.OK, MessageBoxImage.Warning,
+                    MessageBoxResult.OK, MessageBoxOptions.RightAlign);
+                e.Handled = true;
+            }
         }
     }
 
