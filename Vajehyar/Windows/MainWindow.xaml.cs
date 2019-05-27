@@ -25,7 +25,6 @@ namespace Vajehyar.Windows
     /// </summary>
     public partial class MainWindow : INotifyPropertyChanged
     {
-
         private ICollectionView _lines;
         public ICollectionView Lines
         {
@@ -78,13 +77,31 @@ namespace Vajehyar.Windows
        
         public bool FilterResult(object obj)
         {
-            string str = obj as string;
+            if (string.IsNullOrEmpty(_filterString))
+                return false;
 
-            if (!string.IsNullOrEmpty(_filterString))
+            string str = obj as string;
+            string pattern = _filterString;
+
+            if (FullText.IsChecked==true)
             {
-                return Regex.IsMatch(str, @"\b" + _filterString + @"\b");
+                txtSearch.Text.Replace("*", "");
+                return str.Contains(_filterString);
             }
-            return false;
+
+            if (WholeWord.IsChecked==true)
+            {
+                txtSearch.Text.Replace("*", "");
+                pattern = @"\b" + _filterString.Replace("*", "") + @"\b";
+            }
+
+            if (UseWildcards.IsChecked==true)
+            {
+                pattern = _filterString.WildCardToRegular();
+            }
+
+            
+            return Regex.IsMatch(str, pattern);
         }
 
         #region Events
@@ -133,7 +150,19 @@ namespace Vajehyar.Windows
                 txtSearch.SelectionLength = 0;
             }
         }
-        
+
+        private async void TxtSearch_OnKeyUp(object sender, KeyEventArgs e)
+        {
+            if (await txtSearch.GetIdle())
+            {
+                FilterString = txtSearch.Text;
+            }
+        }
+
+        private void RadioButton_OnChecked(object sender, RoutedEventArgs e)
+        {
+            FilterString = txtSearch.Text;
+        }
     }
 
     

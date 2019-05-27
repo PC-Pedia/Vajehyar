@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Globalization;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Vajehyar.Utility
 {
@@ -31,6 +34,18 @@ namespace Vajehyar.Utility
             int minor = ver.Minor;
             int patch = ver.Build;
             return $"{major}.{minor}.{patch}";
+        }
+
+        public static async Task<bool> GetIdle(this TextBox txb)
+        {
+            string txt = txb.Text;
+            await Task.Delay(500);
+            return txt == txb.Text;
+        }
+
+        public static String WildCardToRegular(this String value)
+        {
+            return  Regex.Escape(value).Replace("\\*", ".*") ;
         }
     }
 }
