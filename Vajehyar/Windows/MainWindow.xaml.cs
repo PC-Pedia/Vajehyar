@@ -94,11 +94,7 @@ namespace Vajehyar.Windows
                 DragMove();
             }
         }
-
-        private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            
-        }
+       
 
         private void Window_StateChanged(object sender, EventArgs e)
         {

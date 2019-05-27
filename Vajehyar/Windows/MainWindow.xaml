@@ -72,7 +72,6 @@
                         FontWeight="Bold"                        
                         Foreground="Black"
                         PreviewKeyDown="TxtSearch_OnPreviewKeyDown"
-                        TextChanged="TxtSearch_TextChanged"
                         PreviewTextInput="TxtSearch_OnPreviewTextInput">
                         <wpfTool:WatermarkTextBox.WatermarkTemplate>
                             <DataTemplate>
