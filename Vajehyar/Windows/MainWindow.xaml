@@ -68,6 +68,8 @@
                         KeepWatermarkOnGotFocus="True"
                         BorderBrush="Transparent"
                         BorderThickness="0"
+                        FontFamily="{Binding Source={x:Static properties:Settings.Default}, Path=Font, Mode=OneWay}"
+                        FontSize="{Binding Source={x:Static properties:Settings.Default}, Path=FontSize, Mode=OneWay}"
                         FlowDirection="RightToLeft"
                         FontWeight="Bold"                        
                         Foreground="Black"
@@ -75,7 +77,10 @@
                         PreviewTextInput="TxtSearch_OnPreviewTextInput">
                         <wpfTool:WatermarkTextBox.WatermarkTemplate>
                             <DataTemplate>
-                                <ContentControl Content="{Binding}" FontFamily="{StaticResource IranSans}" FontWeight="Light" Foreground="DimGray"/>
+                                <ContentControl Content="{Binding}" 
+                                                FontFamily="{Binding Source={x:Static properties:Settings.Default}, Path=Font, Mode=OneWay}"
+                                                FontSize="{Binding Source={x:Static properties:Settings.Default}, Path=FontSize, Mode=OneWay}"
+                                                FontWeight="Light"  Foreground="DimGray"/>
                             </DataTemplate>
                             
                         </wpfTool:WatermarkTextBox.WatermarkTemplate>
