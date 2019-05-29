@@ -105,12 +105,13 @@
 
 <Separator x:Name="Seperator" IsTabStop="False" Grid.Row="2" Height="15" Visibility="{Binding ElementName=Datagrid, Path=Visibility}"/>
 
-            <DataGrid
+           
+                <DataGrid
                         x:Name="Datagrid"
                         IsTabStop="False"
                         MaxHeight="200"
                         MaxColumnWidth="{Binding ElementName=window, Path=Width}"
-                        Grid.Row="3"                 
+                        Grid.Row="3"
                         VerticalContentAlignment="Center"
                         AlternatingRowBackground="#FFFBFBFB"
                         AutoGenerateColumns="False"
@@ -122,52 +123,53 @@
                         CanUserResizeRows="False"
                         EnableColumnVirtualization="True"
                         EnableRowVirtualization="True"
-                        FlowDirection="RightToLeft"
+                        FlowDirection="LeftToRight"
                         HeadersVisibility="None"
                         HorizontalGridLinesBrush="White"
                         HorizontalScrollBarVisibility="Hidden"
-                        VerticalScrollBarVisibility="Auto"
                         ItemsSource="{Binding Lines}"
                         RowBackground="#FFCAEDFF"
                         SelectionMode="Single"
                         SelectionUnit="Cell"
                         VerticalGridLinesBrush="White">
 
-                <DataGrid.Style>
-                    <Style TargetType="DataGrid">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding  Items.Count, RelativeSource={RelativeSource Self}}" Value="0">
-                                <Setter Property="Visibility" Value="Collapsed"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                                       
-                </DataGrid.Style>
+                    <DataGrid.Style>
+                        <Style TargetType="DataGrid">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding  Items.Count, RelativeSource={RelativeSource Self}}" Value="0">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
 
-                <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Mode=OneTime}" 
+                    </DataGrid.Style>
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Mode=OneTime}" 
                                         CanUserReorder="False"
                                         CanUserSort="False"
+                                        
                                         CanUserResize="False"
                                         Width="*">
-                        <DataGridTextColumn.ElementStyle>
-                            <Style>
-                                <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                                <Setter Property="TextBlock.VerticalAlignment" Value="Center" />
-                                <Setter Property="TextBlock.Padding" Value="7" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </DataGridTextColumn>
-                </DataGrid.Columns>
+                            <DataGridTextColumn.ElementStyle>
+                                <Style>
+                                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                                    <Setter Property="TextBlock.VerticalAlignment" Value="Center" />
+                                    <Setter Property="TextBlock.FlowDirection" Value="RightToLeft" />
+                                    <Setter Property="TextBlock.Padding" Value="7" />
 
-                <DataGrid.Background>
-                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                        <GradientStop Offset="0" Color="#FFEDF9FF" />
-                        <GradientStop Offset="1" Color="White" />
-                    </LinearGradientBrush>
-                </DataGrid.Background>
-            </DataGrid>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                    </DataGrid.Columns>
 
+                    <DataGrid.Background>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Offset="0" Color="#FFEDF9FF" />
+                            <GradientStop Offset="1" Color="White" />
+                        </LinearGradientBrush>
+                    </DataGrid.Background>
+                </DataGrid>
         </Grid>
     </Border>
 
