@@ -8,7 +8,7 @@
     xmlns:properties="clr-namespace:Vajehyar.Properties"
     Title="SettingsWindow"
     Width="491"
-    Height="460"
+    Height="515"
     FontFamily="{StaticResource IranSans}"
     Left="{Binding Source={x:Static properties:Settings.Default}, Path=SettingLeftPos, Mode=TwoWay}"
     MouseDown="SettingWindow_OnMouseDown"
@@ -53,6 +53,22 @@
                 Content="چک کردن بروزرسانی هنگام شروع برنامه"
                 FlowDirection="RightToLeft"
                 IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=CheckUpdate, Mode=TwoWay}"
+                Style="{StaticResource SliderCheckBox}" />
+
+            <CheckBox
+                Name="MinimizeType"
+                Margin="0,5,15,0"
+                Content="قرار گرفتن برنامه در نوار وظیفه "
+                FlowDirection="RightToLeft"
+                IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=ShowInTaskbar, Mode=TwoWay}"
+                Style="{StaticResource SliderCheckBox}" />
+
+            <CheckBox
+                Name="MinimizeWhenClickOutside"
+                Margin="0,5,15,0"
+                Content="‌مخفی کردن برنامه هنگام غیرفعال شدن"
+                FlowDirection="RightToLeft"
+                IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=MinimizeWhenClickOutside, Mode=TwoWay}"
                 Style="{StaticResource SliderCheckBox}" />
 
             <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" Margin="0,10,19,0">

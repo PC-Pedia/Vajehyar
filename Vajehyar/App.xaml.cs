@@ -122,7 +122,9 @@ namespace Vajehyar
                 return;
             }
 
-            if (IsShortcutKeysPressed(e)) ShowMainWindow();
+            if (IsShortcutKeysPressed(e))
+                ShowMainWindow();
+            
         }
 
         private bool IsShortcutKeysPressed(KeyEventArgs e)
@@ -163,13 +165,16 @@ namespace Vajehyar
             }
 
             return allKeyPressed;
-        } 
+        }
         #endregion
 
         #region Show and hide windows
         public void HideMainWindow()
         {
-            _mainWindow.Hide();
+            if (!Settings.Default.ShowInTaskbar)
+            {
+                _mainWindow.Hide();
+            }
             _mainWindow.WindowState = WindowState.Minimized;
         }
 
@@ -177,14 +182,13 @@ namespace Vajehyar
         {
             _contextMenu.IsOpen = false;
             _mainWindow.WindowState = WindowState.Normal;
-            _mainWindow.Activate();
             _mainWindow.Show();
             _mainWindow.Datagrid.UnselectAllCells();
             _mainWindow.txtSearch.SelectAll();
             _mainWindow.txtSearch.Focus();
         }
         #endregion
-        
+
         #region Exit tasks
         private void App_OnExit(object sender, ExitEventArgs e)
         {
@@ -208,7 +212,7 @@ namespace Vajehyar
             key?.SetValue(_appName, value);
         }
         #endregion
-       
+
         private void App_OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             string errorMessage = string.Format("An unhandled exception occurred: {0}", e.Exception.Message);

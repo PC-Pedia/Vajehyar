@@ -32,7 +32,7 @@ namespace Vajehyar.Windows
             get => _hint;
             set { _hint = value; NotifyPropertyChanged("Hint"); }
         }
-
+        
         public MainWindow(Database database)
         {
             InitializeComponent();
@@ -149,7 +149,17 @@ namespace Vajehyar.Windows
             }
         }
 
-        
+        private void MainWindow_OnDeactivated(object sender, EventArgs e)
+        {
+            //MessageBox.Show("deactivate");
+            if (!Settings.Default.MinimizeWhenClickOutside)
+                return;
+
+            if (!Settings.Default.ShowInTaskbar)
+                Hide();
+
+            WindowState = WindowState.Minimized;
+        }
     }
 
     

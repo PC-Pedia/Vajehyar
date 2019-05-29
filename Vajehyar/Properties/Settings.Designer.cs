@@ -229,5 +229,29 @@ namespace Vajehyar.Properties {
                 this["SearchDelay"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowInTaskbar {
+            get {
+                return ((bool)(this["ShowInTaskbar"]));
+            }
+            set {
+                this["ShowInTaskbar"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool MinimizeWhenClickOutside {
+            get {
+                return ((bool)(this["MinimizeWhenClickOutside"]));
+            }
+            set {
+                this["MinimizeWhenClickOutside"] = value;
+            }
+        }
     }
 }
