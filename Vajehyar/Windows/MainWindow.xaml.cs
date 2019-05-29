@@ -151,7 +151,6 @@ namespace Vajehyar.Windows
 
         private void MainWindow_OnDeactivated(object sender, EventArgs e)
         {
-            //MessageBox.Show("deactivate");
             if (!Settings.Default.MinimizeWhenClickOutside)
                 return;
 
