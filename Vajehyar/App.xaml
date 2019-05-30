@@ -708,6 +708,7 @@
             <MenuItem
                 Margin="3,8,0,0"
                 Click="Menu_Setting"
+                Height="24"
                 Header="تنظیمات">
                 <MenuItem.Icon>
                     <Image Source="Resources/Icons/Settings-24.png" />
@@ -717,6 +718,7 @@
             <MenuItem
                 Margin="3"
                 Click="Menu_About"
+                Height="24"
                 Header="دربارۀ برنامه">
                 <MenuItem.Icon>
                     <Image Source="Resources/Icons/About-24.png" />
@@ -726,6 +728,7 @@
             <MenuItem
                 Margin="3,0,0,8"
                 Click="Menu_Exit"
+                Height="24"
                 Header="خروج">
                 <MenuItem.Icon>
                     <Image Source="Resources/Icons/Exit-30.png" />

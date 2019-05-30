@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wpfTool="clr-namespace:Xceed.Wpf.Toolkit;assembly=Xceed.Wpf.Toolkit"
     xmlns:properties="clr-namespace:Vajehyar.Properties"
+    xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
     Title="SettingsWindow"
     Width="491"
     Height="515"
@@ -15,6 +16,14 @@
     Style="{StaticResource WindowStyle}"
     Top="{Binding Source={x:Static properties:Settings.Default}, Path=SettingTopPos, Mode=TwoWay}"
     mc:Ignorable="d">
+
+    <Window.Resources>
+        <CollectionViewSource x:Key="SortedFontsCollection" Source="{Binding Source={x:Static Fonts.SystemFontFamilies}}" >
+            <CollectionViewSource.SortDescriptions>
+                <scm:SortDescription PropertyName="Source" />
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+    </Window.Resources>
 
     <Border Style="{StaticResource BorderStyle}">
 
@@ -66,7 +75,7 @@
             <CheckBox
                 Name="MinimizeWhenClickOutside"
                 Margin="0,5,15,0"
-                Content="‌مخفی کردن برنامه هنگام غیرفعال شدن"
+                Content="‌مخفی شدن برنامه هنگام کلیک کردن خارج از پنجرۀ جستجو"
                 FlowDirection="RightToLeft"
                 IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=MinimizeWhenClickOutside, Mode=TwoWay}"
                 Style="{StaticResource SliderCheckBox}" />
@@ -132,7 +141,7 @@
                                 Foreground="DimGray"
                                 FontWeight="Thin"
                                 Style="{StaticResource ComboBoxFlatStyle}"
-                                ItemsSource="{Binding Source={x:Static Fonts.SystemFontFamilies}}"
+                                ItemsSource="{Binding Source={StaticResource SortedFontsCollection}}"
                                 Text="{Binding Source={x:Static properties:Settings.Default}, Path=Font, Mode=OneWay}"
                                 SelectedItem="{Binding Source={x:Static properties:Settings.Default}, Path=Font, Mode=TwoWay}"/>
                             <StackPanel>
