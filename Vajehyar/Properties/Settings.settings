@@ -51,10 +51,10 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="Font" Type="System.String" Scope="User">
-      <Value Profile="(Default)">tahoma</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="FontSize" Type="System.Byte" Scope="User">
-      <Value Profile="(Default)">12</Value>
+      <Value Profile="(Default)">13</Value>
     </Setting>
     <Setting Name="SearchDelay" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">120</Value>

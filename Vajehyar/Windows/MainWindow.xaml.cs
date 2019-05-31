@@ -1,13 +1,17 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Markup;
+using System.Windows.Media;
 using Vajehyar.Properties;
 using Vajehyar.Utility;
 using KeyEventArgs = System.Windows.Input.KeyEventArgs;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace Vajehyar.Windows
 {
@@ -17,6 +21,11 @@ namespace Vajehyar.Windows
     public partial class MainWindow : INotifyPropertyChanged
     {
         private Database database;
+
+        /*private static FontFamily DefaultFont = new FontFamily(
+            new Uri("pack://application:,,,/Resources/Fonts/"),
+            "./#IRANSans"
+        );*/
 
         private ICollectionView _lines;
         public ICollectionView Lines
@@ -39,6 +48,7 @@ namespace Vajehyar.Windows
             Lines = CollectionViewSource.GetDefaultView(database.Lines);
             Lines.Filter = FilterResult;
             Hint = $"جستجوی فارسی بین {database.GetCount().Round().Format()} واژه";
+
 #if (!DEBUG)
             CheckUpdate();
 #endif
@@ -161,5 +171,24 @@ namespace Vajehyar.Windows
         }
     }
 
-    
+    public class DefaultFontConverter : MarkupExtension, IValueConverter
+    {
+        public object Convert(object value, Type targetType,
+            object parameter, CultureInfo culture)
+        {
+            return value.ToString().Contains("فونت پیش‌فرض") || string.IsNullOrEmpty(value.ToString()) ? parameter : value;
+        }
+
+        public object ConvertBack(object value, Type targetType,
+            object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return this;
+        }
+    }
+
 }

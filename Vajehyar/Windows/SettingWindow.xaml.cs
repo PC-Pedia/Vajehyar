@@ -1,7 +1,9 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using Vajehyar.Properties;
@@ -78,7 +80,6 @@ namespace Vajehyar.Windows
             }
 
         }
-
        
     }
 }

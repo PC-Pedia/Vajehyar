@@ -196,7 +196,7 @@ namespace Vajehyar.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("tahoma")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string Font {
             get {
                 return ((string)(this["Font"]));
@@ -208,7 +208,7 @@ namespace Vajehyar.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("12")]
+        [global::System.Configuration.DefaultSettingValueAttribute("13")]
         public byte FontSize {
             get {
                 return ((byte)(this["FontSize"]));

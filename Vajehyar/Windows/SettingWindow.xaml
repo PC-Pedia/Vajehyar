@@ -129,6 +129,7 @@
                     <GroupItem>
                         <StackPanel Orientation="Horizontal">
                             <ComboBox
+                                x:Name="Fonts"
                                 Width="150"
                                 Margin="0,12,0,0"
                                 Height="23"
@@ -141,9 +142,16 @@
                                 Foreground="DimGray"
                                 FontWeight="Thin"
                                 Style="{StaticResource ComboBoxFlatStyle}"
-                                ItemsSource="{Binding Source={StaticResource SortedFontsCollection}}"
+                                IsSynchronizedWithCurrentItem="True"
                                 Text="{Binding Source={x:Static properties:Settings.Default}, Path=Font, Mode=OneWay}"
-                                SelectedItem="{Binding Source={x:Static properties:Settings.Default}, Path=Font, Mode=TwoWay}"/>
+                                SelectedItem="{Binding Source={x:Static properties:Settings.Default}, Path=Font, Mode=TwoWay}">
+                                <ComboBox.ItemsSource>
+                                    <CompositeCollection>
+                                        <ComboBoxItem Content="فونت پیش‌فرض" FontFamily="{StaticResource IranSans}" FlowDirection="RightToLeft" Foreground="Black" FontWeight="Bold" FontSize="11"/>
+                                        <CollectionContainer Collection="{Binding Source={StaticResource SortedFontsCollection}}"/>
+                                    </CompositeCollection>
+                                </ComboBox.ItemsSource>
+                            </ComboBox>
                             <StackPanel>
                                 <TextBlock Text="{Binding ElementName=FontSize, Path=Value}" Margin="15,0,0,-8" TextAlignment="Center" FontFamily="{StaticResource IranSansNum}"/>
                                 <Slider

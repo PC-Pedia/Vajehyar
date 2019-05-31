@@ -4,11 +4,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Vajehyar.Windows"
     Title="واژه‌یار"
     Width="650"
     ShowInTaskbar="{Binding Source={x:Static properties:Settings.Default}, Path=ShowInTaskbar, Mode=OneWay}"
     DataContext="{Binding RelativeSource={RelativeSource Self}}"    
-    FontFamily="tahoma"
+    FontFamily="{StaticResource IranSans}"
     FocusManager.FocusedElement="{Binding ElementName=txtSearch}"
     IsTabStop="False"
     ResizeMode="CanMinimize"
@@ -22,6 +23,7 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.Resources>
+        <local:DefaultFontConverter x:Key="DefaultFontConverter"/>
         <Storyboard x:Key="Storyboard1">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="SearchBorder">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
@@ -70,7 +72,7 @@
                         KeepWatermarkOnGotFocus="True"
                         BorderBrush="Transparent"
                         BorderThickness="0"
-                        FontFamily="{Binding Source={x:Static properties:Settings.Default}, Path=Font, Mode=OneWay}"
+                        FontFamily="{Binding Source={x:Static properties:Settings.Default}, Path=Font, TargetNullValue={StaticResource IranSans}, Converter={StaticResource DefaultFontConverter}, Mode=OneWay}"
                         FontSize="{Binding Source={x:Static properties:Settings.Default}, Path=FontSize, Mode=OneWay}"
                         FlowDirection="RightToLeft"
                         FontWeight="Bold"                        
@@ -80,7 +82,7 @@
                         <wpfTool:WatermarkTextBox.WatermarkTemplate>
                             <DataTemplate>
                                 <ContentControl Content="{Binding}" 
-                                                FontFamily="{Binding Source={x:Static properties:Settings.Default}, Path=Font, Mode=OneWay}"
+                                                FontFamily="{Binding Source={x:Static properties:Settings.Default}, Path=Font, TargetNullValue={StaticResource IranSans}, Converter={StaticResource DefaultFontConverter}, Mode=OneWay}"
                                                 FontSize="{Binding Source={x:Static properties:Settings.Default}, Path=FontSize, Mode=OneWay}"
                                                 FontWeight="Light"  Foreground="DimGray"/>
                             </DataTemplate>
@@ -117,7 +119,7 @@
                         AutoGenerateColumns="False"
                         HorizontalAlignment="Right"
                         BorderBrush="{x:Null}"
-                        FontFamily="{Binding Source={x:Static properties:Settings.Default}, Path=Font, Mode=OneWay}"
+                        FontFamily="{Binding Source={x:Static properties:Settings.Default}, Path=Font, TargetNullValue={StaticResource IranSans}, Converter={StaticResource DefaultFontConverter}, Mode=OneWay}"
                         FontSize="{Binding Source={x:Static properties:Settings.Default}, Path=FontSize, Mode=OneWay}"
                         CanUserAddRows="False"
                         CanUserResizeRows="False"
